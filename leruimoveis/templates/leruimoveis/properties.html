@@ -1,0 +1,138 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+<div class="b-example-divider rodape-text ads-section contorno">
+  <div class="container">
+    <div class="publicidade">
+      kjh
+    </div>
+  </div>
+</div>
+
+
+<div class="container marketing px-4 py-5 mt-6">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Lerui Imoveis > Listagens</h2>
+    </div>
+    <div class="col-lg-6 text-lg-end">
+      <p>
+        <a href="todos-imoveis.html" target="_blank" class="btn btn-normal text-white py-3 px-4">Imoveis Em Angola</a>
+      </p>
+    </div> 
+  </div>
+  
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    
+    {% for property in allProperties %}
+      <div class="col-lg-4">
+        
+        <div class="card card-espaco" style="width: 16rem;">
+          {% if property.fotos %}
+            <img src="{{ property.fotos.url }}" class="card-img-top" alt="{{ property.titulo }}" style="height: 250px; object-fit: cover;">
+          {% endif %}
+          
+          <div class="card-body">
+            
+            <div class="price mb-2">
+              <span>{% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+	                    		{{ property.preco }}</span></div>
+              <div>
+                <span class="d-block mb-2 text-black-50"
+                  >{{ property.endereco }}</span
+                >
+                <span class="city d-block mb-3">{{ property.cidade.nome }}, {{ property.pais.nome }}</span>
+
+                <!--<div class="specs d-flex mb-4">
+                  <span class="d-block d-flex align-items-center me-3">
+                    <span class="icon-bed me-2"></span>
+                    <span class="caption">2 beds</span>
+                  </span>
+                  <span class="d-block d-flex align-items-center">
+                    <span class="icon-bath me-2"></span>
+                    <span class="caption">2 baths</span>
+                  </span>
+                </div>-->
+
+                <a href="{% url 'detalhespropriadade' property.id %}" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
+              </div>
+              
+          </div>
+        </div>
+        
+      
+      </div>
+      {% empty %}
+        <div class="alert alert-warning" style="margin-top: 15px;"> Não existem anúncios disponíveis. </div>
+      {% endfor %}
+
+
+      
+      
+      
+
+      
+
+      
+
+  </div><!-- /.row -->
+  </div><!-- /.container -->
+
+  <div class="b-example-divider ads-section">
+    <div class="container">
+      <div class="publicidade">publicidade Aqui</div>
+    </div>
+  </div>
+
+  <div class="fnd-dark text-secondary text-center px-4 py-5 mt-6" style="border-top: #ff6600 1px solid;">
+    <div class="container marketing px-4 py-5 mt-6">
+      
+      <!-- Three columns of text below the carousel -->
+      <div class="container " id="featured-3">
+        <h2 class="pb-2 rodape-text">Nossos Serviços</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+          <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="34px" viewBox="0 0 24 24" width="34px" fill="#FFFFFF"><rect fill="none" height="24" width="24"/><g><path d="M17.41,6.59L15,5.5l2.41-1.09L18.5,2l1.09,2.41L22,5.5l-2.41,1.09L18.5,9L17.41,6.59z M21.28,12.72L20.5,11l-0.78,1.72 L18,13.5l1.72,0.78L20.5,16l0.78-1.72L23,13.5L21.28,12.72z M16.24,14.37l1.94,1.47l-2.5,4.33l-2.24-0.94 c-0.2,0.13-0.42,0.26-0.64,0.37L12.5,22h-5l-0.3-2.41c-0.22-0.11-0.43-0.23-0.64-0.37l-2.24,0.94l-2.5-4.33l1.94-1.47 C3.75,14.25,3.75,14.12,3.75,14s0-0.25,0.01-0.37l-1.94-1.47l2.5-4.33l2.24,0.94c0.2-0.13,0.42-0.26,0.64-0.37L7.5,6h5l0.3,2.41 c0.22,0.11,0.43,0.23,0.64,0.37l2.24-0.94l2.5,4.33l-1.94,1.47c0.01,0.12,0.01,0.24,0.01,0.37S16.25,14.25,16.24,14.37z M13,14 c0-1.66-1.34-3-3-3s-3,1.34-3,3s1.34,3,3,3S13,15.66,13,14z"/></g></svg>
+            </div>
+            <h2 class="rodape-text">Gestão de Imoveis</h2>
+            <p style="color: #ccc;">Gerimos o seu imóvel, cuidando de manutenções, cobranças e busca por inquilinos. Confie em nós para facilitar sua vida com eficiência e transparência.</p>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
+          </div>
+
+          <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20" height="40px" viewBox="0 0 20 20" width="40px" fill="#FFFFFF"><rect fill="none" height="20" width="20"/><path d="M11.5,1.5L6,5.5v2h1.5l6.34,2.26c1,0.35,1.66,1.3,1.66,2.36v0.39H17v-7L11.5,1.5z M11.12,8.25h-0.75V7.5h0.75V8.25z M11.12,6.75h-0.75V6h0.75V6.75z M12.62,8.25h-0.75V7.5h0.75V8.25z M12.62,6.75h-0.75V6h0.75V6.75z M1,18h3V9H1V18z M10.5,14 l-1.53-0.51l0.36-1.01L10.5,13h2.62c0.49,0,0.88-0.39,0.88-0.88v0c0-0.37-0.23-0.7-0.58-0.83L7,9H5.5v7.36l6,1.64l6.5-2.5v0 c0-0.83-0.67-1.5-1.5-1.5H10.5z"/></svg>
+            </div>
+            <h2 class="rodape-text">Listagem de Imoveis</h2>
+            <p style="color: #ccc;">Oferecemos um serviço de listagem de imóveis que facilita a busca de propriedades. Corretores, agências e público podem postar e gerenciar anúncios.</p>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
+          </div>
+
+          <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20" height="40px" viewBox="0 0 20 20" width="40px" fill="#FFFFFF"><g><rect fill="none" height="20" width="20"/></g><g><g><path d="M10,6C9.32,6,6.12,6.51,6.01,9.88c1.72-0.4,3.06-1.77,3.4-3.51c0.53,1.15,1.96,2.8,4.43,2.6C13.39,7.26,11.85,6,10,6z"/><circle cx="7.5" cy="10.75" r=".75"/><circle cx="12.5" cy="10.75" r=".75"/><path d="M16,10c0-3.31-2.69-6-6-6s-6,2.69-6,6c-0.55,0-1,0.45-1,1v2c0,0.55,0.45,1,1,1h1v-4c0-2.76,2.24-5,5-5s5,2.24,5,5v5H9v1h6 c0.55,0,1-0.45,1-1v-1c0.55,0,1-0.45,1-1v-2C17,10.45,16.55,10,16,10z"/></g></g></svg>
+            </div>
+            <h2 class="rodape-text">Corretagem</h2>
+            <p style="color: #ccc;">Oferecemos um serviço especializado na venda de imóveis, ajudando proprietários a encontrar compradores e vice-versa de forma eficiente e transparente.</p>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
+          </div>
+
+        </div>
+      </div>
+      
+    </div><!-- /.container -->
+  </div>
+
+  <div class="b-example-divider contorno" style="height: auto !important;" >
+    <div class="container">
+      <div class="publicidade">publicidade Aqui</div>
+    </div>
+  </div>
+    
+      {% endblock %}

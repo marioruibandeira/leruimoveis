@@ -1,0 +1,728 @@
+{% extends 'leruimoveis/base.html' %}
+
+{% load static %}  
+
+{% block content %}
+    <div class="hero page-inner overlay" style="background-image: url('{% static 'images/img_9.jpg' %}'); height:20px;">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center mt-1">
+                    <h1 class="heading" data-aos="fade-up">Central de Serviços</h1>
+    
+                    <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" >
+                        <ol class="breadcrumb text-center justify-content-center">
+                    	    <li class="breadcrumb-item"><a href="{% url 'home' %}">Início</a></li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">Central de Serviços</li>
+                  	    </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section section-4 bg-light">
+      <div class="container justify-content-center text-center"> PUBLICIDADES </div>
+    </div>
+    
+    <section class="features-1">
+      <div class="container">
+        <h2 class="font-weight-bold heading text-primary mb-4"> Restaraução </h2>
+        <p class="text-black-50">Escolha entre uma vasta gama de pequenas empresas e profissionais especializados em restauração e reparações para fazer aquele ajuste necessário no seu imóvel</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        <!--Pintores-->
+        <h2 class="font-weight-bold heading text-primary mb-4"> Pintores </h2>
+        <p class="text-black-50">A pintura do seu imóvel já está a pedir uma renovação? Ou tem uma unidade nova que precisa de um toque especial? Escolha entre vários profissionais competentes e transforme o seu espaço com qualidade</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="#" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        <!--Jardineiros-->
+        <h2 class="font-weight-bold heading text-primary mb-4"> Jardineiros </h2>
+        <p class="text-black-50">O jardim do seu imóvel precisa de um retoque? Ou gostaria de criar um novo espaço verde para dar mais destaque à sua propriedade? Temos jardineiros experientes e dedicados — porque não contactar um deles e resolver isso com tranquilidade?</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <!--Os Melhores -->
+    <div class="section sec-testimonials">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-md-6">
+            <h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">
+              Profissionais Recomendados 
+            </h2>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <div id="testimonial-nav">
+              <span class="prev" data-controls="prev">Ant</span>
+
+              <span class="next" data-controls="next">Próx</span>
+              <span class="next">Ver Todos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4"></div>
+        </div>
+        <div class="testimonial-slider-wrap">
+          <div class="testimonial-slider">
+            <div class="item">
+              <div class="testimonial">
+                <img
+                  src="{% static 'images/person_1-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+                <div class="rate">
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                </div>
+                <h3 class="h5 text-primary mb-4">James Smith</h3>
+                <blockquote>
+                  <p>
+                    &ldquo;Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind
+                    texts. Separated they live in Bookmarksgrove right at the
+                    coast of the Semantics, a large language ocean.&rdquo;
+                  </p>
+                </blockquote>
+                <p class="text-black-50">Designer, Co-founder</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="testimonial">
+                <img
+                  src="{% static 'images/person_2-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+                <div class="rate">
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                </div>
+                <h3 class="h5 text-primary mb-4">Mike Houston</h3>
+                <blockquote>
+                  <p>
+                    &ldquo;Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind
+                    texts. Separated they live in Bookmarksgrove right at the
+                    coast of the Semantics, a large language ocean.&rdquo;
+                  </p>
+                </blockquote>
+                <p class="text-black-50">Designer, Co-founder</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="testimonial">
+                <img
+                  src="{% static 'images/person_3-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+                <div class="rate">
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                </div>
+                <h3 class="h5 text-primary mb-4">Cameron Webster</h3>
+                <blockquote>
+                  <p>
+                    &ldquo;Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind
+                    texts. Separated they live in Bookmarksgrove right at the
+                    coast of the Semantics, a large language ocean.&rdquo;
+                  </p>
+                </blockquote>
+                <p class="text-black-50">Designer, Co-founder</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="testimonial">
+                <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+                <div class="rate">
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                  <span class="icon-star text-warning"></span>
+                </div>
+                <h3 class="h5 text-primary mb-4">Dave Smith</h3>
+                <blockquote>
+                  <p>
+                    &ldquo;Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind
+                    texts. Separated they live in Bookmarksgrove right at the
+                    coast of the Semantics, a large language ocean.&rdquo;
+                  </p>
+                </blockquote>
+                <p class="text-black-50">Designer, Co-founder</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-4 bg-light">
+      <div class="container justify-content-center text-center"> PUBLICIDADES </div>
+    </div>
+    
+    <!--SEGUNDA SECÇÃO DE PROFISSIONAIS-->
+    <section class="features-1">
+      <div class="container">
+        <h2 class="font-weight-bold heading text-primary mb-4"> Designer de Interiores </h2>
+        <p class="text-black-50">Tem unidades novas em exposição ou gostaria de dar um novo ar ao seu imóvel? Porque não contactar um dos nossos designers de interiores e receber propostas interessantes para transformar o seu espaço?</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+                <p> <a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a> </p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+                <p> <a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a> </p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a> 
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        <!--Pintores-->
+        <h2 class="font-weight-bold heading text-primary mb-4"> Canalizadores </h2>
+        <p class="text-black-50">Canos entupidos ou velhos demais? Precisas de encanar novas unidades rapidamente? Os profissionais abaixo são reconhecidos por cumprir prazos e respeitar o orçamento  </p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        <!--Jardineiros-->
+        <h2 class="font-weight-bold heading text-primary mb-4"> Desinfestadores </h2>
+        <p class="text-black-50">Insetos, vírus, bactérias e outros micro-organismos são conhecidos por causar diversas doenças. Não caia nessa armadilha — contacte já um dos profissionais ou pequenas empresas abaixo e solicite o seu orçamento</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+        
+        <!--Jardineiros-->
+        <h2 class="font-weight-bold heading text-primary mb-4"> Diaristas </h2>
+        <p class="text-black-50">Está à procura de serviços de limpeza pontuais, com eficiência e qualidade garantida? Contacte uma das profissionais abaixo e marque já a sua limpeza residencial ou comercial</p>
+        <div class="row">
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Our Properties</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Property for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">Real Estate Agent</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="#" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="box-feature">
+              <img
+                  src="{% static 'images/person_4-min.jpg' %}"
+                  alt="Image"
+                  class="img-fluid rounded-circle w-25 mb-4"
+                />
+              <h3 class="mb-3">House for Sale</h3>
+              <p class="text-black-50"><b>Nome da Empresa</b></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptates, accusamus.
+              </p>
+              <p><a href="{% url 'detalhes_profissional' %}" class="learn-more">Ver Detalhess</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="section espaco-top">
+            <div class="col-lg-7 mx-auto text-center">
+                <p> 
+                    <a href="{% url 'detalhes_profissional' %}" class="btn btn-primary text-white py-3 px-4"> Ver Todos </a>
+                    <a href="{% url 'registar_profissional' %}" class="btn btn-primary text-white py-3 px-4 btn-registase"> Regista-se </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<div class="section">
+    <div class="row justify-content-center footer-cta" data-aos="fade-up">
+        <div class="col-lg-7 mx-auto text-center">
+            <h2 class="mb-4">Junte-se à crescente legião de profissionais do setor imobiliário</h2>
+            <p>
+                <a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">Registe o seu negócio</a>
+            </p>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

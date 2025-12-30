@@ -1,0 +1,48 @@
+{% load static %}
+  <div class="rodape-text contorno">  
+    <div class="container marketing px-4 py-5 mt-6 pding-footer">
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="logo-espaco">
+            <a href="https://www.lea.co.ao/lerui/"> <img src="{% static 'assets/imagem/logo2.png' %}" alt="Lerui Imoveis" media-simple="true"> </a>
+          </div>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 espacamento-bottom">
+          <h5 style="color: #ff6600;">Imóveis</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'properties' %}">Comprar</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'sales' %}">Vender</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'properties' %}">Arrendar</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'properties' %}">Empreendimentos</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}">Publicidade na Lerui</a></li>
+          </ul>
+        </div><!-- /.col-lg-4 -->
+      
+        <div class="col-lg-3 espacamento-bottom">
+          <h5 style="color: #ff6600;">Sobre a Lerui Imóveis</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}">Quem somos</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}">Contacto Geral</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'partners' %}">Parcerias</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="#">WhatsApp: +351 926 935 606</a></li>
+          </ul>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 espacamento-bottom">
+          <h5 style="color: #ff6600;">Links</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" target="_blank" href="https://lea.co.ao/">Lea.co.ao</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" target="_blank" href="https://lea.co.ao/discografia/musicas.php?strt=0&cat=MA==&check=0&opm=1">Música Angolana Grátis</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" target="_blank" href="https://www.lea.co.ao/nasocial/">Nasocial</a></li>
+          </ul>
+        </div><!-- /.col-lg-4 -->
+
+    </div><!-- /.row -->
+  
+    <footer class="pt-3 my-3 text-muted border-top">
+      <p class="mbr-text mbr-fonts-style display-7"> &#169; 2019 Lerui Ímoveis - Todos Direitos Reservado </p>
+    </footer>
+
+</div>

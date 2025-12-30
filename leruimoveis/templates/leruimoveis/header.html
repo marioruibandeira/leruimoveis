@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="px-0 py-0 my-0 text-center capa">
+
+    <header class="p-3 fnd-dark text-white ">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="{% url 'home' %}" class="d-flex align-items-center text-decoration-none text-white">
+            <img src="{% static 'assets/imagem/logo2.png' %}" style="width:25%;height:16%;"> <b style="font-weight: bolder;text-shadow: 2px 2px 5px rgba(0,0,0,0.6);">LERUI IMÓVEIS</b>
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-weight: bolder;text-shadow: 2px 2px 5px rgba(0,0,0,0.6);">
+            <li><a href="{% url 'services' %}" class="nav-link px-2 text-white">Serviços</a></li>
+            <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">Quem Somos</a></li>
+          </ul>          
+  
+          <div class="text-end">
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Entrar</a>
+            <a href="{% url 'anuncios_control' %}" class="btn btn-warning" style="background-color: #ff6600; border: #ff6600 1px solid; color:#fff; font-weight: bold;">Criar Anuncio</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <h1 class="display-5 fw-bold px-4 py-5 mt-6 text-capa">Casas, Terrenos & Quartos</h1>
+
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 text-capa header-margin fundo-colorido">Encontre o lar dos seus sonhos, o espaço certo para o seu negócio ou anuncie o seu imóvel para venda ou arrendamento.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center header-margin">
+        <a href="{% url 'properties' %}" type="button" class="btn btn-arrendar btn-lg px-4 gap-3">ARRENDAR</a>
+        <a href="{% url 'properties' %}" type="button" class="btn btn-comprar btn-lg px-4">COMPRAR</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-example-divider ads-section contorno">
+    <div class="container">
+      <div class="publicidade">
+        kjh
+      </div>
+    </div>
+  </div>

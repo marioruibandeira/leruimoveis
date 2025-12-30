@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet"  type="text/css" href="{% static 'fonts/icomoon/style.css' %}" />
+    <link rel="stylesheet"  type="text/css" href="{% static 'fonts/flaticon/font/flaticon.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tiny-slider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <title>
+      Lerui Imóveis
+    </title>
+  </head>
+<style>
+  .space{padding-top: 20px;}
+  .negrito {
+  font-family: "Work Sans", sans-serif;
+  color: #00204a; }
+  .caxinha-log{ border:#ccc 1px solid; border-radius:10px; padding:20px; margin:10px;background:#fff;}
+  body{background:#FFE4B5;}
+</style>
+  <body>
+
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col"></div>
+        <div class="col">
+          
+            <main class="form-signin">
+
+              <div class="caxinha-log mt-5">
+              <div class="text-center mt-3">
+              	<a href="{% url 'home' %}">
+                	<img class="mb-4" src="{% static 'assets/imagem/lerui Imoveis2.png' %}" alt="Logo marca da Lerui Imóveis" width="72" height="90">
+               	</a>
+                <h1 class="h3 mb-3 fw-normal">Por favor, Inicia sessão</h1>
+              </div>             
+              
+              <div class="col-12">
+                <label for="email" class="form-label space negrito"><b>O teu email</b> </label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback"> O teu email </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="" class="form-label space negrito"><b>Palavra-passe</b></label>
+                <input type="password" class="form-control" id="palavraPasse" required>
+                <div class="invalid-feedback"> Palavra-passe </div>
+              </div>
+
+              <div class="col-12 space">
+                <label>
+                  <input type="checkbox" value="remember-me" required> Recordar os teus dados
+                </label>
+                <br/><br/>
+              </div>
+              
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sessão</button>
+              <div class="text-center">
+                <p class="mt-2 mb-2 text-muted">Não tem uma conta? <a href='{% url 'registrar' %}'>Registre-se</a> aqui </p>                
+              </div>
+            </div>
+
+            <div class="text-center">
+              <p class="mt-5 mb-3 text-muted">&copy; 2024–2025</p>
+            </div>
+            </main>
+          
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+  </body>
+</html>

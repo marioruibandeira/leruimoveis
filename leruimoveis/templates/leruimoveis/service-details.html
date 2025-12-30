@@ -1,0 +1,56 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+    <div class="hero page-inner overlay" style="background-image: url('{% static 'images/hero_bg_3.jpg' %}'); height:20px;">
+      	<div class="container">
+        	<div class="row justify-content-center align-items-center">
+          		<div class="col-lg-9 text-center mt-1">
+            		<h1 class="heading" data-aos="fade-up">Serviços</h1>
+
+            		<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" >
+              			<ol class="breadcrumb text-center justify-content-center">
+                			<li class="breadcrumb-item"><a href="{% url 'home' %}">Início</a></li>
+                			<li class="breadcrumb-item active text-white-50" aria-current="page">Serviços</li>
+              			</ol>
+            		</nav>
+          		</div>
+        	</div>
+      	</div>
+    </div> 
+    
+    <div class="section">
+      <div class="container">
+        <h1 class="heading" data-aos="fade-up">Serviços</h1>
+
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info">
+
+              <div class="col-12 col-lg-12 " data-aos="fade-up" data-aos-delay="300">
+                <div class="caixa-funcoes mb-4">
+                  {{service.icons|safe}}
+                  <h3 class="text-black mb-3 font-weight-bold">{{ service.titulo}}</h3>
+                  <p class="text-black-50" style="padding-left: 0px ;">{{ service.corpo }}</p>
+                  <p style="padding-left:0px;padding-top:10px;"><a href="{% url 'services' %}" class="learn-more">Outros Serviços</a></p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-12 col-lg-12 section bg-light pt-0">
+              <div style="padding: 15px ;">
+                <h3 class="h5 text-primary mb-4">Detalhes Adicionais</h3>
+
+                <p class="text-black-50" style="padding-left: 0px ;">{{ service.detalhes }}</p>
+                
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     {% endblock %}

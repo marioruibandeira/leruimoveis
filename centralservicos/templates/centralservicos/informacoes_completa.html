@@ -1,0 +1,252 @@
+{% extends 'leruimoveis/base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+<div class="hero page-inner overlay" style="background-image: url('{% static 'images/img_9.jpg' %}'); height: 31vh !important; min-height: 177px !important;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 51vh !important;">
+            <div class="col-lg-9 text-center mt-1">
+                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" >
+                    <ol class="breadcrumb text-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="{% url 'central_servicos' %}">Central de Serviços</a></li>
+                        <li class="breadcrumb-item active text-white-50" aria-current="page">Detalhes de Registo Completo</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100" >
+                <div class="d-grid gap-2">
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Dados Pessoais</button>
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Perfil Comercial e Portfólio</button>
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Preferências de Trabalho e Pagamento</button>
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Pagamentos e Fiscalidade</button>
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Comprovativos de Verificação</button>
+                    <button class="btn btn-secondary btn-sm btn-registase" type="button">Preferências</button>
+                    <a class="btn btn-secondary btn-sm" href="{% url 'informacao_completa' %}">Perfil Completo</a>
+                    <a class="btn btn-secondary btn-sm btn-registase" href="{% url 'verificar_profissional' %}">Autenticar a Minha Conta</a>
+                </div>
+            </div>
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-12 mb-0">
+                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                        <div>
+                            <div class="container justify-content-center text-center">
+                                DADOS PESSOAIS
+                                <div style="float:right;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Sector</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Número de Telefone</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Número WhatsApp</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Local</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Raio de Distância</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    
+                    <div class="col-12 mb-0">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <div><div class="container justify-content-center text-center">PERFIL COMERCIAL E PORTFÓLIO</div> </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">Habilidades</h6>
+                                <div class="card" style="width: 100%;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">An item</li>
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">A second item</li>
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">A third item</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Anos de Experiência</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Certificado</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">Ferramentas</h6>
+                                <div class="card" style="width: 100%;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">An item</li>
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">A second item</li>
+                                        <li class="list-group-item" style="padding-top:3px;padding-bottom:3px;background:#e9ecef;">A third item</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <h6 class="card-subtitle mb-2 text-muted">Portofolio</h6>
+                        <div class="card-group">
+                          <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                              <small class="text-muted">ANTES</small>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="card-footer">
+                              <small class="text-muted">DEPOIS</small>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 mb-0">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <div><div class="container justify-content-center text-center">REFERÊNCIA DE TRABALHO E PAGAMENTO</div> </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Disponibilidade</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Preferências Em Projectos</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Taxa Por Hora</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Setores Preferidos</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fuso Horário</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    
+                    <div class="col-12 mb-0">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <div><div class="container justify-content-center text-center">PAGAMENTO E FISCALIDADE</div> </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Conta Bancaria</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">IBAN</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Número do VAT</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Autorização de Trabalho</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    
+                    <div class="col-12 mb-0">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <div><div class="container justify-content-center text-center">COMPROVATIVOS DE VERIFICAÇÃO</div> </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Conta Bancaria</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">IBAN</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Número do VAT</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Autorização de Trabalho</label>
+                        <input type="text" class="form-control" style="height:38px;" aria-label="Nome Completo" readonly>
+                    </div>
+                    
+                    <div class="col-12 mb-0">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <div><div class="container justify-content-center text-center">PREFERÊNCIAS</div> </div>
+                        </div>
+                    </div>
+                            
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" readonly>
+                        </div>
+                        <input type="text" class="form-control" Value="Receber Notificações" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" readonly>
+                        </div>
+                        <input type="text" class="form-control" Value="Acordo de Termos de Serviço" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" value="checked" aria-label="Checkbox for following text input" readonly>
+                        </div>
+                        <input type="text" class="form-control" Value="Consentimento de Privacidade de Dados" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                    </div>
+                            
+                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

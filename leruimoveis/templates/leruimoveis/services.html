@@ -1,0 +1,93 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}  
+
+{% block content %}
+
+<div class="px-0 py-0 my-0 capa-servicos">
+    <div class="container marketing px-4 py-5 mt-6">
+        <div class="row">
+            <div class="col-lg-6" style="text-align: left;">
+                <div class="col-lg-6 fundo-colorido">
+                    <h2 class=" text-capa"> Nossos Serviços </h2>
+                </div>
+            </div>
+            <div class="col-lg-6"></div>
+        </div>
+    </div>
+</div>
+
+<div class="px-0 py-0 my-0 text-center">
+    <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div style="margin:  30px 0px 60px 0px;"></div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;"> Locação de Imóveis </h3>
+                            <p class="text-black-50"> Arendamos imóveis para clientes em Angola e Portugal, com comissão justa e transparente, sem custos adicionais ocultos nas Locações. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=1" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-80q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-80q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;">Marketing Imobiliário</h3>
+                            <p class="text-black-50"> Oferecemos publicidade imobiliária com campanhas estratégicas no nosso site, portais especializados, redes sociais e outros meios para atrair mais interessados. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=2" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="m680-80-12-60q-12-5-22.5-10.5T624-164l-58 18-40-68 46-40q-2-12-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T668-420l12-60h80l12 60q12 5 22.5 10.5T816-396l58-18 40 68-46 40q2 12 2 26t-2 26l46 40-40 68-58-18q-11 8-21.5 13.5T772-140l-12 60h-80Zm40-120q33 0 56.5-23.5T800-280q0-33-23.5-56.5T720-360q-33 0-56.5 23.5T640-280q0 33 23.5 56.5T720-200Zm-560-40v-480 172-12 320Zm0 80q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v131q-18-13-38-22.5T800-548v-92H447l-80-80H160v480h283q3 21 9.5 41t15.5 39H160Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;"> Gestão de Imóveis </h3>
+                            <p class="text-black-50"> Gerimos o seu imóvel, cuidando de manutenções, cobranças e busca por inquilinos. Confie em nós para facilitar sua vida com eficiência e transparência. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=3" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="m612-550 141-142-28-28-113 113-57-57-28 29 85 85ZM120-160v-80h480v80H120Zm520-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-520-40v-80h252q7 22 16 42t22 38H120Zm0 160v-80h376q23 14 49 23.5t55 13.5v43H120Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;">Avaliação Imobiliária</h3>
+                            <p class="text-black-50"> Através dos nossos parceiros, oferecemos Avaliação Imobiliária, com serviços personalizados para determinar o valor real de imóveis e terrenos. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=4" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="M80-160v-160h160v160H80Zm240 0v-160h560v160H320ZM80-400v-160h160v160H80Zm240 0v-160h560v160H320ZM80-640v-160h160v160H80Zm240 0v-160h560v160H320Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;"> Listagem de Imoveis </h3>
+                            <p class="text-black-50"> Oferecemos um serviço de listagem de imóveis que facilita a busca de propriedades. Corretores, agências e público podem postar e gerenciar anúncios. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=5" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="M754-81q-8 0-15-2.5T726-92L522-296q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l85-85q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l204 204q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13l-85 85q-6 6-13 8.5T754-81Zm0-95 29-29-147-147-29 29 147 147ZM205-80q-8 0-15.5-3T176-92l-84-84q-6-6-9-13.5T80-205q0-8 3-15t9-13l212-212h85l34-34-165-165h-57L80-765l113-113 121 121v57l165 165 116-116-43-43 56-56H495l-28-28 142-142 28 28v113l56-56 142 142q17 17 26 38.5t9 45.5q0 24-9 46t-26 39l-85-85-56 56-42-42-207 207v84L233-92q-6 6-13 9t-15 3Zm0-96 170-170v-29h-29L176-205l29 29Zm0 0-29-29 15 14 14 15Zm549 0 29-29-29 29Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;">Reformas e Manutenção</h3>
+                            <p class="text-black-50"> Oferecemos serviços especializados em reformas e manutenção de imóveis, cuidando de todo o processo, pequenas e grandes remodelações. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=6" class="saiba-mais">Saiba mais</a></p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+                        <div class="caixa-funcoes mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="M760-400v-260L560-800 360-660v60h-80v-100l280-200 280 200v300h-80ZM560-800Zm20 160h40v-40h-40v40Zm-80 0h40v-40h-40v40Zm80 80h40v-40h-40v40Zm-80 0h40v-40h-40v40ZM280-220l278 76 238-74q-5-9-14.5-15.5T760-240H558q-27 0-43-2t-33-8l-93-31 22-78 81 27q17 5 40 8t68 4q0-11-6.5-21T578-354l-234-86h-64v220ZM40-80v-440h304q7 0 14 1.5t13 3.5l235 87q33 12 53.5 42t20.5 66h80q50 0 85 33t35 87v40L560-60l-280-78v58H40Zm80-80h80v-280h-80v280Z"/></svg>
+                            <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;"> Venda de Imóveis </h3>
+                            <p class="text-black-50"> Oferecemos um serviço especializado na venda de imóveis, ajudando proprietários a encontrar compradores e vice-versa de forma eficiente e transparente. </p>
+                            <p><a href="{% url 'servicedetails' %}?id=7" class="saiba-mais">Saiba mais</a></p>
+                                                                                                                                                                        </div>
+                        </div>
+                        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="caixa-funcoes mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#00204a"><path d="m384-336 56-57-87-87 87-87-56-57-144 144 144 144Zm192 0 144-144-144-144-56 57 87 87-87 87 56 57ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+                                <h3 class="text-black mb-3 font-weight-bold" style="margin-top:20px;">Sites Imobiliários</h3>
+                                <p class="text-black-50"> Oferecemos serviços no desenvolvimento de sites e aplicativos imobiliários, proporcionando soluções digitais personalizadas. </p>
+                                <p><a href="{% url 'servicedetails' %}?id=8" class="saiba-mais">Saiba mais</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+  <div class="b-example-divider rodape-text ads-section contorno">
+    <div class="container">
+      <div class="publicidade">
+        kjh
+      </div>
+    </div>
+  </div>
+  <div class="container marketing px-4 py-5 mt-6">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> {{ property.titulo }}</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end">
+        <p><a href="{% url 'properties' %}" target="_blank" class="btn btn-normal text-white py-3 px-4">Ver Todas</a></p>
+      </div>    
+    </div>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-8">
+        <div style="background-color: #232323; text-align: center; padding: 8px; border-radius: 5px;">
+          <img src="{{ property.fotos.url }}" class="img-fluid" style="border-radius: 5px;"/>          
+        </div>
+        <br/>
+        <ul class="list-group list-group-numbered">
+          <li class="list-group-item list-group-item-primary">
+            <span class="fw-bold me-1">Endereço : </span> {{ property.endereco }}
+          </li>
+          <li class="list-group-item list-group-item-secondary">
+            <span class="fw-bold me-1">Local : </span> {{ property.cidade }}, {{ property.pais }}
+          </li>
+          <li class="list-group-item list-group-item-primary">
+            <span class="fw-bold me-1">Preço : </span> 
+            <span style="color: green; font-weight: bolder;">
+              {% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+              {{ property.preco }}
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Descrição</div>
+              {{ property.descricao|linebreaks }}
+            </div>
+          </li>
+        </ul>
+
+        <br/>
+        <ul class="list-group espacamento-bottom">
+          <li class="list-group-item list-group-item-primary">
+            <span class="fw-bold me-1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#173660"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> : </span> 
+            (+244) 951 357
+          </li>
+          <li class="list-group-item list-group-item-secondary">
+            <span class="fw-bold me-1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#173660"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> : </span> 
+            empresa@leruimoveis.com
+          </li>
+        </ul>
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="publi-anuncio">Pub</div>
+        <div class="d-block p-5 espacamento-bottom" style="padding: 0px !important; border-radius: 5px;">
+          <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" alt="Image" class="img-fluid" style="border-radius: 5px;"/>
+        </div>
+        
+        <div class="d-block agent-box p-5" style="padding: 20px !important;">
+          <div class="img mb-4">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid"/>
+          </div>
+          
+          <div class="text">
+            <h3 class="mb-0">Alicia Huston</h3>
+            
+            <div class="meta mb-3">Real Estate</div>
+            
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione laborum quo quos omnis sed magnam id ducimus saepe </p>
+              
+            <ul class="list-unstyled social dark-hover d-flex">
+              <li class="me-1"> <a href="#"><span class="icon-instagram"></span></a> </li>
+              <li class="me-1"> <a href="#"><span class="icon-twitter"></span></a> </li>
+              <li class="me-1"> <a href="#"><span class="icon-facebook"></span></a> </li>
+              <li class="me-1"> <a href="#"><span class="icon-linkedin"></span></a> </li>
+            </ul>              
+          </div>
+        </div>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->    
+  </div><!-- /.container -->
+{% endblock %}
+    
+    
+    

@@ -1,0 +1,202 @@
+
+<!-- templates/index.html -->
+{% extends 'leruimoveis/base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+<div class="container marketing px-4 py-5 mt-6">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Últimas Listagens</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end">
+        <p>
+          <a href="{% url 'properties' %}" class="btn btn-normal text-white py-3 px-4">Ver Todas</a>
+        </p>
+      </div>
+    
+    </div>
+
+    
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+
+      {% for property in properties %}
+      <div class="col-lg-4">
+        
+        <div class="card card-espaco" style="width: 16rem;">
+          {% if property.fotos %}
+            <img src="{{ property.fotos.url }}" class="card-img-top" alt="{{ property.titulo }}" style="height: 250px; object-fit: cover;">
+          {% endif %}
+          
+          <div class="card-body">
+            
+            <div class="price mb-2">
+              <span>{% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+	                    		{{ property.preco }}</span></div>
+              <div>
+                <span class="d-block mb-2 text-black-50"
+                  >{{ property.endereco }}</span
+                >
+                <span class="city d-block mb-3">{{ property.cidade.nome }}, {{ property.pais.nome }}</span>
+
+                <!--<div class="specs d-flex mb-4">
+                  <span class="d-block d-flex align-items-center me-3">
+                    <span class="icon-bed me-2"></span>
+                    <span class="caption">2 beds</span>
+                  </span>
+                  <span class="d-block d-flex align-items-center">
+                    <span class="icon-bath me-2"></span>
+                    <span class="caption">2 baths</span>
+                  </span>
+                </div>-->
+
+                <a href="{% url 'detalhespropriadade' property.id %}" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
+              </div>
+              
+          </div>
+        </div>
+        
+      
+      </div><!-- /.col-lg-4 -->
+      {% empty %}
+        <div class="alert alert-warning" style="margin-top: 15px;"> Não existem anúncios disponíveis. </div>
+      {% endfor %}
+      
+      
+    </div><!-- /.row -->
+    
+  </div><!-- /.container -->
+
+  <div class="b-example-divider ads-section">
+    <div class="container">
+      <div class="publicidade">
+        kjh
+      </div>
+    </div>
+  </div>
+  
+  <div class="pcros-dark text-secondary px-4 py-5 text-center contorno">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Junte-se à Nossa Rede de Parceiros</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Conecte-se à maior rede de profissionais do setor imobiliário. Promova os seus imóveis, encontre novos clientes e amplie as suas oportunidades de negócio com a LERUI IMÓVEIS. Juntos, construímos um mercado mais forte e transparente.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'fidelity' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Junta-se Agora</a>
+          <a href="{% url 'partners' %}" class="btn btn-outline-light btn-lg px-4">Parceiros</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container marketing px-4 py-5 mt-6">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu"/>
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.row -->      
+      </div><!-- /.container -->
+    </div>
+    
+{% endblock %}

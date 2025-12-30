@@ -1,0 +1,723 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %} 
+
+<div class="container marketing px-4 py-5 mb-3">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100" >
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'anuncios_control' %}" class="btn btn-secondary btn-sm btn-registase">Meus Anúncios</a>
+                        <a href="{% url 'fotos_adicionais' %}" class="btn btn-secondary btn-sm btn-registase" type="button">Fotos Adicionais</a>
+                        <a href="#" class="btn btn-secondary btn-sm btn-open-table" id="btnPrincipal">Informações Adicionais</a>
+                        <a href="#" class="btn btn-secondary btn-sm btn-open-mobile" onclick="toggleDetalhes()" id="btnSecundario">Informações Adicionais</a>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    
+                    <div class="form-imovel btn-open-mobile" id="divFormulario">
+                        <form method="post" id="formCaracteristicas">
+                            {% csrf_token %}
+
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div class="container justify-content-center text-center">CARACTERÍSTICAS GERAIS</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="titulo" class="form-control" value="" readonly>
+                                    <input type="hidden" name="listagem_id" value=""> 
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="areaTotal" class="form-control" placeholder="Área total"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="areaUtil" class="form-control" placeholder="Área útil"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroQuartos" class="form-control" placeholder="Número de quartos"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroSuites" class="form-control" placeholder="Número de suítes"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroCasasBanho" class="form-control" placeholder="Número de casas de banho"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroSalas" class="form-control" placeholder="Número de salas"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroCozinhas" class="form-control" placeholder="Número de cozinhas"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="numeroVagasEstacionamento" class="form-control" placeholder="Número de vagas de estacionamento"/>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" name="anoConstrucao" class="form-control" placeholder="Ano de construção"/>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Estado de conservação</label>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="conservacao" value="1" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Novo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="conservacao" value="2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Remodelado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="conservacao" value="3">
+                                        <label class="form-check-label" for="inlineCheckbox2">Usado</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">INFRAESTRUTURAS INTERNAS</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Interno</label>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="1" id="arCondicionado">
+                                        <label class="form-check-label" for="inlineCheckbox1">Ar-condicionado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="2" id="aquecimentoAgua">
+                                        <label class="form-check-label" for="inlineCheckbox2">Aquecimento de água</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="3" id="armariosEmbutidos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Armários embutidos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="4" id="closet">
+                                        <label class="form-check-label" for="inlineCheckbox2">Closet</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="5" id="lavandaria">
+                                        <label class="form-check-label" for="inlineCheckbox2">Lavandaria</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="6" id="despensa">
+                                        <label class="form-check-label" for="inlineCheckbox2">Despensa</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="7" id="varanda">
+                                        <label class="form-check-label" for="inlineCheckbox2">Varanda</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="8" id="escritorio">
+                                        <label class="form-check-label" for="inlineCheckbox2">Escritório</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="9" id="salaJantar">
+                                        <label class="form-check-label" for="inlineCheckbox2">Sala de jantar</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="10" id="salaEstar">
+                                        <label class="form-check-label" for="inlineCheckbox2">Sala de estar</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="11" id="hallEntrada">
+                                        <label class="form-check-label" for="inlineCheckbox2">Hall de entrada</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Piso</label>
+                                </div>
+
+                                <div class="col-12 mb-3">                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="1" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Cerâmica</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Madeira</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="3">
+                                        <label class="form-check-label" for="inlineCheckbox2">Porcelanato</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="4" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Laminado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="5">
+                                        <label class="form-check-label" for="inlineCheckbox2">Vinílico</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="6">
+                                        <label class="form-check-label" for="inlineCheckbox2">Mármore</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="7" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Granito</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="8">
+                                        <label class="form-check-label" for="inlineCheckbox2">Cimento queimado / Microcimento</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="9">
+                                        <label class="form-check-label" for="inlineCheckbox2">Bambu</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="10">
+                                        <label class="form-check-label" for="inlineCheckbox1">Pedra natural</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="11">
+                                        <label class="form-check-label" for="inlineCheckbox2">Tatame / Carpete</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="12">
+                                        <label class="form-check-label" for="inlineCheckbox2">Linóleo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="13">
+                                        <label class="form-check-label" for="inlineCheckbox2">Epóxi / resina</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="14">
+                                        <label class="form-check-label" for="inlineCheckbox2">Chão Bruto</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="piso" value="15" checked>
+                                        <label class="form-check-label" for="inlineCheckbox2">Mosaico</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">INFRAESTRUTURAS EXTERNAS</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Externo</label>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="1" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox1">Jardim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="2" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Piscina</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="3" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Quintal</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="4" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Churrasqueira</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="5" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Estacionamento coberto</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="6" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Portão automático</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="7" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Sistema de segurança</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="8" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Gerador</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="9" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Reservatório de água</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="10" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Poço de água</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="11" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Terraço</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="12" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Elevador</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="13" name="infraExterno">
+                                        <label class="form-check-label" for="inlineCheckbox2">Para prédios</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">SERVIÇOS, COMODIDADES E SEGURANÇA</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="1" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox1">Portaria</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="2" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Estacionamento para visitantes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="3" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Ginásio</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="4" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Parque infantil</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="5" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Salão de festas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="6" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Área de lazer</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="7" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Limpeza e manutenção</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="8" name="comodidadeSeguranca">
+                                        <label class="form-check-label" for="inlineCheckbox2">Gestão condominial</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">LOCALIZAÇÃO E ACESSOS BAIRRO</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="1" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox1">Proximidade de escolas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="2" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de hospitais</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="3" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de supermercados</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="4" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de transportes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="5" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Acesso a vias principais</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="6" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Distância ao centro da cidade</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="7" name="localizacaoAcessos">
+                                        <label class="form-check-label" for="inlineCheckbox2">Zona comercial próxima</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">DOCUMENTAÇÃO E SITUAÇÃO LEGAL ESCRITURA</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="1" name="situacaoLegal">
+                                        <label class="form-check-label" for="inlineCheckbox1">Título de propriedade</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="2" name="situacaoLegal">
+                                        <label class="form-check-label" for="inlineCheckbox2">Imóvel regularizado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="3" name="situacaoLegal">
+                                        <label class="form-check-label" for="inlineCheckbox2">Sem dívidas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="4" name="situacaoLegal">
+                                        <label class="form-check-label" for="inlineCheckbox2">Pronto para financiamento</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="5" name="situacaoLegal">
+                                        <label class="form-check-label" for="inlineCheckbox2">Contrato de arrendamento</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-0">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <div class="container justify-content-center text-center">INFORMAÇÕES COMERCIAIS PREÇO</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Condições de pagamento</label>
+                                </div>
+
+                                <div class="col-12 mb-3">                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="pagamento" value="1">
+                                        <label class="form-check-label" for="inlineCheckbox1">Pronto Pagamento</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="pagamento" value="2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Parcial</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="pagamento" value="3" checked>
+                                        <label class="form-check-label" for="inlineCheckbox2">Financiamento</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="pagamento" value="4">
+                                        <label class="form-check-label" for="inlineCheckbox2">Negociavel</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 sub-titulo">
+                                    <label for="formFile" class="form-label">Taxas adicionais</label>
+                                </div>
+
+                                <div class="col-12 mb-3">  
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="1" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Sem Taxas</label>
+                                    </div>                                  
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="2">
+                                        <label class="form-check-label" for="inlineCheckbox1">Condomínio</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="3">
+                                        <label class="form-check-label" for="inlineCheckbox2">Manutenção</label>
+                                    </div>
+                                </div>
+                                
+                                <hr/>
+
+                                <div class="col-12">
+                                    <input type="submit" id="btnNovo" onclick=" " value="Actualizar" class="btn btn-detalhes" />
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="divDetalhes">
+                        <!--//-->
+                        <div class="tabela-detalhes" id="caixa-detalhes">
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div class="container justify-content-center text-center">INFORMAÇÕES DO ANÚNCIO </div>
+                                </div>
+                            </div>
+                    
+                            <table class="table table-striped table-hover align-middle" style="border-radius: 5px !important;">
+                                <thead class="table-dark" style="border-radius: 5px !important;">
+                                    <tr style="border-radius: 5px !important;">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Título</th>
+                                    <th scope="col">Designação</th>
+                                    <th scope="col" class="text-center">Data</th>
+                                    <th scope="col" class="text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for property in properties %}
+                                    <tr>
+                                        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>{{ property.titulo|truncatechars:30 }}</td>
+                                        <td style="width: 120px;">{{ property.designacao.descricao }}</td>
+                                        <td style="width: 100px;">{{ property.created_at |date:"d-m-Y"}}</td>
+                                        <td class="text-center" style="width: 100px;">
+                                        <!-- Edit -->
+                                        <a href="#" 
+                                            class="me-2 edit-property" 
+                                            title="Editar" 
+                                            style="text-decoration: none;"
+                                            data-id="{{ property.id }}"
+                                            data-titulo="{{ property.titulo }}"
+                                            data-endereco="{{ property.endereco }}"
+                                            data-descricao="{{ property.descricao }}"
+                                            data-preco="{{ property.preco }}"
+                                            data-pais="{{ property.pais.pais_id }}"
+                                            data-cidade="{{ property.cidade.cidade_id }}"
+                                            data-designacao="{{ property.designacao.id }}"
+                                            data-fotos="{{ property.fotos.url }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#173660"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                                        </a>
+                                        <!-- View -->
+                                        <a href="#" 
+                                            class="me-2" 
+                                            title="Ver detalhes" 
+                                            style="text-decoration: none;" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#detalhesModal"
+                                            data-titulo="{{ property.titulo }}"
+                                            data-endereco="{{ property.endereco }}"
+                                            data-cidade="{{ property.cidade.nome }}"
+                                            data-pais="{{ property.pais.nome }}"
+                                            data-paisid="{{ property.pais.pais_id }}"
+                                            data-preco="{{ property.preco }}"
+                                            data-descricao="{{ property.descricao }}"
+                                            data-designacao="{{ property.designacao.descricao }}"
+                                            data-data_create = "{{property.created_at |date:"d-m-Y h:m:s" }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#173660"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640H447l-80-80H160v480l96-320h684L837-217q-8 26-29.5 41.5T760-160H160Zm84-80h516l72-240H316l-72 240Zm0 0 72-240-72 240Zm-84-400v-80 80Z"/></svg>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="12" class="text-center text-muted">Nenhum anúncio encontrado</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="caixa-detalhes" id="mobileDetalhes">
+                            
+                            {% for property in properties %}
+                                <div class="card" style="width: 100%; margin-top: 15px;">
+                                    <div class="card-header alert-warning"> INFORMAÇÕES DO ANÚNCIO </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <span class="fw-bold me-1">Titulo : </span> {{ property.titulo }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="fw-bold me-1">Designação : </span> {{ property.designacao.descricao }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="fw-bold me-1">Data : </span> {{ property.created_at |date:"d-m-Y" }}
+                                            </li>
+                                        </ul>
+                                        <div class="card-footer" style="padding: 4px; text-align: center;">
+                                            <!-- Edit -->
+                                            <a href="#" 
+                                                class="me-2 btn btn-secondary edit-property" 
+                                                title="Editar" 
+                                                style="text-decoration: none; width: 48% !important; height: 25px;height: 28px; padding: 0px !important;margin-right: 0px !important;"
+                                                data-id="{{ property.id }}"
+                                                data-titulo="{{ property.titulo }}"
+                                                data-endereco="{{ property.endereco }}"
+                                                data-descricao="{{ property.descricao }}"
+                                                data-preco="{{ property.preco }}"
+                                                data-pais="{{ property.pais.pais_id }}"
+                                                data-cidade="{{ property.cidade.cidade_id }}"
+                                                data-designacao="{{ property.designacao.id }}"
+                                                data-fotos="{{ property.fotos.url }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#fff"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                                            </a>
+                                            <!-- View -->
+                                            <a href="#" 
+                                                class="me-2 btn btn-secondary" 
+                                                title="Ver detalhes" 
+                                                style="text-decoration: none; width: 48% !important;height: 25px;height: 28px; padding: 0px !important;margin-right: 0px !important;" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#detalhesModal"
+                                                data-titulo="{{ property.titulo }}"
+                                                data-endereco="{{ property.endereco }}"
+                                                data-cidade="{{ property.cidade.nome }}"
+                                                data-pais="{{ property.pais.nome }}"
+                                                data-paisid="{{ property.pais.pais_id }}"
+                                                data-preco="{{ property.preco }}"
+                                                data-descricao="{{ property.descricao|escapejs }}"
+                                                data-designacao="{{ property.designacao.descricao }}"
+                                                data-data_create = "{{property.created_at |date:"d-m-Y h:m:s" }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#fff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640H447l-80-80H160v480l96-320h684L837-217q-8 26-29.5 41.5T760-160H160Zm84-80h516l72-240H316l-72 240Zm0 0 72-240-72 240Zm-84-400v-80 80Z"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% empty %}
+                                    <div class="alert alert-warning" style="margin-top: 15px;"> Não existem anúncios disponíveis. </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detalhesModal" tabindex="-1" aria-labelledby="detalhesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalhesModalLabel">Detalhes do Anúncio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-numbered">
+                        <li class="list-group-item list-group-item-primary">
+                            <span class="fw-bold me-1">Titulo : </span> <span id="modal-titulo"></span>
+                        </li>
+                        <li class="list-group-item list-group-item-secondary">
+                            <span class="fw-bold me-1">Designação : </span> 
+                            <span id="modal-designacao"></span>
+                        </li>
+                        <li class="list-group-item list-group-item-primary">
+                            <span class="fw-bold me-1">Endereço : </span> <span id="modal-endereco"></span>
+                        </li>
+                        <li class="list-group-item list-group-item-secondary">
+                            <span class="fw-bold me-1">Local : </span> <span id="modal-local"></span>
+                        </li>
+                        <li class="list-group-item list-group-item-primary">
+                            <span class="fw-bold me-1">Preço : </span> 
+                            <span id="modal-preco" style="color: green; font-weight: bolder;"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
+                            <div class="ms-2 me-auto">
+                            <div class="fw-bold">Descrição</div>
+                            <span id="modal-descricao"></span>
+                            </div>
+                        </li>
+                        <li class="list-group-item list-group-item-primary">
+                            <span class="fw-bold me-1">Data : </span> <span id="modal-data"></span>                    
+                        </li>   
+                    </ul>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    window.onload = function() 
+    {
+        const btnPrincipal = document.getElementById("btnPrincipal");
+        btnPrincipal.style.backgroundColor = "#ff6600";
+    };
+
+    function toggleForm()
+    {
+        var divDetalhes = document.getElementById("divDetalhes");
+        var divFormulario = document.getElementById("divFormulario");
+        var btnPrincipal = document.getElementById("btnPrincipal");
+        var btnSecundario = document.getElementById("btnSecundario");
+
+        divFormulario.style.display = "block";
+        divDetalhes.style.display = "none";
+        btnPrincipal.style.display = "none";
+        btnSecundario.style.display = "block";
+        btnSecundario.style.backgroundColor = "#6c757d";
+    }
+
+
+    function toggleDetalhes()
+    {
+        var divDetalhes = document.getElementById("divDetalhes");
+        var divFormulario = document.getElementById("divFormulario");
+        var btnPrincipal = document.getElementById("btnPrincipal");
+        var btnSecundario = document.getElementById("btnSecundario");
+
+        divFormulario.style.display = "none";
+        divDetalhes.style.display = "block";
+        btnPrincipal.style.display = "block";
+        btnSecundario.style.display = "none"
+    }
+
+    //
+    //
+    $(document).on("click", ".edit-property", function (e) 
+    { 
+        e.preventDefault(); 
+        
+        let id = $(this).data("id"); 
+        let titulo = $(this).data("titulo"); 
+        
+        toggleForm(); 
+
+        $("input[name='titulo']").val(titulo); 
+        $("input[name='listagem_id']").val(id);
+
+        $.ajax({
+            url: "/anuncios/caracteristicas/get/" + id + "/",
+            type: "GET",
+            success: function (data) {
+                if (data.exists) {
+                    $("input[name='areaTotal']").val(data.area_total);
+                    $("input[name='areaUtil']").val(data.area_util);
+                    $("input[name='numeroQuartos']").val(data.numero_quartos);
+                    $("input[name='numeroSuites']").val(data.numero_suites);
+                    $("input[name='numeroCasasBanho']").val(data.numero_casas_banho);
+                    $("input[name='numeroSalas']").val(data.numero_salas);
+                    $("input[name='numeroCozinhas']").val(data.numero_cozinhas);
+                    $("input[name='numeroVagasEstacionamento']").val(data.numero_vagas_estacionamento);
+                    $("input[name='anoConstrucao']").val(data.ano_construcao);
+
+                    $("input[name='conservacao'][value='" + data.fk_estado_conservacao + "']").prop("checked", true);
+                    $("input[name='pagamento'][value='" + data.fk_condicoes_pagamento + "']").prop("checked", true);
+                    $("input[name='taxasAdicionais'][value='" + data.fk_taxas_adicionais + "']").prop("checked", true);
+                } else {
+                    $("input[name='areaTotal']").val(""); 
+                    $("input[name='areaUtil']").val(""); 
+                    $("input[name='numeroQuartos']").val(""); 
+                    $("input[name='numeroSuites']").val(""); 
+                    $("input[name='numeroCasasBanho']").val(""); 
+                    $("input[name='numeroSalas']").val(""); 
+                    $("input[name='numeroCozinhas']").val(""); 
+                    $("input[name='numeroVagasEstacionamento']").val(""); 
+                    $("input[name='anoConstrucao']").val(""); 
+                    // Mantém o título e o ID 
+                    $("input[name='titulo']").val(titulo); 
+                    $("input[name='listagem_id']").val(id);
+                }
+            }
+        });
+    });
+
+
+    //
+
+    $("#formCaracteristicas").submit(function(e){ 
+        e.preventDefault(); 
+        $.ajax({ 
+            url: "/anuncios/caracteristicas/save/", 
+            type: "POST", data: $(this).serialize(), 
+            success: function(response)
+            { 
+                alert(response.message); 
+            } }); 
+    });
+
+</script>
+
+{% endblock %}
+

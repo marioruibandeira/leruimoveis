@@ -1,0 +1,340 @@
+{% extends 'leruimoveis/base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="hero page-inner overlay" style="background-image: url('{% static 'images/img_9.jpg' %}'); height: 31vh !important; min-height: 177px !important;">
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height: 51vh !important;">
+                <div class="col-lg-9 text-center mt-1">
+                    <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" >
+                        <ol class="breadcrumb text-center justify-content-center">
+                    	    <li class="breadcrumb-item"><a href="{% url 'central_servicos' %}">Central de Serviços</a></li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">Registo Pessoal ou Empresarial</li>
+                  	    </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100" >
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Dados Pessoais</button>
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Perfil Comercial e Portfólio</button>
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Preferências de Trabalho e Pagamento</button>
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Pagamentos e Fiscalidade</button>
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Comprovativos de Verificação</button>
+                        <button class="btn btn-secondary btn-sm btn-registase" type="button">Preferências</button>
+                        <a class="btn btn-secondary btn-sm btn-registase" href="{% url 'informacao_completa' %}">Perfil Completo</a>
+                        <a class="btn btn-secondary btn-sm btn-registase" href="{% url 'verificar_profissional' %}">Autenticar a Minha Conta</a>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">DADOS PESSOAIS </div> </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                              <input type="text" class="form-control" placeholder="Nome completo" />
+                            </div>
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+                                    <option selected>Sector</option>
+                                    <option value="1">Restaraução</option>
+                                    <option value="2">Pintura</option>
+                                    <option value="3">Jardinagem</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="email" class="form-control" placeholder="Número de telefone" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="email" class="form-control" placeholder="Número WhatsApp" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="E-mail" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Local" />
+                            </div>
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+                                    <option selected>Raio de Deslocação</option>
+                                    <option value="1">5 Kilometros</option>
+                                    <option value="2">10 Kilometros</option>
+                                    <option value="3">15 Kilomentos</option>
+                                    <option value="3">25 Kilomentos</option>
+                                    <option value="3">35 Kilomentos</option>
+                                    <option value="3">50 Kilomentos</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <div>
+                                    <input class="form-control form-control-lg" id="formFileLg" type="file" style="height:41px;">
+                                </div>
+                            </div>
+    
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">PERFIL COMERCIAL E PORTFÓLIO</div> </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle mb-2 text-muted">Habilidades</h6>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Pintura Interior" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Pintura Exterior" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Reparação de Paredes" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Pintura de Quintais" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <h6 class="card-subtitle mb-2 text-muted">Anos de Experiênça</h6>  
+                                <label for="customRange1" class="form-label">1</label>
+                                <label for="customRange1" class="form-label" style="float:right;">30</label>
+                                <input type="range" class="form-range" id="customRange1">
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <div>
+                                    <h6 class="card-subtitle mb-2 text-muted">Adicione o seu certificado</h6>
+                                    <input class="form-control form-control-lg" id="formFileLg" type="file" style="height:41px;">
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle mb-2 text-muted">Ferramentas Disponíveis</h6>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Ladders" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Paint Sprayers" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Brushes" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text">
+                                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            </div>
+                                            <input type="text" class="form-control" Value="Luvas" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <div>
+                                    <h6 class="card-subtitle mb-2 text-muted">Portofolio</h6>
+                                    <input class="form-control form-control-lg" id="formFileLg" type="file" style="height:41px;">
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">REFERÊNCIA DE TRABALHO E PAGAMENTO</div> </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+                                    <option selected>Disponibilidade</option>
+                                    <option value="1">Tempo Inteiro</option>
+                                    <option value="2">As Manhãs</option>
+                                    <option value="3">As Tardes</option>
+                                    <option value="3">Anoite</option>
+                                    <option value="3">Aos Fins de Semanas</option>
+                                    <option value="3">Aos Domingos</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+                                    <option selected>Preferências Em Projectos</option>
+                                    <option value="1">Curto Prazo</option>
+                                    <option value="2">Longo Prazo</option>
+                                    <option value="3">Preço Fixo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Taxa Por Hora" />
+                            </div>
+                            
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+                                    <option selected>Setores Preferidos</option>
+                                    <option value="1">Curto Prazo</option>
+                                    <option value="2">Longo Prazo</option>
+                                    <option value="3">Preço Fixo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Fuso Horário" />
+                            </div>
+                            
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">PAGAMENTO E FISCALIDADE</div> </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Bank account" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Tax ID" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="VAT number" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Work Authorization" />
+                            </div>
+                            
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">COMPROVATIVOS DE VERIFICAÇÃO</div> </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Número de Identificação Fiscal" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Bilhete de Identidade" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Carta de Condução" />
+                            </div>
+                            <div class="col-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Passaporte" />
+                            </div>
+                            
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div><div class="container justify-content-center text-center">PREFERÊNCIAS</div> </div>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                </div>
+                                <input type="text" class="form-control" Value="Receber Notificações" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                </div>
+                                <input type="text" class="form-control" Value="Acordo de Termos de Serviço" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                </div>
+                                <input type="text" class="form-control" Value="Consentimento de Privacidade de Dados" aria-label="Text input with checkbox" style="height:36px;" readonly>
+                            </div>
+                            
+                            <div class="col-12">
+                              <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                            
+                            <div class="col-12 mb-3">
+                                <hr/>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>          
+        </div>
+    </div>
+
+{% endblock %}
