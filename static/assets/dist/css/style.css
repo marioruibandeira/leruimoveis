@@ -398,6 +398,12 @@
     height: auto; 
 }
 
+.input-titulos
+{
+    padding-left: 8px !important;
+    font-weight: bold !important;
+}
+
 .logo-espaco
 {
     margin-bottom: 60px;
@@ -530,6 +536,8 @@
 .btn-open-mobile{ display: none; }
 
 .sub-titulo{ margin-bottom: 0px !important;font-weight: bold; }
+
+
 
 @media (max-width: 768px) 
 {
