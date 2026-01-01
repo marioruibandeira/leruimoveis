@@ -5,8 +5,16 @@ from .forms import AnuncioForm
 from django.contrib import messages
 from leruimoveis.models import Listagem
 from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse
 from leruimoveis.models.caracteristicas_gerais import CaracteristicasGerais
+from django.http import JsonResponse
+from leruimoveis.models import CaracteristicasGerais, InfraInternaCaracte
+from leruimoveis.models import InfraExternoCaracte
+from leruimoveis.models.comodidades_seguranca_caracte import ComodidadesSegurancaCaracte
+from leruimoveis.models.comodidades_seguranca import ComodidadesSeguranca
+from leruimoveis.models.localizacao_acessos_caracte import LocalizacaoAcessosCaracte
+from leruimoveis.models.localizacao_acessos import LocalizacaoAcessos
+from leruimoveis.models.situacao_legal_caracte import SituacaoLegalCaracte
+from leruimoveis.models.situacao_legal import SituacaoLegal
 
 def anuncios_control(request):
     properties = Listagem.objects.all().order_by('-id')
@@ -63,6 +71,34 @@ def fotos_adicionais(request):
 def get_caracteristicas(request, listagem_id):
     try:
         caract = CaracteristicasGerais.objects.get(fk_listagem_id=listagem_id)
+
+        # Buscar infraestruturas internas selecionadas
+        infra_interna_ids = list(
+            InfraInternaCaracte.objects.filter(fk_listagem_id=listagem_id)
+            .values_list("fk_infra_interna_id", flat=True)
+        )
+
+        # Buscar infraestruturas externas selecionadas
+        infra_externo_ids = list(
+            InfraExternoCaracte.objects.filter(fk_listagem_id=listagem_id)
+            .values_list("fk_infra_externo_id", flat=True)
+        )
+
+        comodidade_id = list( 
+            ComodidadesSegurancaCaracte.objects.filter(fk_listagem_id=listagem_id) 
+            .values_list("fk_comodidades_seguranca_id", flat=True) 
+        )
+
+        localizacao_id = list(
+            LocalizacaoAcessosCaracte.objects.filter(fk_listagem_id=listagem_id) 
+            .values_list("fk_localizacao_acessos_id", flat=True)
+        )
+
+        situacaoLegal_id = list(
+            SituacaoLegalCaracte.objects.filter(fk_listagem_id=listagem_id) 
+            .values_list("fk_situacao_legal_id", flat=True)
+        )
+
         return JsonResponse({
             "exists": True,
             "area_total": caract.area_total,
@@ -77,74 +113,128 @@ def get_caracteristicas(request, listagem_id):
             "fk_estado_conservacao": caract.fk_estado_conservacao_id,
             "fk_condicoes_pagamento": caract.fk_condicoes_pagamento_id,
             "fk_taxas_adicionais": caract.fk_taxas_adicionais_id,
+            "fk_piso": caract.fk_piso_id,
+
+            # Checkboxes internos e externos
+            "infra_interna": infra_interna_ids,
+            "infra_externo": infra_externo_ids,
+            "comodidade": comodidade_id,
+            "localizacao": localizacao_id,
+            "situacaoLegal": situacaoLegal_id,
         })
+
     except CaracteristicasGerais.DoesNotExist:
         return JsonResponse({"exists": False})
 
+
 def save_caracteristicas(request):
-    print("POST RECEBIDO:", request.POST) 
-    if request.method == "POST": 
+    print("POST RECEBIDO:", request.POST)
 
-        listagem_id = request.POST.get("listagem_id")
-        try: 
-            caract, created = CaracteristicasGerais.objects.update_or_create( 
-                fk_listagem_id=listagem_id, 
-                defaults={ "area_total": request.POST.get("areaTotal") or None, 
-                "area_util": request.POST.get("areaUtil") or None, 
-                "numero_quartos": request.POST.get("numeroQuartos") or None, 
-                "numero_suites": request.POST.get("numeroSuites") or None, 
-                "numero_casas_banho": request.POST.get("numeroCasasBanho") or None, 
-                "numero_salas": request.POST.get("numeroSalas") or None, 
-                "numero_cozinhas": request.POST.get("numeroCozinhas") or None, 
-                "numero_vagas_estacionamento": request.POST.get("numeroVagasEstacionamento") or None, 
-                "ano_construcao": request.POST.get("anoConstrucao") or None, 
-                "fk_estado_conservacao_id": request.POST.get("conservacao") or None, 
-                "fk_condicoes_pagamento_id": request.POST.get("pagamento") or None, 
-                "fk_taxas_adicionais_id": request.POST.get("taxasAdicionais") or None, 
-                "fk_piso_id": request.POST.get("piso") or None, 
-                } ) 
-                
-        except Exception as e: print("ERRO DJANGO:", e)
+    if request.method != "POST":
+        return JsonResponse({"status": "error", "message": "Método inválido."})
+
+    listagem_id = request.POST.get("listagem_id")
+
+    try:
+        # ============================================================
+        # 1. GUARDAR CARACTERÍSTICAS GERAIS
+        # ============================================================
+        CaracteristicasGerais.objects.update_or_create(
+            fk_listagem_id=listagem_id,
+            defaults={
+                "area_total": request.POST.get("areaTotal") or None,
+                "area_util": request.POST.get("areaUtil") or None,
+                "numero_quartos": request.POST.get("numeroQuartos") or None,
+                "numero_suites": request.POST.get("numeroSuites") or None,
+                "numero_casas_banho": request.POST.get("numeroCasasBanho") or None,
+                "numero_salas": request.POST.get("numeroSalas") or None,
+                "numero_cozinhas": request.POST.get("numeroCozinhas") or None,  # corrigido
+                "numero_vagas_estacionamento": request.POST.get("numeroVagasEstacionamento") or None,
+                "ano_construcao": request.POST.get("anoConstrucao") or None,
+                "fk_estado_conservacao_id": request.POST.get("conservacao") or None,
+                "fk_condicoes_pagamento_id": request.POST.get("pagamento") or None,
+                "fk_taxas_adicionais_id": request.POST.get("taxasAdicionais") or None,
+                "fk_piso_id": request.POST.get("piso") or None,
+            }
+        )
+
+        # ============================================================
+        # 2. GUARDAR INFRAESTRUTURAS INTERNAS (checkboxes)
+        # ============================================================
+        internoSelecionados = request.POST.getlist("infraInterna[]")
+
+        InfraInternaCaracte.objects.filter(fk_listagem_id=listagem_id).delete()
+
+        for infra_id in internoSelecionados:
+            InfraInternaCaracte.objects.create(
+                fk_infra_interna_id=infra_id,
+                fk_listagem_id=listagem_id
+            )
+
+        # ============================================================
+        # 3. GUARDAR INFRAESTRUTURAS EXTERNAS (checkboxes)
+        # ============================================================
+        externoSelecionados = request.POST.getlist("infraExterno[]")
+
+        InfraExternoCaracte.objects.filter(fk_listagem_id=listagem_id).delete()
+
+        for externo_id in externoSelecionados:
+            InfraExternoCaracte.objects.create(
+                fk_infra_externo_id=externo_id,
+                fk_listagem_id=listagem_id
+            )
+
+        # ============================================================
+        # 4. GUARDAR INFRAESTRUTURAS EXTERNAS (checkboxes) 
+        # ============================================================
+        comodidadeSelecionados = request.POST.getlist("comodidadeSeguranca[]")
+
+        ComodidadesSegurancaCaracte.objects.filter(fk_listagem_id=listagem_id).delete()
+
+        for comodidade_id in comodidadeSelecionados:
+            ComodidadesSegurancaCaracte.objects.create(
+                fk_comodidades_seguranca=ComodidadesSeguranca.objects.get(id=comodidade_id),
+                fk_listagem=Listagem.objects.get(id=listagem_id)
+            )
+
+        # ============================================================
+        # 4. GUARDAR INFRAESTRUTURAS EXTERNAS (checkboxes) 
+        # ============================================================
+        localizacaoSelecionados = request.POST.getlist("localizacaoAcessos[]")
+
+        LocalizacaoAcessosCaracte.objects.filter(fk_listagem_id=listagem_id).delete()
+
+        for localizacao_id in localizacaoSelecionados:
+            LocalizacaoAcessosCaracte.objects.create(
+                fk_localizacao_acessos=LocalizacaoAcessos.objects.get(id=localizacao_id),
+                fk_listagem=Listagem.objects.get(id=listagem_id)
+            )
+
+        # ============================================================
+        # 4. GUARDAR INFRAESTRUTURAS EXTERNAS (checkboxes) 
+        # ============================================================
+        situacaoLegalSelecionados = request.POST.getlist("situacaoLegal[]")
+
+        SituacaoLegalCaracte.objects.filter(fk_listagem_id=listagem_id).delete()
+
+        for situacaoLegal_id in situacaoLegalSelecionados:
+            SituacaoLegalCaracte.objects.create(
+                fk_situacao_legal=SituacaoLegal.objects.get(id=situacaoLegal_id),
+                fk_listagem=Listagem.objects.get(id=listagem_id)
+            )
 
 
+        # ============================================================
+        # . RESPOSTA FINAL
+        # ============================================================
+        return JsonResponse({
+            "status": "success",
+            "message": "Características actualizadas com sucesso!"
+        })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    except Exception as e:
+        print("ERRO DJANGO:", e)
+        return JsonResponse({
+            "status": "error",
+            "message": "Ocorreu um erro ao guardar as características."
+        })
