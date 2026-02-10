@@ -25,3 +25,5 @@ from .localizacao_acessos_caracte import LocalizacaoAcessosCaracte
 #
 from .situacao_legal import SituacaoLegal
 from .situacao_legal_caracte import SituacaoLegalCaracte
+
+from .fotos_adicionais import FotosAdicionais

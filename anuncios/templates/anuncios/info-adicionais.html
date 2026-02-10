@@ -33,63 +33,63 @@
 
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Titulo</label>
-                                    <input type="text" name="titulo" class="form-control" value="" readonly>
+                                    <label for="titulo" class="form-label input-titulos">Titulo</label>
+                                    <input type="text" id="titulo" name="titulo" class="form-control" value="" readonly>
                                     <input type="hidden" name="listagem_id" value=""> 
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Área total</label>
-                                    <input type="text" name="areaTotal" class="form-control only-area" placeholder="Área total"/>
+                                    <label for="areaTotal" class="form-label input-titulos">Área total</label>
+                                    <input type="text" id="areaTotal" name="areaTotal" class="form-control only-area" placeholder="Área total"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Área útil</label>
-                                    <input type="text" name="areaUtil" class="form-control only-area" placeholder="Área útil"/>
+                                    <label for="areaUtil" class="form-label input-titulos">Área útil</label>
+                                    <input type="text" id="areaUtil" name="areaUtil" class="form-control only-area" placeholder="Área útil"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de quartos</label>
-                                    <input type="text" name="numeroQuartos" class="form-control only-1-20" placeholder="Número de quartos"/>
+                                    <label for="numeroQuartos" class="form-label input-titulos">Número de quartos</label>
+                                    <input type="text" id="numeroQuartos" name="numeroQuartos" class="form-control only-1-20" placeholder="Número de quartos"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de suítes</label>
-                                    <input type="text" name="numeroSuites" class="form-control only-1-20" placeholder="Número de suítes"/>
+                                    <label for="numeroSuites" class="form-label input-titulos">Número de suítes</label>
+                                    <input type="text" id="numeroSuites" name="numeroSuites" class="form-control only-1-20" placeholder="Número de suítes"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de casas de banho</label>
-                                    <input type="text" name="numeroCasasBanho" class="form-control only-1-20" placeholder="Número de casas de banho"/>
+                                    <label for="numeroCasasBanho" class="form-label input-titulos">Número de casas de banho</label>
+                                    <input type="text" id="numeroCasasBanho" name="numeroCasasBanho" class="form-control only-1-20" placeholder="Número de casas de banho"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de salas</label>
-                                    <input type="text" name="numeroSalas" class="form-control only-1-20" placeholder="Número de salas"/>
+                                    <label for="numeroSalas" class="form-label input-titulos">Número de salas</label>
+                                    <input type="text" id="numeroSalas" name="numeroSalas" class="form-control only-1-20" placeholder="Número de salas"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de cozinhas</label>
-                                    <input type="text" name="numero_cozinhas" class="form-control only-1-20" placeholder="Número de cozinhas"/>
+                                    <label for="numero_cozinhas" class="form-label input-titulos">Número de cozinhas</label>
+                                    <input type="text" id="numero_cozinhas" name="numero_cozinhas" class="form-control only-1-20" placeholder="Número de cozinhas"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Número de vagas de estacionamento</label>
-                                    <input type="text" name="numeroVagasEstacionamento" class="form-control only-1-20" placeholder="Número de vagas de estacionamento"/>
+                                    <label for="numeroVagasEstacionamento" class="form-label input-titulos">Número de vagas de estacionamento</label>
+                                    <input type="text" id="numeroVagasEstacionamento" name="numeroVagasEstacionamento" class="form-control only-1-20" placeholder="Número de vagas de estacionamento"/>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label input-titulos">Ano de construção</label>
-                                    <input type="number" name="anoConstrucao" class="form-control only-year" placeholder="Ano de construção" min="1800" max="2026"/>
+                                    <label for="anoConstrucao" class="form-label input-titulos">Ano de construção</label>
+                                    <input type="number" id="anoConstrucao" name="anoConstrucao" class="form-control only-year" placeholder="Ano de construção" min="1800" max="2026"/>
                                 </div>
 
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Estado de conservação</label>
+                                    <label class="form-label">Estado de conservação</label>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="conservacao" value="1" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Novo</label>
+                                        <input class="form-check-input" type="radio" id="conservacao1" name="conservacao" value="1" checked>
+                                        <label class="form-check-label" for="conservacao1">Novo</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="conservacao" value="2">
-                                        <label class="form-check-label" for="inlineCheckbox2">Remodelado</label>
+                                        <input class="form-check-input" type="radio" id="conservacao2" name="conservacao" value="2">
+                                        <label class="form-check-label" for="conservacao2">Remodelado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="conservacao" value="3">
-                                        <label class="form-check-label" for="inlineCheckbox2">Usado</label>
+                                        <input class="form-check-input" type="radio" id="conservacao3" name="conservacao" value="3">
+                                        <label class="form-check-label" for="conservacao3">Usado</label>
                                     </div>
                                 </div>
 
@@ -100,120 +100,120 @@
                                 </div>
 
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Interno</label>
+                                    <label  class="form-label">Interno</label>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="1" name="infraInterna[]" id="arCondicionado">
-                                        <label class="form-check-label" for="inlineCheckbox1">Ar-condicionado</label>
+                                        <label class="form-check-label" for="arCondicionado">Ar-condicionado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="2" name="infraInterna[]" id="aquecimentoAgua">
-                                        <label class="form-check-label" for="inlineCheckbox2">Aquecimento de água</label>
+                                        <label class="form-check-label" for="aquecimentoAgua">Aquecimento de água</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="3" name="infraInterna[]" id="armariosEmbutidos">
-                                        <label class="form-check-label" for="inlineCheckbox2">Armários embutidos</label>
+                                        <label class="form-check-label" for="armariosEmbutidos">Armários embutidos</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
-                                        <label class="form-check-label" for="inlineCheckbox2">Closet</label>
+                                        <label class="form-check-label" for="closet">Closet</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="5" name="infraInterna[]" id="lavandaria">
-                                        <label class="form-check-label" for="inlineCheckbox2">Lavandaria</label>
+                                        <label class="form-check-label" for="lavandaria">Lavandaria</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="6" name="infraInterna[]" id="despensa">
-                                        <label class="form-check-label" for="inlineCheckbox2">Despensa</label>
+                                        <label class="form-check-label" for="despensa">Despensa</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="7" name="infraInterna[]" id="varanda">
-                                        <label class="form-check-label" for="inlineCheckbox2">Varanda</label>
+                                        <label class="form-check-label" for="varanda">Varanda</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="8" name="infraInterna[]" id="escritorio">
-                                        <label class="form-check-label" for="inlineCheckbox2">Escritório</label>
+                                        <label class="form-check-label" for="escritorio">Escritório</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="9" name="infraInterna[]" id="salaJantar">
-                                        <label class="form-check-label" for="inlineCheckbox2">Sala de jantar</label>
+                                        <label class="form-check-label" for="salaJantar">Sala de jantar</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="10" name="infraInterna[]" id="salaEstar">
-                                        <label class="form-check-label" for="inlineCheckbox2">Sala de estar</label>
+                                        <label class="form-check-label" for="salaEstar">Sala de estar</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="11" name="infraInterna[]" id="hallEntrada">
-                                        <label class="form-check-label" for="inlineCheckbox2">Hall de entrada</label>
+                                        <label class="form-check-label" for="hallEntrada">Hall de entrada</label>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Piso</label>
+                                    <label  class="form-label">Piso</label>
                                 </div>
 
                                 <div class="col-12 mb-3">                                    
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="1" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Cerâmica</label>
+                                        <input class="form-check-input" type="radio" id="piso1" name="piso" value="1" checked>
+                                        <label class="form-check-label" for="piso1">Cerâmica</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="2">
-                                        <label class="form-check-label" for="inlineCheckbox2">Madeira</label>
+                                        <input class="form-check-input" type="radio" id="piso2" name="piso" value="2">
+                                        <label class="form-check-label" for="piso2">Madeira</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="3">
-                                        <label class="form-check-label" for="inlineCheckbox2">Porcelanato</label>
+                                        <input class="form-check-input" type="radio" id="piso3" name="piso" value="3">
+                                        <label class="form-check-label" for="piso3">Porcelanato</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="4" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Laminado</label>
+                                        <input class="form-check-input" type="radio" id="piso4" name="piso" value="4" checked>
+                                        <label class="form-check-label" for="piso4">Laminado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="5">
-                                        <label class="form-check-label" for="inlineCheckbox2">Vinílico</label>
+                                        <input class="form-check-input" type="radio" id="piso5" name="piso" value="5">
+                                        <label class="form-check-label" for="piso5">Vinílico</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="6">
-                                        <label class="form-check-label" for="inlineCheckbox2">Mármore</label>
+                                        <input class="form-check-input" type="radio" id="piso6" name="piso" value="6">
+                                        <label class="form-check-label" for="piso6">Mármore</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="7" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Granito</label>
+                                        <input class="form-check-input" type="radio" id="piso7" name="piso" value="7" checked>
+                                        <label class="form-check-label" for="piso7">Granito</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="8">
-                                        <label class="form-check-label" for="inlineCheckbox2">Cimento queimado / Microcimento</label>
+                                        <input class="form-check-input" type="radio" id="piso8" name="piso" value="8">
+                                        <label class="form-check-label" for="piso8">Cimento queimado / Microcimento</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="9">
-                                        <label class="form-check-label" for="inlineCheckbox2">Bambu</label>
+                                        <input class="form-check-input" type="radio" id="piso9" name="piso" value="9">
+                                        <label class="form-check-label" for="piso9">Bambu</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="10">
-                                        <label class="form-check-label" for="inlineCheckbox1">Pedra natural</label>
+                                        <input class="form-check-input" type="radio" id="piso10" name="piso" value="10">
+                                        <label class="form-check-label" for="piso10">Pedra natural</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="11">
-                                        <label class="form-check-label" for="inlineCheckbox2">Tatame / Carpete</label>
+                                        <input class="form-check-input" type="radio" id="piso11" name="piso" value="11">
+                                        <label class="form-check-label" for="piso11">Tatame / Carpete</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="12">
-                                        <label class="form-check-label" for="inlineCheckbox2">Linóleo</label>
+                                        <input class="form-check-input" type="radio" id="piso12" name="piso" value="12">
+                                        <label class="form-check-label" for="piso12">Linóleo</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="13">
-                                        <label class="form-check-label" for="inlineCheckbox2">Epóxi / resina</label>
+                                        <input class="form-check-input" type="radio" id="piso13" name="piso" value="13">
+                                        <label class="form-check-label" for="piso13">Epóxi / resina</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="14">
-                                        <label class="form-check-label" for="inlineCheckbox2">Chão Bruto</label>
+                                        <input class="form-check-input" type="radio" id="piso14" name="piso" value="14">
+                                        <label class="form-check-label" for="piso14">Chão Bruto</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="piso" value="15" checked>
-                                        <label class="form-check-label" for="inlineCheckbox2">Mosaico</label>
+                                        <input class="form-check-input" type="radio" id="piso15" name="piso" value="15" checked>
+                                        <label class="form-check-label" for="piso15">Mosaico</label>
                                     </div>
                                 </div>
 
@@ -224,61 +224,61 @@
                                 </div>
 
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Externo</label>
+                                    <label  class="form-label">Externo</label>
                                 </div>
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="1" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox1">Jardim</label>
+                                        <input class="form-check-input" type="checkbox" value="1" name="infraExterno[]" id="infraExterno1">
+                                        <label class="form-check-label" for="infraExterno1">Jardim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="2" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Piscina</label>
+                                        <input class="form-check-input" type="checkbox" value="2" name="infraExterno[]" id="infraExterno2">
+                                        <label class="form-check-label" for="infraExterno2">Piscina</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="3" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Quintal</label>
+                                        <input class="form-check-input" type="checkbox" value="3" name="infraExterno[]" id="infraExterno3">
+                                        <label class="form-check-label" for="infraExterno3">Quintal</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="4" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Churrasqueira</label>
+                                        <input class="form-check-input" type="checkbox" value="4" name="infraExterno[]" id="infraExterno4">
+                                        <label class="form-check-label" for="infraExterno4">Churrasqueira</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="5" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Estacionamento coberto</label>
+                                        <input class="form-check-input" type="checkbox" value="5" name="infraExterno[]" id="infraExterno5">
+                                        <label class="form-check-label" for="infraExterno5">Estacionamento coberto</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="6" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Portão automático</label>
+                                        <input class="form-check-input" type="checkbox" value="6" name="infraExterno[]" id="infraExterno6">
+                                        <label class="form-check-label" for="infraExterno6">Portão automático</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="7" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Sistema de segurança</label>
+                                        <input class="form-check-input" type="checkbox" value="7" name="infraExterno[]" id="infraExterno7">
+                                        <label class="form-check-label" for="infraExterno7">Sistema de segurança</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="8" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Gerador</label>
+                                        <input class="form-check-input" type="checkbox" value="8" name="infraExterno[]" id="infraExterno8">
+                                        <label class="form-check-label" for="infraExterno8">Gerador</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="9" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Reservatório de água</label>
+                                        <input class="form-check-input" type="checkbox" value="9" name="infraExterno[]" id="infraExterno9">
+                                        <label class="form-check-label" for="infraExterno9">Reservatório de água</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="10" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Poço de água</label>
+                                        <input class="form-check-input" type="checkbox" value="10" name="infraExterno[]" id="infraExterno10">
+                                        <label class="form-check-label" for="infraExterno10">Poço de água</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="11" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Terraço</label>
+                                        <input class="form-check-input" type="checkbox" value="11" name="infraExterno[]" id="infraExterno11">
+                                        <label class="form-check-label" for="infraExterno11">Terraço</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="12" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Elevador</label>
+                                        <input class="form-check-input" type="checkbox" value="12" name="infraExterno[]" id="infraExterno12">
+                                        <label class="form-check-label" for="infraExterno12">Elevador</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="13" name="infraExterno[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Para prédios</label>
+                                        <input class="form-check-input" type="checkbox" value="13" name="infraExterno[]" id="infraExterno13">
+                                        <label class="form-check-label" for="infraExterno13">Para prédios</label>
                                     </div>
                                 </div>
 
@@ -290,38 +290,39 @@
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="1" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox1">Portaria</label>
+                                        <input class="form-check-input" type="checkbox" value="1" name="comodidadeSeguranca[]" id="comodidade1">
+                                        <label class="form-check-label" for="comodidade1">Portaria</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="2" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Estacionamento para visitantes</label>
+                                        <input class="form-check-input" type="checkbox" value="2" name="comodidadeSeguranca[]" id="comodidade2">
+                                        <label class="form-check-label" for="comodidade2">Estacionamento para visitantes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="3" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Ginásio</label>
+                                        <input class="form-check-input" type="checkbox" value="3" name="comodidadeSeguranca[]" id="comodidade3">
+                                        <label class="form-check-label" for="comodidade3">Ginásio</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="4" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Parque infantil</label>
+                                        <input class="form-check-input" type="checkbox" value="4" name="comodidadeSeguranca[]" id="comodidade4">
+                                        <label class="form-check-label" for="comodidade4">Parque infantil</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="5" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Salão de festas</label>
+                                        <input class="form-check-input" type="checkbox" value="5" name="comodidadeSeguranca[]" id="comodidade5">
+                                        <label class="form-check-label" for="comodidade5">Salão de festas</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="6" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Área de lazer</label>
+                                        <input class="form-check-input" type="checkbox" value="6" name="comodidadeSeguranca[]" id="comodidade6">
+                                        <label class="form-check-label" for="comodidade6">Área de lazer</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="7" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Limpeza e manutenção</label>
+                                        <input class="form-check-input" type="checkbox" value="7" name="comodidadeSeguranca[]" id="comodidade7">
+                                        <label class="form-check-label" for="comodidade7">Limpeza e manutenção</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="8" name="comodidadeSeguranca[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Gestão condominial</label>
+                                        <input class="form-check-input" type="checkbox" value="8" name="comodidadeSeguranca[]" id="comodidade8">
+                                        <label class="form-check-label" for="comodidade8">Gestão condominial</label>
                                     </div>
                                 </div>
+
 
                                 <div class="col-12 mb-0">
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -331,34 +332,35 @@
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="1" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox1">Proximidade de escolas</label>
+                                        <input class="form-check-input" type="checkbox" value="1" name="localizacaoAcessos[]" id="localizacao1">
+                                        <label class="form-check-label" for="localizacao1">Proximidade de escolas</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="2" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de hospitais</label>
+                                        <input class="form-check-input" type="checkbox" value="2" name="localizacaoAcessos[]" id="localizacao2">
+                                        <label class="form-check-label" for="localizacao2">Proximidade de hospitais</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="3" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de supermercados</label>
+                                        <input class="form-check-input" type="checkbox" value="3" name="localizacaoAcessos[]" id="localizacao3">
+                                        <label class="form-check-label" for="localizacao3">Proximidade de supermercados</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="4" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Proximidade de transportes</label>
+                                        <input class="form-check-input" type="checkbox" value="4" name="localizacaoAcessos[]" id="localizacao4">
+                                        <label class="form-check-label" for="localizacao4">Proximidade de transportes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="5" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Acesso a vias principais</label>
+                                        <input class="form-check-input" type="checkbox" value="5" name="localizacaoAcessos[]" id="localizacao5">
+                                        <label class="form-check-label" for="localizacao5">Acesso a vias principais</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="6" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Distância ao centro da cidade</label>
+                                        <input class="form-check-input" type="checkbox" value="6" name="localizacaoAcessos[]" id="localizacao6">
+                                        <label class="form-check-label" for="localizacao6">Distância ao centro da cidade</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="7" name="localizacaoAcessos[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Zona comercial próxima</label>
+                                        <input class="form-check-input" type="checkbox" value="7" name="localizacaoAcessos[]" id="localizacao7">
+                                        <label class="form-check-label" for="localizacao7">Zona comercial próxima</label>
                                     </div>
                                 </div>
+
 
                                 <div class="col-12 mb-0">
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -368,26 +370,27 @@
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="1" name="situacaoLegal[]">
-                                        <label class="form-check-label" for="inlineCheckbox1">Título de propriedade</label>
+                                        <input class="form-check-input" type="checkbox" value="1" name="situacaoLegal[]" id="situacaoLegal1">
+                                        <label class="form-check-label" for="situacaoLegal1">Título de propriedade</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="2" name="situacaoLegal[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Imóvel regularizado</label>
+                                        <input class="form-check-input" type="checkbox" value="2" name="situacaoLegal[]" id="situacaoLegal2">
+                                        <label class="form-check-label" for="situacaoLegal2">Imóvel regularizado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="3" name="situacaoLegal[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Sem dívidas</label>
+                                        <input class="form-check-input" type="checkbox" value="3" name="situacaoLegal[]" id="situacaoLegal3">
+                                        <label class="form-check-label" for="situacaoLegal3">Sem dívidas</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="4" name="situacaoLegal[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Pronto para financiamento</label>
+                                        <input class="form-check-input" type="checkbox" value="4" name="situacaoLegal[]" id="situacaoLegal4">
+                                        <label class="form-check-label" for="situacaoLegal4">Pronto para financiamento</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="5" name="situacaoLegal[]">
-                                        <label class="form-check-label" for="inlineCheckbox2">Contrato de arrendamento</label>
+                                        <input class="form-check-input" type="checkbox" value="5" name="situacaoLegal[]" id="situacaoLegal5">
+                                        <label class="form-check-label" for="situacaoLegal5">Contrato de arrendamento</label>
                                     </div>
                                 </div>
+
 
                                 <div class="col-12 mb-0">
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -396,51 +399,52 @@
                                 </div>
 
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Condições de pagamento</label>
+                                    <label class="form-label">Condições de pagamento</label>
                                 </div>
 
                                 <div class="col-12 mb-3">                                    
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pagamento" value="1">
-                                        <label class="form-check-label" for="inlineCheckbox1">Pronto Pagamento</label>
+                                        <input class="form-check-input" type="radio" name="pagamento" value="1" id="pagamento1">
+                                        <label class="form-check-label" for="pagamento1">Pronto Pagamento</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pagamento" value="2">
-                                        <label class="form-check-label" for="inlineCheckbox2">Parcial</label>
+                                        <input class="form-check-input" type="radio" name="pagamento" value="2" id="pagamento2">
+                                        <label class="form-check-label" for="pagamento2">Parcial</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pagamento" value="3" checked>
-                                        <label class="form-check-label" for="inlineCheckbox2">Financiamento</label>
+                                        <input class="form-check-input" type="radio" name="pagamento" value="3" id="pagamento3" checked>
+                                        <label class="form-check-label" for="pagamento3">Financiamento</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pagamento" value="4">
-                                        <label class="form-check-label" for="inlineCheckbox2">Negociavel</label>
+                                        <input class="form-check-input" type="radio" name="pagamento" value="4" id="pagamento4">
+                                        <label class="form-check-label" for="pagamento4">Negociavel</label>
                                     </div>
                                 </div>
 
+
                                 <div class="mb-3 sub-titulo">
-                                    <label for="formFile" class="form-label">Taxas adicionais</label>
+                                    <label  class="form-label">Taxas adicionais</label>
                                 </div>
 
                                 <div class="col-12 mb-3">  
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="1" checked>
-                                        <label class="form-check-label" for="inlineCheckbox1">Sem Taxas</label>
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="1" id="taxa1" checked>
+                                        <label class="form-check-label" for="taxa1">Sem Taxas</label>
                                     </div>                                  
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="2">
-                                        <label class="form-check-label" for="inlineCheckbox1">Condomínio</label>
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="2" id="taxa2">
+                                        <label class="form-check-label" for="taxa2">Condomínio</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="3">
-                                        <label class="form-check-label" for="inlineCheckbox2">Manutenção</label>
+                                        <input class="form-check-input" type="radio" name="taxasAdicionais" value="3" id="taxa3">
+                                        <label class="form-check-label" for="taxa3">Manutenção</label>
                                     </div>
                                 </div>
                                 
                                 <hr/>
 
                                 <div class="col-12">
-                                    <input type="submit" id="btnNovo" onclick=" " value="Actualizar" class="btn btn-detalhes" />
+                                    <input type="submit" id="btnNovo" value="Actualizar" class="btn btn-detalhes" />
                                 </div>
 
                             </div>
@@ -540,9 +544,8 @@
                                         <div class="card-footer" style="padding: 4px; text-align: center;">
                                             <!-- Edit -->
                                             <a href="#" 
-                                                class="me-2 btn btn-secondary edit-property" 
+                                                class="me-2 btn btn-secondary edit-property link-tbl" 
                                                 title="Editar" 
-                                                style="text-decoration: none; width: 48% !important; height: 25px;height: 28px; padding: 0px !important;margin-right: 0px !important;"
                                                 data-id="{{ property.id }}"
                                                 data-titulo="{{ property.titulo }}"
                                                 data-endereco="{{ property.endereco }}"
@@ -556,9 +559,8 @@
                                             </a>
                                             <!-- View -->
                                             <a href="#" 
-                                                class="me-2 btn btn-secondary" 
+                                                class="me-2 btn btn-secondary link-tbl" 
                                                 title="Ver detalhes" 
-                                                style="text-decoration: none; width: 48% !important;height: 25px;height: 28px; padding: 0px !important;margin-right: 0px !important;" 
                                                 data-bs-toggle="modal" 
                                                 data-bs-target="#detalhesModal"
                                                 data-titulo="{{ property.titulo }}"
@@ -713,11 +715,7 @@
                         </li>
 
                     </ul>
-
-    
-
-
-
+                    
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -726,8 +724,9 @@
     </div>
 </div>
 
+{% endblock %}
 
-
-
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/infoAdicionais.js' %}"></script>
 {% endblock %}
 

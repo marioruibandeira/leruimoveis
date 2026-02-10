@@ -15,6 +15,8 @@ from leruimoveis.models.localizacao_acessos_caracte import LocalizacaoAcessosCar
 from leruimoveis.models.localizacao_acessos import LocalizacaoAcessos
 from leruimoveis.models.situacao_legal_caracte import SituacaoLegalCaracte
 from leruimoveis.models.situacao_legal import SituacaoLegal
+from leruimoveis.models.fotos_adicionais import FotosAdicionais
+
 
 def anuncios_control(request):
     properties = Listagem.objects.all().order_by('-id')
@@ -56,6 +58,7 @@ def delete_property(request, pk):
     messages.success(request, "O anúncio foi eliminado com sucesso.")
     return redirect('anuncios_control')
 
+
 def info_adicionais(request):
     properties = Listagem.objects.all().order_by('-id') 
     cidades = Cidade.objects.all() 
@@ -64,8 +67,63 @@ def info_adicionais(request):
     
     return render(request, 'anuncios/info-adicionais.html', context)
 
+#def fotos_adicionais(request):
+    #properties = Listagem.objects.all().order_by('-id') 
+    
+    #context = { 'properties': properties } 
+
+    #return render(request, 'anuncios/fotos-adicionais.html', context)
+
 def fotos_adicionais(request):
-    return render(request, 'anuncios/fotos-adicionais.html')
+    properties = Listagem.objects.all().order_by('-id')
+
+    if request.method == "POST":
+        listagem_id = request.POST.get("listagem_id")
+        foto = request.FILES.get("fotos")
+        descricao = request.POST.get("descricao")
+
+        if not foto:
+            messages.error(request, "Nenhuma foto foi selecionada.")
+        else:
+            try:
+                FotosAdicionais.objects.create(
+                    fk_listagem_id=listagem_id,
+                    fotos=foto,
+                    descricao=descricao
+                )
+                messages.success(request, "Foto adicionada com sucesso.")
+            except Exception as e:
+                messages.error(request, f"Erro ao guardar a foto: {e}")
+
+        return redirect("fotos_adicionais")
+
+    return render(
+        request,
+        'anuncios/fotos-adicionais.html',
+        {'properties': properties}
+    )
+
+
+def api_fotos(request, id):
+    fotos = FotosAdicionais.objects.filter(fk_listagem_id=id)
+
+    data = {"fotos": []}
+
+    for foto in fotos:
+        # Evita crash se o ficheiro não existir
+        try:
+            url = foto.fotos.url
+        except Exception:
+            url = None
+
+        data["fotos"].append({
+            "id": foto.id,
+            "url": url,
+            "descricao": getattr(foto, "descricao", "")
+        })
+
+    return JsonResponse(data)
+
 
 
 def get_caracteristicas(request, listagem_id):
@@ -238,3 +296,37 @@ def save_caracteristicas(request):
             "status": "error",
             "message": "Ocorreu um erro ao guardar as características."
         })
+
+def delete_all_fotos(request, pk):
+    # Buscar todas as fotos relacionadas à listagem
+    fotos = FotosAdicionais.objects.filter(fk_listagem_id=pk)
+
+    # Apagar os ficheiros físicos
+    for foto in fotos:
+        if foto.fotos and foto.fotos.path:
+            if os.path.isfile(foto.fotos.path):
+                os.remove(foto.fotos.path)
+
+    # Apagar os registos da base de dados
+    fotos.delete()
+
+    messages.success(request, "Todas as fotos foram eliminadas com sucesso.")
+    return redirect('fotos_adicionais')
+
+
+def delete_foto(request, pk): 
+    if request.method != "POST":
+        return JsonResponse({"success": False, "error": "Método não permitido"}, status=405)
+
+    foto = get_object_or_404(FotosAdicionais, pk=pk)
+
+    # Apagar ficheiro físico
+    if foto.fotos and foto.fotos.path and os.path.isfile(foto.fotos.path):
+        os.remove(foto.fotos.path) 
+        
+    foto.delete() 
+    
+    return JsonResponse({"success": True})
+
+
+
