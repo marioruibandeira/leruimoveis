@@ -1,6 +1,7 @@
 # leruimoveis/views.py
 from django.shortcuts import render, get_object_or_404
-from leruimoveis.models import Conteudo, Listagem  # ← IMPORTA Listagem
+from leruimoveis.models import Conteudo, Listagem  
+from leruimoveis.models.fotos_adicionais import FotosAdicionais
 
 def index(request):
     properties = Listagem.objects.all().order_by('-id')[:9]
@@ -38,6 +39,8 @@ def servicedetails(request):
 def propertydetails(request, property_id):
     property = get_object_or_404(Listagem, id=property_id)  
     return render(request, 'leruimoveis/property.html', {'property': property})
+
+
 
 
     

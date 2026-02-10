@@ -11,12 +11,12 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/heroes/">
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap -->
     <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/fonts/icomoon/iconstyle.css' %}" rel="stylesheet">
     <link href="{% static 'assets/dist/css/style.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- estilo -->
     <link href="{% static 'assets/dist/css/heroes.css' %}" rel="stylesheet">
     <link href="{% static 'assets/dist/css/features.css' %}" rel="stylesheet">
   </head>
@@ -24,16 +24,19 @@
     <main>
       {% include 'leruimoveis/normal_header.html' %}
       
-      <!-- Main content goes here -->
+      <!-- conteudo principal vai aqui -->
       <div>
           {% block content %}{% endblock %}
       </div>
       
       {% include 'leruimoveis/footer.html' %}
     </main>
-    <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="{% static 'assets/dist/js/infoAdicionais.js' %}"></script>
+    <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block scripts %} {% endblock %}
+    
   </body>
 </html>
 
