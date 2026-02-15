@@ -13,13 +13,14 @@ urlpatterns = [
     path('properties/', views.properties, name='properties'),
     path('about/', views.about, name='about'),
     path('services/', views.services, name='services'),
-    path('login/', views.login, name='login'),
-    path('registrar/', views.registrar, name='registrar'),
+    #path('login/', views.login, name='login'),
+    #path('registrar/', views.registrar, name='registrar'),
     path('service-details/', servicedetails, name='servicedetails'),
     path('central-servicos/', include('centralservicos.urls')),
     path('property/<int:property_id>/', views.propertydetails, name='detalhespropriadade'),
     path('anuncios/', include('anuncios.urls')),
     path('partners/', include('parceiros.urls')),
+    path('usuarios/', include('usuarios.urls')),
 ]
 
 if settings.DEBUG:
