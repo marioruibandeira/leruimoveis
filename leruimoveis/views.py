@@ -21,12 +21,6 @@ def about(request):
 def services(request):
     return render(request, 'leruimoveis/services.html')
     
-def login(request):
-    return render(request, 'leruimoveis/login.html')
-    
-def registrar(request):
-    return render(request, 'leruimoveis/registrar.html')
-    
 def servicedetails(request):
     service_id = request.GET.get('id')
     try:
