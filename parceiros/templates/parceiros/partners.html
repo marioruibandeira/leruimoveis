@@ -9,43 +9,58 @@
     </div>
 </div>
 
+<div class="b-example-divider ads-section contorno px-4 py-5 mt-6">
+  <div class="container">
+    
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Planos de Parceria</h1>
+          
+      <p class="fs-5 text-muted">
+        Os nossos planos de parceria têm como objetivo dar maior exposição à marca e aos serviços das imobiliárias parceiras, alcançando uma vasta gama de clientes e utilizadores em todo o país e além-fronteiras. 
+      </p>
+
+    </div>
+
+    <div class="card-body btn-parceiros-sm">
+      <a href="{% url 'fidelity' %}" class="w-100 btn btn-lg btn-outline-bronze">Saber Mais</a>
+    </div>
+
+  </div>
+</div>
+
 <div class="pcros-dark text-secondary px-4 py-5 text-center contorno">
-      <div class="py-5">
-        <h1 class="display-5 fw-bold text-white">Parceiros de Ouro</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="fs-5 mb-4">Parceiros de Ouro são aqueles aprovados pela nossa equipa e que mantêm uma relação comercial de excelência, marcada pelo mais alto nível de confiança e profissionalismo.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="{% url 'fidelity' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Junta-se Agora</a>
-          </div>
-        </div>
-      </div>
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">Parceiros Premium</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">Parceiros Premium são aqueles aprovados pela nossa equipa e que mantêm uma relação comercial de excelência, marcada pelo mais alto nível de confiança e profissionalismo.</p>
+    </div>
+  </div>
 
-      <div class="container marketing px-4 py-5 mt-6">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-3 person-espaco">
-          <div class="h-100 person">
-            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu"/>
-            <div class="person-contents">
-              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
-              <span class="meta d-block mb-3">Real Estate Agent</span>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Facere officiis inventore cumque tenetur laboriosam, minus
-                culpa doloremque odio, neque molestias?
-              </p>
-              <ul class="social list-unstyled list-inline dark-hover">
-                  <li class="list-inline-item">
-                    <a href="#"><span class="icon-twitter"></span></a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#"><span class="icon-facebook"></span></a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#"><span class="icon-linkedin"></span></a>
-                  </li>
-              </ul>
+  <div class="container marketing px-4 py-0 mt-0">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-3 person-espaco">
+        <div class="h-100 person">
+          <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu"/>
+          <div class="person-contents">
+            <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+            <span class="meta d-block mb-3">Real Estate Agent</span>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Facere officiis inventore cumque tenetur laboriosam, minus
+              culpa doloremque odio, neque molestias?
+            </p>
+            <ul class="social list-unstyled list-inline dark-hover">
+              <li class="list-inline-item">
+                <a href="#"><span class="icon-twitter"></span></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#"><span class="icon-facebook"></span></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#"><span class="icon-linkedin"></span></a>
+              </li>
+            </ul>
             </div>
           </div>
         </div><!-- /.col-lg-4 -->
@@ -124,14 +139,19 @@
               </div>
             </div>
           </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->      
+        </div><!-- /.row -->
+        
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{% url 'partners-details' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Todos os Parceiros Premium</a>
+      </div>
+
     </div><!-- /.container -->
 </div>
 
 <div class="container marketing px-4 py-5 mt-6">
     <div class="row mb-5">
         <div class="col-lg-12 mb-3" style="text-align: center;">
-            <h1 class="display-5 fw-bold">Parceiros Bronze, Prata e Ouro</h1>
+            <h1 class="display-5 fw-bold">Parceiros Avançados</h1>
             <div class="col-lg-12 mx-auto">
                 <p class="fs-5 mb-4">Se deseja comprar um imóvel com total segurança e profissionalismo, escolha na nossa lista de imobiliárias parceiras, organizadas por diferentes níveis e reconhecidas pelo mais alto padrão de confiabilidade.</p>
             </div>  
@@ -242,10 +262,134 @@
               </ul>
             </div>
           </div>
-        </div><!-- /.col-lg-4 -->
-
-        
+        </div><!-- /.col-lg-4 -->        
     </div><!-- /.row -->    
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="{% url 'partners-details' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Todos os Parceiros Avançados</a>
+    </div>
+
 </div><!-- /.container -->
+
+<div class="pcros-dark text-secondary px-4 py-5 text-center contorno">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Parceiros Essenciais</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Os nossos Parceiros Essenciais oferecem uma variedade de serviços imobiliários de elevada qualidade, garantindo soluções fiáveis e acessíveis.</p>
+        </div>
+      </div>
+
+      
+      <div class="container marketing px-4 py-0 mt-0">
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu"/>
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3 person-espaco">
+          <div class="h-100 person">
+            <img src="{% static 'assets/imagem/person_1-min.jpg' %}" alt="Image" class="img-fluid image-radiu" />
+            <div class="person-contents">
+              <h2 class="mb-0"><a href="{% url 'partner' %}">James Doe</a></h2>
+              <span class="meta d-block mb-3">Real Estate Agent</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facere officiis inventore cumque tenetur laboriosam, minus
+                culpa doloremque odio, neque molestias?
+              </p>
+              <ul class="social list-unstyled list-inline dark-hover">
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-twitter"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#"><span class="icon-linkedin"></span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row --> 
+        
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'partners-details' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Todos os Parceiros Essenciais</a>
+        </div>
+
+      </div>
+</div>
 
 {% endblock %}

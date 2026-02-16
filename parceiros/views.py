@@ -12,3 +12,6 @@ def sales(request):
 
 def partner(request):
     return render(request, 'parceiros/partner.html')
+
+def partners_details(request):
+    return render(request, 'parceiros/partners-details.html')

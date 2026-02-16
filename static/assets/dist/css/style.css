@@ -317,10 +317,17 @@
     color: #ccc;
 }
 
+.rodape-core
+{
+    color: #fff !important;
+}
+
 .rodape-text:hover
 {
     color: #ff6600;
 }
+
+.btn-parceiros-sm {padding: 0% 40% 0% 40%;}
 
 .saiba-mais 
 {

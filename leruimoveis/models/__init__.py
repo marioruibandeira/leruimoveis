@@ -1,6 +1,10 @@
 from .conteudo import Conteudo
 from .listagem import Listagem
-from .parceiro import Parceiro
+
+from .parceiros_tipo import TipoParceiro
+from .parceiros import Parceiro
+from .parceiros_social_media import ParceirosSocialMedia
+
 from .designacao import Designacao
 from .pais import Pais
 from .cidade import Cidade
