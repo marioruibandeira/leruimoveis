@@ -14,14 +14,8 @@
             <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">Quem Somos</a></li>
           </ul>          
   
-          <div class="text-end">
-            {% if user.is_authenticated %}
-              <a href="{% url 'signout' %}" class="btn btn-outline-light me-2 btn-danger">Sair</a>
-            {% else %}
-              <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Entrar</a>
-            {% endif %}
-            <a href="{% url 'anuncios_control' %}" class="btn btn-warning" style="background-color: #ff6600; border: #ff6600 1px solid; color:#fff; font-weight: bold;">Criar Anuncio</a>
-          </div>
+          <div class="text-end">  {% include 'usuarios/user-menu.html' %} </div>
+
         </div>
       </div>
     </header>

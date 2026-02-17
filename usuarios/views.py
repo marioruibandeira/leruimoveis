@@ -93,5 +93,8 @@ def signout(request):
     logout(request)
         
     return redirect('home')
+
+def profile(request):
+    return render(request, 'usuarios/perfil.html')
     
 
