@@ -16,8 +16,9 @@ from leruimoveis.models.localizacao_acessos import LocalizacaoAcessos
 from leruimoveis.models.situacao_legal_caracte import SituacaoLegalCaracte
 from leruimoveis.models.situacao_legal import SituacaoLegal
 from leruimoveis.models.fotos_adicionais import FotosAdicionais
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def anuncios_control(request):
     properties = Listagem.objects.all().order_by('-id')
     cidades = Cidade.objects.all()
@@ -46,6 +47,7 @@ def anuncios_control(request):
         'cidades': cidades        
     })
 
+@login_required
 def delete_property(request, pk):
     property = get_object_or_404(Listagem, pk=pk)
 
@@ -58,7 +60,7 @@ def delete_property(request, pk):
     messages.success(request, "O anúncio foi eliminado com sucesso.")
     return redirect('anuncios_control')
 
-
+@login_required
 def info_adicionais(request):
     properties = Listagem.objects.all().order_by('-id') 
     cidades = Cidade.objects.all() 
@@ -73,7 +75,7 @@ def info_adicionais(request):
     #context = { 'properties': properties } 
 
     #return render(request, 'anuncios/fotos-adicionais.html', context)
-
+@login_required
 def fotos_adicionais(request):
     properties = Listagem.objects.all().order_by('-id')
 
@@ -103,7 +105,7 @@ def fotos_adicionais(request):
         {'properties': properties}
     )
 
-
+@login_required
 def api_fotos(request, id):
     fotos = FotosAdicionais.objects.filter(fk_listagem_id=id)
 
@@ -125,7 +127,7 @@ def api_fotos(request, id):
     return JsonResponse(data)
 
 
-
+@login_required
 def get_caracteristicas(request, listagem_id):
     try:
         caract = CaracteristicasGerais.objects.get(fk_listagem_id=listagem_id)
@@ -184,7 +186,7 @@ def get_caracteristicas(request, listagem_id):
     except CaracteristicasGerais.DoesNotExist:
         return JsonResponse({"exists": False})
 
-
+@login_required
 def save_caracteristicas(request):
     print("POST RECEBIDO:", request.POST)
 
@@ -297,6 +299,7 @@ def save_caracteristicas(request):
             "message": "Ocorreu um erro ao guardar as características."
         })
 
+@login_required
 def delete_all_fotos(request, pk):
     # Buscar todas as fotos relacionadas à listagem
     fotos = FotosAdicionais.objects.filter(fk_listagem_id=pk)
@@ -313,7 +316,7 @@ def delete_all_fotos(request, pk):
     messages.success(request, "Todas as fotos foram eliminadas com sucesso.")
     return redirect('fotos_adicionais')
 
-
+@login_required
 def delete_foto(request, pk): 
     if request.method != "POST":
         return JsonResponse({"success": False, "error": "Método não permitido"}, status=405)
