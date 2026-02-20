@@ -98,5 +98,17 @@ def signout(request):
 @login_required
 def profile(request):
     return render(request, 'usuarios/perfil.html')
+
+@login_required
+def encerrar(request):
+    return render(request, 'usuarios/encerrar.html')
+
+@login_required
+def foto(request):
+    return render(request, 'usuarios/foto.html')
+
+@login_required
+def subscricao(request):
+    return render(request, 'usuarios/subscricao.html')
     
 

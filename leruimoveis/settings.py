@@ -86,9 +86,9 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'leruimov_db',
+        'NAME': '',
         'USER': 'root',
-        'PASSWORD': '@ContrabandFox01',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',             
         'PORT': '3306', 
         'OPTIONS':{
@@ -148,4 +148,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Login rederect
 LOGIN_URL = '/usuarios/login/'

@@ -559,6 +559,23 @@
 .telefones{display:none;}
 .modal-apagar{margin-top: 0px; width:100%;height: 20px; padding: 0px; font-size: 10px;}
 
+/**/
+/**/
+.perfil-menu{
+    text-decoration: none;
+}
+
+.btn-activo{
+    background-color: #ff6600;
+    color: #fff;
+}
+.perfil-menu:hover{
+    color: #ff6600;
+    color: #fff;
+}
+
+.perfil-bottom-btn {padding: 15px 0px 40px 0px;}
+
 @media (max-width: 768px) 
 {
     .px-4
@@ -629,4 +646,7 @@
     
     .computadores{display: none;}
     .telefones{display: block;}
+
+    /*perfil*/
+    .perfil-bottom-btn {padding: 15px 0px 10px 0px;}
 }
