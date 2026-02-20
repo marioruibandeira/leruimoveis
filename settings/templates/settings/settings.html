@@ -1,0 +1,42 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}  
+{% block content %}
+
+<div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                <li class="list-group-item" style="background-color: #ccc;">Configurações</li>
+                                <li class="list-group-item">
+                                    
+                                    <div class="mb-3 sub-titulo">
+                                        <label class="form-label">Remover Publicidades</label>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="conservacao1" name="conservacao" value="1" checked>
+                                            <label class="form-check-label" for="conservacao1">Não</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="conservacao2" name="conservacao" value="2">
+                                            <label class="form-check-label" for="conservacao2">Sim</label>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                         <div class="col-12 perfil-bottom-btn">
+                            <input type="submit" id="btnNovo" value="Guardar" class="btn btn-detalhes" />
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
