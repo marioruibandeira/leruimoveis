@@ -1,0 +1,63 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}  
+{% block content %}
+
+<div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left;">
+                                <a href="{% url 'perfil' %}" class="perfil-menu">
+                                    <li class="list-group-item ">Perfil</li>
+                                </a>
+                                <a href="{% url 'foto' %}" class="perfil-menu">
+                                    <li class="list-group-item ">Foto</li>
+                                </a>
+                                <a href="{% url 'subscricao' %}" class="perfil-menu">
+                                    <li class="list-group-item btn-activo">Subscrição</li>
+                                </a>
+                                <a href="{% url 'encerrar' %}" class="perfil-menu">
+                                    <li class="list-group-item">Encerra a conta</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>  
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                <li class="list-group-item" style="background-color: #ccc;">Perfil</li>
+                                <li class="list-group-item">
+
+                                    Atualmente, não possui um plano ativo (Particular ou Imobiliária). Como utilizador regular, pode visualizar e guardar listagens. Subscreva agora um plano "Amador" e comece a publicar os seus imóveis como um profissional!
+                                    
+                                    <br/><br/>
+
+                                    <div class="row row-cols-1 row-cols-md-12 mb-3 text-center">
+                                        <div class="col">
+                                            <div class="card mb-4 rounded-3 shadow-sm">
+                                                <div class="card-header py-3">
+                                                    <h4 class="my-0 fw-normal">Amador</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h1 class="card-title pricing-card-title">£10<small class="text-muted fw-light">/mês</small></h1>
+                                                    
+                                                    <button type="button" class="w-100 btn btn-lg btn-outline-bronze">Assina Um Mês</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 perfil-bottom-btn"> </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
