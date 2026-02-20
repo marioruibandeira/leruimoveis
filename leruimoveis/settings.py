@@ -152,3 +152,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Login rederect
 LOGIN_URL = '/usuarios/login/'
+
