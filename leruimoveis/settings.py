@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'anuncios',
     'parceiros',
     'usuarios',
+    'settings',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Login rederect
 LOGIN_URL = '/usuarios/login/'
+
