@@ -9,6 +9,7 @@ from django.core.validators import validate_email
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 def inscrever_se(request):
     if request.method == 'POST':
@@ -94,7 +95,20 @@ def signout(request):
         
     return redirect('home')
 
+@login_required
 def profile(request):
     return render(request, 'usuarios/perfil.html')
+
+@login_required
+def encerrar(request):
+    return render(request, 'usuarios/encerrar.html')
+
+@login_required
+def foto(request):
+    return render(request, 'usuarios/foto.html')
+
+@login_required
+def subscricao(request):
+    return render(request, 'usuarios/subscricao.html')
     
 

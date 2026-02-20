@@ -1,0 +1,51 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}  
+{% block content %}
+
+<div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left;">
+                                <a href="{% url 'perfil' %}" class="perfil-menu">
+                                    <li class="list-group-item ">Perfil</li>
+                                </a>
+                                <a href="{% url 'foto' %}" class="perfil-menu">
+                                    <li class="list-group-item ">Foto</li>
+                                </a>
+                                <a href="{% url 'subscricao' %}" class="perfil-menu">
+                                    <li class="list-group-item">Subscrição</li>
+                                </a>
+                                <a href="{% url 'encerrar' %}" class="perfil-menu">
+                                    <li class="list-group-item btn-activo">Encerra a conta</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>  
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                <li class="list-group-item" style="background-color: #ccc;">Encerra a Conta</li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            
+                                            <b>Aviso:</b> Se encerrar a sua conta, será removido de todos os seus anúncios e históricos disponíveis. Perderá o acesso à sua conta e aos dados associados de forma permanente, mesmo que decida criar uma nova conta com o mesmo e-mail no futuro.
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 perfil-bottom-btn">
+                            <input type="submit" id="btnNovo" value="Encerra a conta" class="btn btn-detalhes" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
