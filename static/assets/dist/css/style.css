@@ -239,6 +239,15 @@
     height: 200px;
 }
 
+.capa-precos
+{
+    background-image: url('../../imagem/lerui-precos.jpg') !important; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 200px;
+}
+
 .capa-q-somos
 {
     background-image: url('../../imagem/capa_quem_somos.jpg') !important; 
