@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'anuncios',
     'parceiros',
     'usuarios',
+<<<<<<< HEAD
     'precos',
+=======
+    'settings',
+    'pagamento',
+>>>>>>> fab5ef9b7d283e5e9639f89fcf645a4464d61272
 ]
 
 MIDDLEWARE = [
@@ -89,7 +94,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'leruimov_db',
         'USER': 'root',
+<<<<<<< HEAD
         'PASSWORD': '@ContrabandFox01',
+=======
+        'PASSWORD': '@',
+>>>>>>> fab5ef9b7d283e5e9639f89fcf645a4464d61272
         'HOST': '127.0.0.1',             
         'PORT': '3306', 
         'OPTIONS':{
@@ -151,3 +160,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Login rederect
 LOGIN_URL = '/usuarios/login/'
+

@@ -585,6 +585,8 @@
 
 .perfil-bottom-btn {padding: 15px 0px 40px 0px;}
 
+.form-bg{ background-color: #F5F5F5 !important;}
+
 @media (max-width: 768px) 
 {
     .px-4

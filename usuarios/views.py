@@ -111,4 +111,3 @@ def foto(request):
 def subscricao(request):
     return render(request, 'usuarios/subscricao.html')
     
-
