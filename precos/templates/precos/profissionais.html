@@ -1,0 +1,185 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 capa-profissionais">
+        <div class="container marketing px-4 py-5 mt-6">
+            <div class="row">
+                <div class="col-lg-6" style="text-align: left;">
+                    <div class="col-lg-6 ">
+                        <h2 class="display-6 text-center mb-4 fundo-preco-colorido">Profissionais</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container marketing px-4 py-5 mt-6">
+        <div class="row">
+            <div class="col-lg-12" style="text-align: left;">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active-color-part" href="{% url 'precos' %}">Particulares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active active-color-pro" aria-current="page" href="#">Profissionais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-color-empr" href="{% url 'empreendimentos' %}">Empreendimentos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12" style="text-align: left;">
+                <div class="py-5">
+                    <h2 class="display-6 text-center mb-4">Mostre os seus imóveis<br/> a pessoas realmente interessadas</h2>
+                    
+                        <div class="row">
+                        <div class="col-lg-4"> </div>
+                        <div class="col-lg-4">
+                            <div class="form-bg" style="padding: 14px;border-radius: 5px; border:#ccc solid 1px;">
+                            <div class="col-12 mb-3" style="margin-bottom: 0px !important;">
+                                <label for="titulo" class="form-label input-titulos">Número de anúncios</label>
+                                <select name="designacao" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" style="padding: 6px 2px 6px 12px; font-size: 16px;color: #777676;">
+                                    <option selected>1-20</option>
+                                    <option value="1">11-40</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-4"> </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+              <div class="col" style="padding-top: 64px;">
+                
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Iniciante</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">£25<small class="text-muted fw-light">/mês</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>10 users included</li>
+                      <li>2 GB of storage</li>
+                      <li>Email support</li>
+                      <li>Help center access</li>
+                    </ul>
+                    <a href="{% url 'pagamento' %}"class="w-100 btn btn-lg btn-outline-purple">Começa Agora</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+
+                <div class="card mb-4 rounded-3 shadow-sm border-part-purple">
+                  <div class="card-header py-3 text-white bg-part-purple border-part-purple">
+                    <h4 class="my-0 fw-normal">Recomendado</h4>
+                  </div>
+                  <div class="card-header py-3 text-white bg-part-purple-light border-part-purple-light">
+                    <h4 class="my-0 fw-normal">Intermediário</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">£80<small class="text-muted fw-light">/mês</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>30 users included</li>
+                      <li>15 GB of storage</li>
+                      <li>Phone and email support</li>
+                      <li>Help center access</li>
+                    </ul>
+                    <a href="{% url 'pagamento' %}" class="w-100 btn btn-lg bg-part-purple border-part-purple-light">Começa Agora</a>
+                  </div>
+                </div>
+
+
+                
+              </div>
+              <div class="col" style="padding-top: 64px;">
+
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Profissional</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">£45<small class="text-muted fw-light">/mês</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>20 users included</li>
+                            <li>10 GB of storage</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <a href="{% url 'pagamento' %}" class="w-100 btn btn-lg bg-part-purple border-part-purple-light">Começa Agora</a>
+                    </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <h2 class="display-6 text-center mb-4">Compare planos</h2>
+
+            <div class="table-responsive">
+              <table class="table text-center">
+                <thead>
+                  <tr>
+                    <th style="width: 34%;border-bottom: #000 solid 1px;"></th>
+                    <th style="width: 22%;border-bottom: #000 solid 1px;">Iniciante</th>
+                    <th style="width: 22%;border-bottom: #000 solid 1px;">Intermediário</th>
+                    <th style="width: 22%;border-bottom: #000 solid 1px;">Profissional</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="text-start linhas">Visibilidade Máxima</th>
+                    <td class="linhas"></td>
+                    <td class="linhas"></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-start linhas">Visibilidade Limitada</th>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                </tbody>
+
+                <tbody>
+                  <tr>
+                    <th scope="row" class="text-start linhas">Perfil Comercial</th>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-start linhas">Listagem de Imóveis</th>
+                    <td class="linhas"></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-start linhas">Unlimited members</th>
+                    <td class="linhas"></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-start">Extra security</th>
+                    <td></td>
+                    <td></td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#A3B3FF"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </main>
+
+    </div>
+
+    
+
+{% endblock %}
