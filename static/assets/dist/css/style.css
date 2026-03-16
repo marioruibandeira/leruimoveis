@@ -320,6 +320,13 @@
       border-radius: 8px;
 }
 
+.caixa-preco
+{
+    display: none;
+}
+.caixa-p-font{font-size: 23px;}
+.aderir-plano{ display: none; }
+
  h3, .h3 {
   font-size: calc(1.3rem + 0.6vw); 
 }
