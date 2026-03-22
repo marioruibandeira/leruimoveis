@@ -77,6 +77,41 @@ def buscar_planos_profissionais(request):
     return JsonResponse(list(planos_dois), safe=False)
 
 def empreendimentos(request):
+    cliente_id = request.GET.get('cliente_id')
+    nEmprendimentos_id = request.GET.get('nEmprendimentos_id')
+    is_ajax = request.GET.get('format') == 'json'
+
+    if cliente_id and nEmprendimentos_id:
+        try:
+            c_id = int(cliente_id)            
+            ne_id = int(nEmprendimentos_id)
+
+            planos_tres = Plano.objects.filter(
+                fk_tipo_cliente_id = c_id,
+                total_empreendimentos = ne_id
+            ).values('preco', 'tipo_plano_id', 'plano_id', 'fk_tipo_cliente_id', 'periodo')
+
+            if is_ajax or request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse(list(planos_tres), safe=False)
+
+        except (ValueError, TypeError) as e:
+            if is_ajax:
+                return JsonResponse({'error': 'Parâmetros inválidos'}, status=400)
+
     return render(request, 'precos/empreendimentos.html') 
+
+def buscar_planos_empreendimentos(request):
+    cliente_id = request.GET.get('cliente_id')
+    nEmprendimentos_id = request.GET.get('nEmprendimentos_id')
+
+    if not cliente_id or not nEmprendimentos_id:
+        return JsonResponse([], safe=False)
+
+    planos_tres = Plano.objects.filter(
+        fk_tipo_cliente_id = cliente_id,
+        total_empreendimentos = nEmprendimentos_id 
+    ).values('preco', 'tipo_plano_id', 'plano_id')
+
+    return JsonResponse(list(planos_tres), safe=False)
 
 
