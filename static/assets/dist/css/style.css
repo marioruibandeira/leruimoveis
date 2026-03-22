@@ -354,6 +354,8 @@
     border: 1px solid #ff6600;
 }
 
+.espaco-preco{padding-top: 64px;}
+
 .rodape-text
 {
     color: #ccc;
@@ -804,4 +806,6 @@
 
     /*perfil*/
     .perfil-bottom-btn {padding: 15px 0px 10px 0px;}
+
+    .espaco-preco{padding-top: 0px;}
 }
