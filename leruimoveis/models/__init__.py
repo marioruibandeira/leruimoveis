@@ -1,10 +1,10 @@
 from .conteudo import Conteudo
 from .listagem import Listagem
-
+#
 from .parceiros_tipo import TipoParceiro
 from .parceiros import Parceiro
 from .parceiros_social_media import ParceirosSocialMedia
-
+#
 from .designacao import Designacao
 from .pais import Pais
 from .cidade import Cidade
@@ -29,5 +29,12 @@ from .localizacao_acessos_caracte import LocalizacaoAcessosCaracte
 #
 from .situacao_legal import SituacaoLegal
 from .situacao_legal_caracte import SituacaoLegalCaracte
-
+#
 from .fotos_adicionais import FotosAdicionais
+#
+from .tipo_cliente import TipoCliente
+from .tipo_servico import TipoServico
+from .tipo_plano import TipoPlano
+from .plano import Plano
+from .tipo_negocio import TipoNegocio
+from .detalhes_imovel import DetalhesImovel

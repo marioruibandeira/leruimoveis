@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'anuncios',
     'parceiros',
     'usuarios',
+    'precos',
     'settings',
     'pagamento',
 ]
@@ -88,9 +89,9 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
+        'NAME': 'leruimov_db',
         'USER': 'root',
-        'PASSWORD': '@',
+        'PASSWORD': '@ContrabandFox01',
         'HOST': '127.0.0.1',             
         'PORT': '3306', 
         'OPTIONS':{

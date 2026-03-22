@@ -239,6 +239,33 @@
     height: 200px;
 }
 
+.capa-precos
+{
+    background-image: url('../../imagem/lerui-precos.jpg') !important; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 150px;
+}
+
+.capa-profissionais
+{
+    background-image: url('../../imagem/capa-profissionais.jpg') !important; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 150px;
+}
+
+.capa-bg-empreendimentos
+{
+    background-image: url('../../imagem/bg-empreendimentos.jpg') !important; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 150px;
+}
+
 .capa-q-somos
 {
     background-image: url('../../imagem/capa_quem_somos.jpg') !important; 
@@ -285,6 +312,21 @@
       border-radius: 8px;
 }
 
+.fundo-preco-colorido
+{
+    background-color: rgba(250, 130, 56, 0.45); 
+      display: inline-block; 
+      padding: 0px 10px 6px 10px; 
+      border-radius: 8px;
+}
+
+.caixa-preco
+{
+    display: none;
+}
+.caixa-p-font{font-size: 23px;}
+.aderir-plano{ display: none; }
+
  h3, .h3 {
   font-size: calc(1.3rem + 0.6vw); 
 }
@@ -311,6 +353,8 @@
     color: #333333;
     border: 1px solid #ff6600;
 }
+
+.espaco-preco{padding-top: 64px;}
 
 .rodape-text
 {
@@ -423,6 +467,11 @@
     text-align: left;
 }
 
+/*Cores dos pacotes*/
+.active-color-part{ color:#1C69A8 !important; }
+.active-color-pro{color:#615FFF !important; }
+.active-color-empr{color:#1F7A55 !important; }
+
 /**/
 .bg-ouro
 {
@@ -430,10 +479,103 @@
     color: #fff;
 }
 
+.bg-part-blue
+{
+    background-color: #21BCFF !important;
+    color: #fff;
+}
+
+.border-part-blue
+{
+    border: 1px solid #21BCFF;
+}
+
+.bg-part-blue-light
+{
+    background-color: #B8E6FE !important;
+    color: #000 !important;
+}
+
+.border-part-blue-light
+{
+    border: 1px solid #B8E6FE;
+}
+
 .border-ouro
 {
     border: 1px solid #ff6600;
 }
+
+/*Purple*/
+.bg-part-purple
+{
+    background-color: #A3B3FF !important;
+    color: #000;
+}
+
+.border-part-purple
+{
+    border: 1px solid #A3B3FF;
+}
+
+.bg-part-purple-light
+{
+    background-color: #C6D2FF !important;
+    color: #000 !important;
+}
+
+.border-part-purple-light
+{
+    border: 1px solid #C6D2FF;
+}
+
+.btn-outline-purple
+{
+    color:#000;
+    border-color:#A3B3FF;
+}
+
+.btn-outline-purple:hover
+{
+    color:#000;
+    background-color:#A3B3FF;
+    border-color:#C6D2FF;
+}
+
+/*Green*/
+.bg-part-green
+{
+    background-color: #05DF72 !important;
+    color: #000;
+}
+
+.border-part-green
+{
+    border: 1px solid #7BF1A8;
+    color: #000 !important;
+}
+
+.bg-part-green-light
+{
+    background-color: #B9F8CF !important;
+    color: #000 !important;
+}
+
+.btn-outline-green
+{
+    color:#1F7A55;
+    border-color:#05DF72;
+}
+
+.btn-outline-green:hover
+{
+    color:#000;
+    background-color:#05DF72;
+    border-color:#B9F8CF;
+}
+
+.fw-light-color{color: #1F7A55 !important;}
+/**/
 
 .pricing-header {
   max-width: 700px;
@@ -446,7 +588,7 @@
 .btn-outline-bronze
 {
     color:#ff6600;
-    border-color:#ff6600
+    border-color:#ff6600;
 }
 
 .btn-outline-bronze:hover
@@ -454,6 +596,19 @@
     color:#000;
     background-color:#ff6600;
     border-color:#ff6600
+}
+
+.btn-outline-blue
+{
+    color:#21BCFF;
+    border-color:#21BCFF;
+}
+
+.btn-outline-blue:hover
+{
+    color:#000;
+    background-color:#21BCFF;
+    border-color:#B8E6FE;
 }
 
 .contacto-info i {
@@ -651,4 +806,6 @@
 
     /*perfil*/
     .perfil-bottom-btn {padding: 15px 0px 10px 0px;}
+
+    .espaco-preco{padding-top: 0px;}
 }
