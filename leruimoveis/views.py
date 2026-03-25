@@ -1,6 +1,6 @@
 # leruimoveis/views.py
 from django.shortcuts import render, get_object_or_404
-from leruimoveis.models import Conteudo, Listagem  
+from leruimoveis.models import Conteudo, Listagem, Servico  
 from leruimoveis.models.fotos_adicionais import FotosAdicionais
 
 def index(request):
@@ -19,15 +19,16 @@ def about(request):
     return render(request, 'leruimoveis/about.html')
 
 def services(request):
-    return render(request, 'leruimoveis/services.html')
+    allServices = Servico.objects.all().order_by('-servico_id')
+    return render(request, 'leruimoveis/services.html', {"services": allServices})
     
 def servicedetails(request):
-    service_id = request.GET.get('id')
+    service_id = request.GET.get('servico_id')
     try:
         service = Conteudo.objects.get(conteudo_id=service_id)
     except Conteudo.DoesNotExist:
         service = None
-    return render(request, 'leruimoveis/service-details.html', {'service': service})
+    return render(request, 'leruimoveis/service-details.html', {'servicedetails': service})
 
 
 def propertydetails(request, property_id):
