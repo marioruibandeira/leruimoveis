@@ -6,66 +6,106 @@
 
 {% block content %}
 
-<div class="container marketing px-4 py-5 mt-6">
+<div class="b-example-divider ads-section">
+  <div class="container">
+    <div class="publicidade">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <div class="card" style="width: 100%;">
+            <img src="/media/listimages/Casa_do_falcao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-3">
+          <div class="card" style="width: 100%;">
+            <img src="/media/listimages/Casa_do_falcao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-3">
+          <div class="card" style="width: 100%;">
+            <img src="/media/listimages/Casa_do_falcao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-3">
+          <div class="card" style="width: 100%;">
+            <img src="/media/listimages/Casa_do_falcao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="row">
-      <div class="col-lg-6">
-        <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Últimas Listagens</h2>
+      <div class="pt-1 link-destaques">
+        <h5>
+          <a href="{% url 'destaques' %}" class="todos-destaques">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#232323"><g><rect fill="none" height="24" width="24"/></g><g><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,5.52,4.48,10,10,10S22,17.52,22,12z M12,13l-4,0v-2l4,0V8l4,4l-4,4V13z"/></g></svg>
+            Todos os imóveis em destaque
+          </a>
+        </h5>
       </div>
-      <div class="col-lg-6 text-lg-end">
-        <p>
-          <a href="{% url 'properties' %}" class="btn btn-normal text-white py-3 px-4">Ver Todas</a>
-        </p>
-      </div>
-    
     </div>
+  </div>
+</div>
 
-    
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-
-      {% for property in properties %}
+<div class="container marketing px-4 py-5 mt-6">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Últimas Listagens</h2>
+    </div>
+    <div class="col-lg-6 text-lg-end">
+      <p> <a href="{% url 'properties' %}" class="btn btn-normal text-white py-3 px-4">Ver Todas</a> </p>
+    </div>
+  </div>
+  
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    {% for property in properties %}
       <div class="col-lg-4">
-        
         <div class="card card-espaco" style="width: 16rem;">
+
           {% if property.fotos %}
             <img src="{{ property.fotos.url }}" class="card-img-top" alt="{{ property.titulo }}" style="height: 250px; object-fit: cover;">
           {% endif %}
           
           <div class="card-body">
-            
             <div class="price mb-2">
-              <span>{% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
-	                    		{{ property.preco }}</span></div>
-              <div>
-                <span class="d-block mb-2 text-black-50">{{ property.endereco }}</span>
-                <span class="city d-block mb-3">{{ property.cidade.nome }}, {{ property.pais.nome }}</span>
 
-                <a href="{% url 'detalhespropriadade' property.id %}" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
-              </div>
-              
+              <span>
+                {% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+	              {{ property.preco }}
+              </span>
+            </div>
+            <div>
+              <span class="d-block mb-2 text-black-50">{{ property.endereco }}</span>
+              <span class="city d-block mb-3">{{ property.cidade.nome }}, {{ property.pais.nome }}</span>
+              <a href="{% url 'detalhespropriadade' property.id %}" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
+            </div>
+
           </div>
         </div>
-        
-      
       </div><!-- /.col-lg-4 -->
-      {% empty %}
-        <div class="alert alert-warning" style="margin-top: 15px;"> Não existem anúncios disponíveis. </div>
-      {% endfor %}
-      
-      
-    </div><!-- /.row -->
-    
-  </div><!-- /.container -->
+    {% empty %}
+      <div class="alert alert-warning" style="margin-top: 15px;"> Não existem anúncios disponíveis. </div>
+    {% endfor %}
+  </div><!-- /.row -->
+</div><!-- /.container -->
 
-  <div class="b-example-divider ads-section">
-    <div class="container">
-      <div class="publicidade">
+<div class="b-example-divider ads-section">
+  <div class="container">
+    <div class="publicidade">
         kjh
-      </div>
     </div>
   </div>
+</div>
   
   <div class="pcros-dark text-secondary px-4 py-5 text-center contorno">
     <div class="py-5">
