@@ -78,6 +78,7 @@
           
           <div class="card-body">
             <div class="price mb-2">
+
               <span>
                 {% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
 	              {{ property.preco }}
@@ -88,6 +89,7 @@
               <span class="city d-block mb-3">{{ property.cidade.nome }}, {{ property.pais.nome }}</span>
               <a href="{% url 'detalhespropriadade' property.id %}" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
             </div>
+
           </div>
         </div>
       </div><!-- /.col-lg-4 -->
@@ -224,31 +226,31 @@
       </div><!-- /.container -->
     </div>
 
-<div class="fnd-dark text-secondary text-center px-4 " style="border-top: #ff6600 1px solid;">
-  <div class="container marketing px-4 py-5 mt-6">
-    <!-- Three columns of text below the carousel -->
-    <div class="container " id="featured-3">
+    <div class="fnd-dark text-secondary text-center px-4 " style="border-top: #ff6600 1px solid;">
+    <div class="container marketing px-4 py-5 mt-6">
+      
+      <!-- Three columns of text below the carousel -->
+      <div class="container " id="featured-3">
+        <h2 class="pb-2 rodape-core">Nossos Serviços</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 
-      <h2 class="pb-2 rodape-core">Nossos Serviços</h2>
-
-      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        
-        <div class="feature col">
-          <div class="feature-icon bg-primary bg-gradient">
-            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="34px" viewBox="0 0 24 24" width="34px" fill="#FFFFFF"><rect fill="none" height="24" width="24"/><g><path d="M17.41,6.59L15,5.5l2.41-1.09L18.5,2l1.09,2.41L22,5.5l-2.41,1.09L18.5,9L17.41,6.59z M21.28,12.72L20.5,11l-0.78,1.72 L18,13.5l1.72,0.78L20.5,16l0.78-1.72L23,13.5L21.28,12.72z M16.24,14.37l1.94,1.47l-2.5,4.33l-2.24-0.94 c-0.2,0.13-0.42,0.26-0.64,0.37L12.5,22h-5l-0.3-2.41c-0.22-0.11-0.43-0.23-0.64-0.37l-2.24,0.94l-2.5-4.33l1.94-1.47 C3.75,14.25,3.75,14.12,3.75,14s0-0.25,0.01-0.37l-1.94-1.47l2.5-4.33l2.24,0.94c0.2-0.13,0.42-0.26,0.64-0.37L7.5,6h5l0.3,2.41 c0.22,0.11,0.43,0.23,0.64,0.37l2.24-0.94l2.5,4.33l-1.94,1.47c0.01,0.12,0.01,0.24,0.01,0.37S16.25,14.25,16.24,14.37z M13,14 c0-1.66-1.34-3-3-3s-3,1.34-3,3s1.34,3,3,3S13,15.66,13,14z"/></g></svg>
-          </div>          
-          <h2 class="rodape-core">Gestão de Imoveis</h2>
-          <p style="color: #ccc;">Gerimos o seu imóvel, cuidando de manutenções, cobranças e busca por inquilinos. Confie em nós para facilitar sua vida com eficiência e transparência.</p>
-          <a href="{% url 'servicedetails' %}?servico_id=3" class="saiba-mais"> Saiba Mais </a>
-        </div>
-        <div class="feature col">
-          <div class="feature-icon bg-primary bg-gradient">
-            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20" height="40px" viewBox="0 0 20 20" width="40px" fill="#FFFFFF"><rect fill="none" height="20" width="20"/><path d="M11.5,1.5L6,5.5v2h1.5l6.34,2.26c1,0.35,1.66,1.3,1.66,2.36v0.39H17v-7L11.5,1.5z M11.12,8.25h-0.75V7.5h0.75V8.25z M11.12,6.75h-0.75V6h0.75V6.75z M12.62,8.25h-0.75V7.5h0.75V8.25z M12.62,6.75h-0.75V6h0.75V6.75z M1,18h3V9H1V18z M10.5,14 l-1.53-0.51l0.36-1.01L10.5,13h2.62c0.49,0,0.88-0.39,0.88-0.88v0c0-0.37-0.23-0.7-0.58-0.83L7,9H5.5v7.36l6,1.64l6.5-2.5v0 c0-0.83-0.67-1.5-1.5-1.5H10.5z"/></svg>
+          <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="34px" viewBox="0 0 24 24" width="34px" fill="#FFFFFF"><rect fill="none" height="24" width="24"/><g><path d="M17.41,6.59L15,5.5l2.41-1.09L18.5,2l1.09,2.41L22,5.5l-2.41,1.09L18.5,9L17.41,6.59z M21.28,12.72L20.5,11l-0.78,1.72 L18,13.5l1.72,0.78L20.5,16l0.78-1.72L23,13.5L21.28,12.72z M16.24,14.37l1.94,1.47l-2.5,4.33l-2.24-0.94 c-0.2,0.13-0.42,0.26-0.64,0.37L12.5,22h-5l-0.3-2.41c-0.22-0.11-0.43-0.23-0.64-0.37l-2.24,0.94l-2.5-4.33l1.94-1.47 C3.75,14.25,3.75,14.12,3.75,14s0-0.25,0.01-0.37l-1.94-1.47l2.5-4.33l2.24,0.94c0.2-0.13,0.42-0.26,0.64-0.37L7.5,6h5l0.3,2.41 c0.22,0.11,0.43,0.23,0.64,0.37l2.24-0.94l2.5,4.33l-1.94,1.47c0.01,0.12,0.01,0.24,0.01,0.37S16.25,14.25,16.24,14.37z M13,14 c0-1.66-1.34-3-3-3s-3,1.34-3,3s1.34,3,3,3S13,15.66,13,14z"/></g></svg>
+            </div>
+            <h2 class="rodape-core">Gestão de Imoveis</h2>
+            <p style="color: #ccc;">Gerimos o seu imóvel, cuidando de manutenções, cobranças e busca por inquilinos. Confie em nós para facilitar sua vida com eficiência e transparência.</p>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
           </div>
-          <h2 class="rodape-core">Listagem de Imoveis</h2>
-          <p style="color: #ccc;">Oferecemos um serviço de listagem de imóveis que facilita a busca de propriedades. Corretores, agências e público podem postar e gerenciar anúncios.</p>
-          <a href="{% url 'servicedetails' %}?servico_id=5" class="saiba-mais"> Saiba Mais </a>
-        </div>
+
+          <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20" height="40px" viewBox="0 0 20 20" width="40px" fill="#FFFFFF"><rect fill="none" height="20" width="20"/><path d="M11.5,1.5L6,5.5v2h1.5l6.34,2.26c1,0.35,1.66,1.3,1.66,2.36v0.39H17v-7L11.5,1.5z M11.12,8.25h-0.75V7.5h0.75V8.25z M11.12,6.75h-0.75V6h0.75V6.75z M12.62,8.25h-0.75V7.5h0.75V8.25z M12.62,6.75h-0.75V6h0.75V6.75z M1,18h3V9H1V18z M10.5,14 l-1.53-0.51l0.36-1.01L10.5,13h2.62c0.49,0,0.88-0.39,0.88-0.88v0c0-0.37-0.23-0.7-0.58-0.83L7,9H5.5v7.36l6,1.64l6.5-2.5v0 c0-0.83-0.67-1.5-1.5-1.5H10.5z"/></svg>
+            </div>
+            <h2 class="rodape-core">Listagem de Imoveis</h2>
+            <p style="color: #ccc;">Oferecemos um serviço de listagem de imóveis que facilita a busca de propriedades. Corretores, agências e público podem postar e gerenciar anúncios.</p>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
+          </div>
 
           <div class="feature col">
             <div class="feature-icon bg-primary bg-gradient">
@@ -256,17 +258,21 @@
             </div>
             <h2 class="rodape-core">Corretagem</h2>
             <p style="color: #ccc;">Oferecemos um serviço especializado na venda de imóveis, ajudando proprietários a encontrar compradores e vice-versa de forma eficiente e transparente.</p>
-            <a href="{% url 'servicedetails' %}?servico_id=7" class="saiba-mais"> Saiba Mais </a>
+            <a href="#" class="saiba-mais"> Saiba Mais </a>
           </div>
+
+          
+
         </div>
-        
+
+
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <a href="{% url 'services' %}" class="btn btn-parceiros btn-lg px-4 me-sm-3 fw-bold">Outros Serviços</a>
         </div>
 
-    </div>
+      </div>
       
-  </div><!-- /.container -->
-</div>
+    </div><!-- /.container -->
+  </div>
     
 {% endblock %}
