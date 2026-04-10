@@ -35,6 +35,9 @@ def propertydetails(request, property_id):
     property = get_object_or_404(Listagem, id=property_id)  
     return render(request, 'leruimoveis/property.html', {'property': property})
 
+def destaques(request):
+    return render(request, 'leruimoveis/destaques.html')
+
 
 
 

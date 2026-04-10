@@ -13,7 +13,7 @@ urlpatterns = [
     path('properties/', views.properties, name='properties'),
     path('about/', views.about, name='about'),
     path('services/', views.services, name='services'),
-    #path('login/', views.login, name='login'),
+    path('destaques/', views.destaques, name='destaques'),
     #path('registrar/', views.registrar, name='registrar'),
     path('service-details/', servicedetails, name='servicedetails'),
     path('central-servicos/', include('centralservicos.urls')),
