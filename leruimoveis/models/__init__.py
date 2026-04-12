@@ -38,3 +38,5 @@ from .tipo_plano import TipoPlano
 from .plano import Plano
 from .tipo_negocio import TipoNegocio
 from .detalhes_imovel import DetalhesImovel
+#
+from .configuracoes import Configuracoes
