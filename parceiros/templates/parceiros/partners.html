@@ -3,11 +3,13 @@
 
 {% block content %}
 
-<div class="b-example-divider ads-section">
-    <div class="container">
-        <div class="publicidade"> publicidade </div>
-    </div>
-</div>
+{% if mostrar_publicidade %}
+  <div class="b-example-divider ads-section">
+      <div class="container">
+          <div class="publicidade"> publicidade </div>
+      </div>
+  </div>
+{% endif %}
 
 <div class="b-example-divider ads-section contorno px-4 py-5 mt-6">
   <div class="container">

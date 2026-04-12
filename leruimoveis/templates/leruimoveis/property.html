@@ -4,13 +4,14 @@
 
 {% block content %}
 
+{% if mostrar_publicidade %}
   <div class="b-example-divider rodape-text ads-section contorno">
     <div class="container">
-      <div class="publicidade">
-        kjh
-      </div>
+      <div class="publicidade"> publicidade </div>
     </div>
   </div>
+{% endif %}
+
   <div class="container marketing px-4 py-5 mt-6">
     <div class="row">
       <div class="col-lg-6">
@@ -64,10 +65,12 @@
 
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <div class="publi-anuncio">Pub</div>
-        <div class="d-block p-5 espacamento-bottom" style="padding: 0px !important; border-radius: 5px;">
-          <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" alt="Image" class="img-fluid" style="border-radius: 5px;"/>
-        </div>
+        {% if mostrar_publicidade %}
+          <div class="publi-anuncio">Pub</div>
+          <div class="d-block p-5 espacamento-bottom" style="padding: 0px !important; border-radius: 5px;">
+            <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" alt="Image" class="img-fluid" style="border-radius: 5px;"/>
+          </div>
+        {% endif %}
         
         <div class="d-block agent-box p-5" style="padding: 20px !important;">
           <div class="img mb-4">

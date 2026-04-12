@@ -4,13 +4,13 @@
 
 {% block content %}
 
-<div class="b-example-divider rodape-text ads-section contorno">
-  <div class="container">
-    <div class="publicidade">
-      kjh
+{% if mostrar_publicidade %}
+  <div class="b-example-divider rodape-text ads-section contorno">
+    <div class="container">
+      <div class="publicidade"> publicidade </div>
     </div>
   </div>
-</div>
+{% endif %}
 
 
 <div class="container marketing px-4 py-5 mt-6">
@@ -123,10 +123,13 @@
     </div><!-- /.container -->
   </div>
 
+{% if mostrar_publicidade %}
   <div class="b-example-divider contorno" style="height: auto !important;" >
     <div class="container">
       <div class="publicidade">publicidade Aqui</div>
     </div>
   </div>
+{% endif %}
+
     
       {% endblock %}
