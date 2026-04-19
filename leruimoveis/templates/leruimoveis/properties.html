@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% load humanize %}
+
 {% if mostrar_publicidade %}
   <div class="b-example-divider rodape-text ads-section contorno">
     <div class="container">
@@ -14,20 +16,34 @@
 
 <div class="container marketing px-4 py-5 mt-6">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-7">
       <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Lerui Imoveis > Listagens</h2>
     </div>
-    <div class="col-lg-6 text-lg-end">
-      <p>
-        <a href="todos-imoveis.html" target="_blank" class="btn btn-normal text-white py-3 px-4">Imoveis Em Angola</a>
-      </p>
+    <div class="col-lg-2 text-lg-end" >
+      <p> <a href="{% url 'properties' %}?ps=0" class="btn btn-normal text-white py-3 px-4" style="background-color: #ccc; border-color: #ccc; color: #000 !important;">Ver Todo</a> </p>
+    </div>
+    <div class="col-lg-3 text-lg-end">
+
+      
+
+      {% if ps == "0" %}
+        <p> <a href="{% url 'properties' %}?ps=2" class="btn btn-normal text-white py-3 px-4">Imóveis em Angola</a> </p>
+      {% endif %}
+
+      {% if ps == "1" %}
+        <p> <a href="{% url 'properties' %}?ps=2" class="btn btn-normal text-white py-3 px-4">Imóveis em Angola</a> </p>
+      {% endif %}
+
+      {% if ps == "2" %}
+        <p> <a href="{% url 'properties' %}?ps=1" class="btn btn-normal text-white py-3 px-4">Imóveis em Portugal</a> </p>
+      {% endif %}
     </div> 
   </div>
   
   <!-- Three columns of text below the carousel -->
   <div class="row">
     
-    {% for property in allProperties %}
+    {% for property in properties %}
       <div class="col-lg-4">
         
         <div class="card card-espaco" style="width: 16rem;">
@@ -38,8 +54,11 @@
           <div class="card-body">
             
             <div class="price mb-2">
-              <span>{% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
-	                    		{{ property.preco }}</span></div>
+              <span>
+                {% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+	              {{ property.preco|floatformat:2|intcomma }}
+              </span>
+            </div>
               <div>
                 <span class="d-block mb-2 text-black-50"
                   >{{ property.endereco }}</span

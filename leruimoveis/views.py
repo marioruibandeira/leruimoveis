@@ -8,8 +8,21 @@ def index(request):
     return render(request, 'leruimoveis/index.html', {"properties": properties})
     
 def properties(request):
-    allProperties = Listagem.objects.all().order_by('-id')  
-    return render(request, 'leruimoveis/properties.html', {"properties": allProperties})
+    ps = request.GET.get('ps', '0')
+    
+    query = Listagem.objects.all()
+
+    if ps == '1' or ps == '2':
+        query = query.filter(pais_id=ps)
+
+    lista_propriedades = query.order_by('-id')[:12]  
+
+    contexto = {
+        "properties": lista_propriedades,
+        "ps": ps  # Enviamos de volta para o HTML saber qual botão destacar
+    }
+
+    return render(request, 'leruimoveis/properties.html', contexto)
     
 def home(request):
     properties = Listagem.objects.all().order_by('-id')[:9]

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'precos',
     'settings',
     'pagamento',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

@@ -53,9 +53,6 @@ $(document).ready(function()
                     errorMsg = xhr.responseJSON.message;
                 } else if (xhr.status === 401) {
                     errorMsg = 'Nome de usuário ou senha incorretos.';
-                    /*$msg.addClass('alert alert-danger').text(
-                        xhr.responseJSON?.message || 'Nome de usuário ou senha incorretos.'
-                    ).addClass('show');*/
                 } else if (xhr.status === 403) {
                     errorMsg = 'Erro de segurança (CSRF). Recarregue a página.';
                 }
