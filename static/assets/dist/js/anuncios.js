@@ -4,6 +4,24 @@ document.addEventListener("DOMContentLoaded", function()
     btnOpenTable.style.backgroundColor = "#ff6600";
 });
 
+$(document).ready(function() {
+    // 1. Verifica se a URL contém "?act=1"
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get('act') === '1') {
+        accaoTabela();
+    }
+});
+
+$(document).ready(function() 
+{
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    if (urlParams.get('act') === '2') {
+        accaoMobile();
+    }
+});
+
 function accaoTabela() 
 { 
     const caixaDetalhes = document.getElementById("caixa-detalhes");
@@ -17,30 +35,31 @@ function accaoTabela()
     previewFoto.style.display = "none";
 }
 
-    function accaoMobile() 
-    { 
-        const caixaDetalhes = document.getElementById("mobileDetalhes");
-        const formView = document.getElementById("formImovel"); 
-        const btnOpenMobile = document.getElementById("btnOpenMobile");
-        const previewFoto = document.getElementById("preview-foto");
+function accaoMobile() 
+{ 
+    const caixaDetalhes = document.getElementById("mobileDetalhes");
+    const formView = document.getElementById("formImovel"); 
+    const btnOpenMobile = document.getElementById("btnOpenMobile");
+    const previewFoto = document.getElementById("preview-foto");
 
-        formView.style.display = "block";   
-        caixaDetalhes.style.display = "none"; 
-        btnOpenMobile.style.backgroundColor = "#6c757d";
-        previewFoto.style.display = "none";
-    }
+    formView.style.display = "block";   
+    caixaDetalhes.style.display = "none"; 
+    btnOpenMobile.style.backgroundColor = "#6c757d";
+    previewFoto.style.display = "none";
+}
 
-    function openTable()
-    {
-        const caixaDetalhes = document.getElementById("caixa-detalhes");
-        const formView = document.getElementById("formImovel"); 
-        const btnOpenTable = document.getElementById("btnOpenTable");
+function openTable()
+{
+    const caixaDetalhes = document.getElementById("caixa-detalhes");
+    const formView = document.getElementById("formImovel"); 
+    const btnOpenTable = document.getElementById("btnOpenTable");
+    const btnOpenMobile = document.getElementById("btnOpenMobile");
 
-        formView.style.display = "none";   
-        caixaDetalhes.style.display = "block";
-        btnOpenTable.style.backgroundColor = "#ff6600";
-        btnOpenMobile.style.borderColor = "#f5ae7f";
-    }
+    formView.style.display = "none";   
+    caixaDetalhes.style.display = "block";
+    btnOpenTable.style.backgroundColor = "#ff6600";
+    btnOpenMobile.style.borderColor = "#f5ae7f";
+}
 
     function openMobile()
     {
