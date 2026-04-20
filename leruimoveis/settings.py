@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'settings',
     'pagamento',
     'django.contrib.humanize',
+    'favorito',
 ]
 
 MIDDLEWARE = [
