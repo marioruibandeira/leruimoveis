@@ -68,7 +68,6 @@ def inscrever_se(request):
     # GET: show empty form
     return render(request, 'usuarios/inscrever-se.html')
 
-
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('nomeUsuario', '').strip()
@@ -89,6 +88,38 @@ def login(request):
             }, status=401)
 
     return render(request, 'usuarios/login.html')
+
+    
+"""
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('nomeUsuario', '').strip()
+        password = request.POST.get('senha', '').strip()
+
+        # O segredo da escalabilidade:
+        # 1. Tenta pegar o 'next' da URL (GET)
+        # 2. Se não existir, tenta o 'next' enviado pelo corpo do Form (POST)
+        # 3. Se nenhum existir, vai para a Home
+        redirect_to = request.GET.get('next') or request.POST.get('next') or '/'
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+            return JsonResponse({
+                'success': True,
+                'message': 'Login efetuado com sucesso!',
+                'redirect_to': redirect_to  # Devolve qualquer página (favoritos, pagamentos, etc)
+            })
+        else:
+            return JsonResponse({
+                'success': False,
+                'message': 'Credenciais incorretas.'
+            }, status=401)
+
+    return render(request, 'usuarios/login.html')
+"""
+
 
 def signout(request):
     logout(request)

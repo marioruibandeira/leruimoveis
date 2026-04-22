@@ -238,6 +238,14 @@
     border-radius: 50px; width: 100%;
 }
 
+.btn-favorito
+{
+    background-color: #07752c; 
+    border: #12e270 1px solid; color:#fff; 
+    font-weight: bold; 
+    border-radius: 50px; width: 100%;
+}
+
 .capa
 {
     background-image: url('../../imagem/cover_bg.jpg'); 

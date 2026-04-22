@@ -18,6 +18,7 @@
 
 				<form class="login100-form validate-form" method="post" id="login-form">
 					{% csrf_token %}
+					<input type="hidden" name="next" value="{{ request.GET.next }}">
 					<span class="login100-form-title p-b-26">
 						<a href="{% url 'home' %}">
                             <img class="mb-4" src="{% static 'assets/imagem/lerui Imoveis2.png' %}" alt="Logo marca da Lerui Imóveis" width="72" height="90">

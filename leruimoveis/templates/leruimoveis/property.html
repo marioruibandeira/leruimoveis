@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% load humanize %}
+
 {% if mostrar_publicidade %}
   <div class="b-example-divider rodape-text ads-section contorno">
     <div class="container">
@@ -18,7 +20,7 @@
         <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> {{ property.titulo }}</h2>
       </div>
       <div class="col-lg-6 text-lg-end">
-        <p><a href="{% url 'properties' %}" target="_blank" class="btn btn-normal text-white py-3 px-4">Ver Todas</a></p>
+        <p><a href="{% url 'properties' %}" class="btn btn-normal text-white py-3 px-4">Ver Todas</a></p>
       </div>    
     </div>
 
@@ -40,7 +42,7 @@
             <span class="fw-bold me-1">Preço : </span> 
             <span style="color: green; font-weight: bolder;">
               {% if property.pais.pais_id == 1 %} € {% else %} AO {% endif %}
-              {{ property.preco }}
+              {{ property.preco |floatformat:2|intcomma}}
             </span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
@@ -92,9 +94,88 @@
             </ul>              
           </div>
         </div>
+
+        <br/>
+        <div class="col-12">  
+          
+          {% if e_favorito %}
+            <a href="javascript:void(0)" onclick="ListagemDetalhes('{{ property.id }}')" class="btn btn-success btn-favorito d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            </a>
+            <div style="text-align: center; padding: 15px;">
+              <a href="/favorito/favorito/" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: #434343; font-weight: 500; transition: 0.3s;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="currentColor">
+                  <path d="M0 0h24v24H0V0z" fill="none"/>
+                  <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z"/>
+                </svg>
+                <span style="font-family: 'Segoe UI', Roboto, sans-serif; font-size: 14px; letter-spacing: 0.5px;">VER FAVORITOS</span>
+              </a>
+            </div>
+          {% else %}
+            <a href="javascript:void(0)" onclick="ListagemDetalhes('{{ property.id }}')" class="btn btn-detalhes d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+              <span>Adicionar aos favoritos</span>
+              <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            </a>
+          {% endif %}          
+        </div>
+
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->    
   </div><!-- /.container -->
+
+
+<div class="modal fade" id="modalFavorito" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius: 20px; border: none;">
+      <div class="modal-header" style="border: none;">
+        <h5 class="modal-title fw-bold" id="modalTitulo">Notificação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center pb-4">
+        <div id="modalIcone" class="mb-3">
+            </div>
+        <p id="modalMensagem" class="fs-5"></p>
+        <button type="button" class="btn btn-detalhes px-5" onclick="window.location.reload();" style="border-radius: 50px!important;"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalLoginRequired" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius: 20px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <div class="modal-header" style="border: none; padding-bottom: 0;">
+        <h5 class="modal-title fw-bold w-100 text-center" id="loginModalLabel">Acesso Restrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <p class="fs-5">Para guardar imóveis nos seus favoritos, precisa de ter uma conta.</p>
+        <p class="text-muted">Deseja fazer login agora?</p>
+      </div>
+      <div class="modal-footer" style="border: none; justify-content: center; gap: 15px; padding-top: 0;">
+        <a href="/usuarios/login/?next={{ request.get_full_path }}" 
+          class="btn btn-success px-4" 
+          style="border-radius: 50px!important; min-width: 120px;">
+            Sim, fazer login
+        </a>
+        
+        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal" style="border-radius: 50px!important; min-width: 120px;">Não, obrigado</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  {% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/listagemDetalhes.js' %}"></script>
+  {% endblock %}
+
 {% endblock %}
     
     

@@ -4,6 +4,20 @@
 
 {% block content %}
 
+{% load humanize %}
+
+<style>
+    .card-favorito {
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .card-favorito:hover {
+        transform: translateY(-10px); /* Sobe o card */
+        box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important; /* Sombra muito mais intensa */
+    }
+</style>
+
 {% if mostrar_publicidade %}
   <div class="b-example-divider rodape-text ads-section contorno">
     <div class="container">
@@ -26,36 +40,54 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card" style="width: 100%;">
-                    <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"><b>Arquivo:</b> 02/02/2026</p>
-                        <a href="#" class="btn btn-secondary" style="width: 100%;">Ver Detalhes</a>
+            {% for fav in all_favorito %}
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 card-favorito" style="border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    
+                    <div style="height: 200px; overflow: hidden;">
+                        <img src="{{ fav.listagem.fotos.url }}" class="card-img-top" alt="..." style="object-fit: cover; height: 100%;">
+                    </div>
+                    
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title fw-bold mb-1" style="color: #333; line-height: 1.4;">
+                            {{ fav.listagem.titulo }}
+                        </h6>
+                        
+                        <p class="mb-2 fw-bold text-primary" style="font-size: 1.1rem;">
+                            {% if fav.listagem.pais.pais_id == 1 %} € {% else %} AO {% endif %}
+                            {{ fav.listagem.preco|floatformat:2|intcomma }} 
+                        </p>
+                        
+                        <p class="card-text small text-muted mb-3">
+                            <i class="bi bi-calendar3"></i> Guardado em: {{ fav.created_at|date:"d-m-Y" }}
+                        </p>
+                        
+                        <div class="row g-2 mt-auto">
+                            <div class="col-8">
+                                <a href="/property/{{ fav.listagem.id }}/" class="btn btn-outline-primary btn-sm w-100" style="border-radius: 8px; padding: 8px;">
+                                    Ver Detalhes
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" 
+                                    onclick="ListagemDetalhes('{{ fav.listagem.id }}')" 
+                                    id="btn-fav-{{ fav.listagem.id }}"
+                                    class="btn btn-light btn-sm w-100 text-danger" 
+                                    style="border-radius: 8px; padding: 8px; border: 1px solid #f8d7da;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="currentColor">
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                    </svg>
+                                </button>
+                                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 100%;">
-                    <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"><b>Arquivo:</b> 02/02/2026</p>
-                        <a href="#" class="btn btn-secondary" style="width: 100%;">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 100%;">
-                    <img src="{% static 'assets/imagem/Certifica-se como artista real na lea Moca.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"><b>Arquivo:</b> 02/02/2026</p>
-                        <a href="#" class="btn btn-secondary" style="width: 100%;">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+                <p>Ainda não tens imóveis guardados como favoritos.</p>
+            {% endfor %}
         </div>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
@@ -105,5 +137,27 @@
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->    
   </div><!-- /.container -->
+
+
+  <div class="modal fade" id="modalFavorito" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius: 20px; border: none;">
+      <div class="modal-header" style="border: none;">
+        <h5 class="modal-title fw-bold" id="modalTitulo">Notificação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center pb-4">
+        <div id="modalIcone" class="mb-3">
+            </div>
+        <p id="modalMensagem" class="fs-5"></p>
+        <button type="button" class="btn btn-detalhes px-5" onclick="window.location.reload();" style="border-radius: 50px!important;"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  {% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/listagemDetalhes.js' %}"></script>
+  {% endblock %}
 
 {% endblock %}
