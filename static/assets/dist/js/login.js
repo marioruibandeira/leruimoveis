@@ -39,8 +39,28 @@ $(document).ready(function()
                 console.log("AJAX success:", response);
                 if (response.success) 
                 {
-                    $msg.addClass('alert alert-success').text(response.message || 'Login efetuado!');
-                    setTimeout(() => window.location.href = "/properties/", 1500);
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const nextPath = urlParams.get('next'); // Ex: /property/6/
+                    const origem = urlParams.get('orig');   // Ex: fav
+
+                    // 2. Definir o destino final
+                    let destinoFinal = "/properties/"; // Default
+
+                    if (origem === 'fav' && nextPath) {
+                        // Se veio dos favoritos, prioriza o caminho do imóvel
+                        destinoFinal = nextPath;
+                    } else if (nextPath) {
+                        // Se houver outro 'next' (ex: pagamentos), vai para lá
+                        destinoFinal = nextPath;
+                    }
+
+                    // 3. Redirecionar
+                    setTimeout(() => {
+                        window.location.href = destinoFinal;
+                    }, 1500);
+
+                    //$msg.addClass('alert alert-success').text(response.message || 'Login efetuado!');
+                    //setTimeout(() => window.location.href = "/properties/", 1500);
                 } else {
                     $msg.addClass('alert alert-danger').text(response.message || 'Credenciais inválidas.');
                 }

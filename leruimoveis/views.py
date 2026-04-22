@@ -1,7 +1,8 @@
 # leruimoveis/views.py
 from django.shortcuts import render, get_object_or_404
-from leruimoveis.models import Conteudo, Listagem, Servico  
+from leruimoveis.models import Conteudo, Listagem, Servico, Favorito  
 from leruimoveis.models.fotos_adicionais import FotosAdicionais
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     properties = Listagem.objects.all().order_by('-id')[:9]
@@ -45,8 +46,24 @@ def servicedetails(request):
 
 
 def propertydetails(request, property_id):
-    property = get_object_or_404(Listagem, id=property_id)  
-    return render(request, 'leruimoveis/property.html', {'property': property})
+    property = get_object_or_404(Listagem, id=property_id)
+    e_favorito = False
+    
+    if request.user.is_authenticated:
+        try:
+            # Usamos .id para garantir que comparamos números com números
+            e_favorito = Favorito.objects.filter(
+                utilizador_id=request.user.id, 
+                listagem_id=property.id
+            ).exists()
+        except Exception as e:
+            print(f"Erro na verificação: {e}") # Verifica o terminal para ver se há erro
+            e_favorito = False
+
+    return render(request, 'leruimoveis/property.html', {
+        'property': property,
+        'e_favorito': e_favorito
+    })
 
 def destaques(request):
     return render(request, 'leruimoveis/destaques.html')
