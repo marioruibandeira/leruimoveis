@@ -24,6 +24,43 @@ def anuncios_control(request):
     cidades = Cidade.objects.all()
 
     if request.method == 'POST':
+        property_id = request.POST.get('property_id')
+
+        if property_id:  # UPDATE
+            instance = Listagem.objects.get(id=property_id)
+            form = AnuncioForm(request.POST, request.FILES, instance=instance)
+        else:  # INSERT
+            form = AnuncioForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            anuncio = form.save(commit=False)
+            
+            anuncio.utilizador = request.user 
+            
+            anuncio.save()
+            
+            #form.save_m2m() 
+
+            messages.success(request, 'Anúncio guardado com sucesso!')
+            return redirect('anuncios_control')
+        else:
+            messages.error(request, 'Erro ao guardar o anúncio.')
+    else:
+        form = AnuncioForm()
+
+    return render(request, 'anuncios/anuncios.html', {
+        'form': form, 
+        'properties': properties, 
+        'cidades': cidades
+    })
+"""
+def anuncios_control(request):
+    properties = Listagem.objects.all().order_by('-id')
+    cidades = Cidade.objects.all()
+
+    user = request.user
+
+    if request.method == 'POST':
         property_id = request.POST.get('property_id')  # vem do campo hidden no form
 
         if property_id:  # UPDATE
@@ -46,6 +83,7 @@ def anuncios_control(request):
         'properties': properties,
         'cidades': cidades        
     })
+"""
 
 @login_required
 def delete_property(request, pk):

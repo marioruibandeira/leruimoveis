@@ -4,6 +4,7 @@ from django.db import models
 from leruimoveis.models.pais import Pais
 from leruimoveis.models.cidade import Cidade
 from leruimoveis.models.designacao import Designacao
+from django.contrib.auth.models import User
 
 class Listagem(models.Model):
     titulo = models.CharField(max_length=100)
@@ -22,6 +23,7 @@ class Listagem(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    utilizador = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "tbl_listagem"
