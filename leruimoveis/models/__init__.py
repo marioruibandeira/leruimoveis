@@ -42,3 +42,5 @@ from .detalhes_imovel import DetalhesImovel
 from .configuracoes import Configuracoes
 #
 from .favoritos import Favorito
+#
+from .auth_user_profile import AuthUserProfile

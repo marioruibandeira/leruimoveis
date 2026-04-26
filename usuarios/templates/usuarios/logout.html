@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/dist/lcss/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/dist/lcss/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/dist/lfonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+					<a href="{% url 'home' %}">
+                        <img class="mb-4" src="{% static 'assets/imagem/lerui Imoveis2.png' %}" alt="Logo marca da Lerui Imóveis" width="72" height="90">
+                    </a>
+				</span>
+                    
+                <span class="login100-form-title p-b-4">Sentimos muito o deixar ir</span>
+
+                <br/>
+                <hr/>
+                <div style="padding: 15px 0px 15px 0px !important; color:#F4320B; ">
+                    <label class="form-check-label lbl-txt-danger">Poderia responder a algumas perguntas antes de sair por favor?</label>
+                </div>
+                <hr/>
+                <br/>
+                
+                <div class="wrap-input100" style="border: none; margin-bottom: 0px!important;">
+					<div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
+                        <label class="form-check-label" for="closet">O que o levou a deixar de utilizar a plataforma?</label>
+                    </div>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
+                        <label class="form-check-label" for="closet">Houve alguma funcionalidade que não correspondeu às suas expectativas?</label>
+                    </div>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
+                        <label class="form-check-label" for="closet">Encontrou dificuldades ou frustrações ao usar a plataforma?</label>
+                    </div>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
+                        <label class="form-check-label" for="closet">A plataforma deixou de oferecer valor para si ou para o seu objetivo?</label>
+                    </div>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="4" name="infraInterna[]" id="closet">
+                        <label class="form-check-label" for="closet">Existe algo que poderíamos melhorar para que reconsiderasse voltar?</label>
+                    </div>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="closet">Outros</label>
+                    </div>
+                    <div class="col-12">
+                        <textarea id=" " name=" " class="form-control" style="height: 90px; width: 100%; border: #ccc solid 1px !important; border-radius: 5px!important;"></textarea>
+                    </div>
+				</div>
+
+                <div class="container-login100-form-btn" style="margin-top: 0px!important;">
+					<div class="wrap-login100-form-btn">
+						<div class="login100-form-bgbtn"></div>
+						<button class="login100-form-btn" type="submit"> Guardar </button>
+					</div>
+				</div>
+                
+                <div class="text-center p-t-25">
+					<span class="txt1">
+						Não tem uma conta? <a href="{% url 'inscrever-se' %}">Inscrever-se</a> 
+					</span>
+				</div>
+
+			</div>
+		</div>
+        <div class="text-center"> 
+            <p class="mt-5 mb-3 text-muted">&copy; 2025 – {% now "Y" %}</p> 
+        </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	
+</body>
+</html>

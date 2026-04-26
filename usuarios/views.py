@@ -7,9 +7,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from leruimoveis.models import AuthUserProfile
+from django.contrib.auth import logout as django_logout
+from django.db import transaction
 
 def inscrever_se(request):
     if request.method == 'POST':
@@ -128,10 +130,114 @@ def signout(request):
 
 @login_required
 def profile(request):
-    return render(request, 'usuarios/perfil.html')
+    user = request.user
+    
+    # Tenta obter o perfil existente
+    perfil_existente = None
+    if user.is_authenticated:
+        # Usamos select_related para trazer os dados do User numa única query (mais rápido)
+        perfil_existente = AuthUserProfile.objects.select_related('utilizador').filter(utilizador=user).first()
+
+    if request.method == 'POST':
+        primeiroNome = request.POST.get('primeiroNome', '').strip()
+        ultimoNome = request.POST.get('ultimoNome', '').strip()
+        telefone = request.POST.get('telefone', '').strip()
+        email = request.POST.get('email', '').strip()
+        endereco = request.POST.get('endereco', '').strip()
+
+        errors = {}
+
+        if not user.is_authenticated:
+            errors['user'] = 'Login necessário.'
+
+        if not primeiroNome:
+            errors['primeiroNome'] = 'O primeiro nome é obrigatório.'
+
+        if not ultimoNome:
+            errors['ultimoNome'] = 'O último nome é obrigatório.'
+
+        if not email:
+            errors['email'] = 'O email é obrigatório.'
+        else:
+            try:
+                validate_email(email)
+            except ValidationError:
+                errors['email'] = 'Email inválido.'
+            
+            # Valida se o email já existe noutro utilizador (excluindo o próprio)
+            if User.objects.filter(email=email).exclude(id=user.id).exists():
+                errors['email'] = 'Este email já está registado por outro utilizador.'
+
+        if errors:
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({
+                    'success': False,
+                    'message': 'Corrige os erros no formulário.',
+                    'errors': errors
+                }, status=400)
+
+            return render(request, 'usuarios/perfil.html', {
+                'errors': errors, 
+                'formData': request.POST, 
+                'perfil': perfil_existente
+            })
+
+        # Atualiza ou cria o perfil
+        perfil, created = AuthUserProfile.objects.update_or_create(
+            utilizador=user,
+            defaults={
+                'primeiro_nome': primeiroNome,
+                'sobre_nome': ultimoNome,
+                'telefone': telefone,
+                'email': email,
+                'endereco': endereco,
+            }
+        )
+
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({
+                'success': True, 
+                'message': 'Perfil guardado com sucesso!',
+                'data': {
+                    'username': user.username, # Aqui enviamos o username para o front
+                    'email': email
+                }
+            })
+
+        messages.success(request, 'Perfil guardado com sucesso!')
+        return redirect('/usuarios/perfil/')
+
+    # No GET, enviamos o perfil. O username já está acessível via {{ perfil.utilizador.username }}
+    return render(request, 'usuarios/perfil.html', {
+        'perfil': perfil_existente,
+        'username': user.username if user.is_authenticated else ''
+    })
+
 
 @login_required
 def encerrar(request):
+    if request.method == 'POST':
+        try:
+            user = request.user
+            
+            with transaction.atomic():
+                # 1. Tentar apagar o perfil primeiro (se existir)
+                # Usamos .filter().delete() porque não causa erro se não encontrar nada
+                AuthUserProfile.objects.filter(utilizador=user).delete()
+                
+                # 2. Apagar o utilizador
+                user.delete()
+
+            return JsonResponse({'success': True})
+            
+        except Exception as e:
+            # Isto vai ajudar-te a ver o erro real no terminal do VS Code / PyCharm
+            print(f"Erro no Encerramento: {str(e)}") 
+            return JsonResponse({
+                'success': False, 
+                'message': f'Erro interno: {str(e)}'
+            }, status=500)
+
     return render(request, 'usuarios/encerrar.html')
 
 @login_required
@@ -141,4 +247,11 @@ def foto(request):
 @login_required
 def subscricao(request):
     return render(request, 'usuarios/subscricao.html')
+
+
+def logout_view(request):
+
+    django_logout(request)
+
+    return render(request, 'usuarios/logout.html')
     
