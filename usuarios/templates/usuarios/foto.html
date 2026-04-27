@@ -10,16 +10,28 @@
                         <div style="border:#ccc solid 1px;">
                             <ul class="list-group list-group-flush" style="text-align: left;">
                                 <a href="{% url 'perfil' %}" class="perfil-menu">
-                                    <li class="list-group-item ">Perfil</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><g><rect fill="none" height="24" width="24"/></g><g><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></g></svg>
+                                        Perfil
+                                    </li>
                                 </a>
                                 <a href="{% url 'foto' %}" class="perfil-menu">
-                                    <li class="list-group-item btn-activo">Foto</li>
+                                    <li class="list-group-item btn-activo list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                                        Foto
+                                    </li>
                                 </a>
                                 <a href="{% url 'subscricao' %}" class="perfil-menu">
-                                    <li class="list-group-item">Subscrição</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/></svg>
+                                        Subscrição
+                                    </li>
                                 </a>
                                 <a href="{% url 'encerrar' %}" class="perfil-menu">
-                                    <li class="list-group-item">Encerra a conta</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M18.5 13c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm2 4h-4v-1h4v1zm-6.95 0c-.02-.17-.05-.33-.05-.5 0-2.76 2.24-5 5-5 .92 0 1.76.26 2.5.69V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h8.55zM12 10.5L5 7V5l7 3.5L19 5v2l-7 3.5z"/></svg>
+                                        Encerra a conta
+                                    </li>
                                 </a>
                             </ul>
                         </div>
@@ -29,13 +41,54 @@
                             <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
                                 <li class="list-group-item" style="background-color: #ccc;">Perfil</li>
                                 <li class="list-group-item">
-                                    
+
+                                    {% if perfil.authUserProfile > 0 %}
+                                        {# O bloco só será renderizado se o campo foto_utilizador tiver um ficheiro #}
+                                        {% if perfil.foto_utilizador %}
+                                            <div class="row" style="margin-top: 10px; text-align: center;">
+                                                <div class="col-12 mb-3">
+                                                    <div class="containe" style="margin: 0px 30% 0px 30%">
+                                                        <img src="{{ perfil.foto_utilizador.url }}" alt="Foto de Perfil" style="width: 100%; border-radius: 8px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-12 mb-3">
+                                            <div class="containe">
+                                                <h2 style="text-align:center; margin-bottom:15px;">Corta a tua imagem</h2>
+                                                <div class="upload-area" id="uploadArea">
+                                                    <p>Toca ou arrasta uma imagem aqui</p>
+                                                    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+                                                </div>
+                                                <div class="cropper" id="cropper">
+                                                    <img id="image" />
+                                                    <div id="cropBox" class="crop-box" style="display:none;">
+                                                    <div class="resize-handle tl"></div>
+                                                    <div class="resize-handle tr"></div>
+                                                    <div class="resize-handle bl"></div>
+                                                    <div class="resize-handle br"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="controls">
+                                                    <button id="cropBtn">Cortar (250×250)</button>
+                                                    <button id="resetBtn">Reiniciar</button>
+                                                </div>
+
+                                                <img id="cropped-preview" alt="Pré-visualização 250×250" />
+                                                <button id="saveBtn">Guardar Recorte</button>
+                                                <div id="message"></div>
+
+                                                <canvas id="canvas" style="display:none;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 perfil-bottom-btn">
-                            <input type="submit" id="btnNovo" value="Guardar" class="btn btn-detalhes" />
-                        </div>
+                        <div class="col-12 perfil-bottom-btn"></div>
                     </div>
                     
                 </div>
@@ -43,4 +96,8 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/imageCroperPerfil.js' %}"></script>
 {% endblock %}

@@ -10,16 +10,28 @@
                         <div style="border:#ccc solid 1px;">
                             <ul class="list-group list-group-flush" style="text-align: left;">
                                 <a href="{% url 'perfil' %}" class="perfil-menu">
-                                    <li class="list-group-item ">Perfil</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><g><rect fill="none" height="24" width="24"/></g><g><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></g></svg>
+                                        Perfil
+                                    </li>
                                 </a>
                                 <a href="{% url 'foto' %}" class="perfil-menu">
-                                    <li class="list-group-item ">Foto</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                                        Foto
+                                    </li>
                                 </a>
                                 <a href="{% url 'subscricao' %}" class="perfil-menu">
-                                    <li class="list-group-item btn-activo">Subscrição</li>
+                                    <li class="list-group-item btn-activo list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/></svg>
+                                        Subscrição
+                                    </li>
                                 </a>
                                 <a href="{% url 'encerrar' %}" class="perfil-menu">
-                                    <li class="list-group-item">Encerra a conta</li>
+                                    <li class="list-group-item list-g-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M18.5 13c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm2 4h-4v-1h4v1zm-6.95 0c-.02-.17-.05-.33-.05-.5 0-2.76 2.24-5 5-5 .92 0 1.76.26 2.5.69V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h8.55zM12 10.5L5 7V5l7 3.5L19 5v2l-7 3.5z"/></svg>
+                                        Encerra a conta
+                                    </li>
                                 </a>
                             </ul>
                         </div>
@@ -30,24 +42,52 @@
                                 <li class="list-group-item" style="background-color: #ccc;">Perfil</li>
                                 <li class="list-group-item">
 
-                                    Atualmente, não possui um plano ativo (Particular ou Imobiliária). Como utilizador regular, pode visualizar e guardar listagens. Subscreva agora um plano "Amador" e comece a publicar os seus imóveis como um profissional!
-                                    
-                                    <br/><br/>
-
-                                    <div class="row row-cols-1 row-cols-md-12 mb-3 text-center">
-                                        <div class="col">
-                                            <div class="card mb-4 rounded-3 shadow-sm">
-                                                <div class="card-header py-3">
-                                                    <h4 class="my-0 fw-normal">Amador</h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h1 class="card-title pricing-card-title">£10<small class="text-muted fw-light">/mês</small></h1>
-                                                    
-                                                    <button type="button" class="w-100 btn btn-lg btn-outline-bronze">Assina Um Mês</button>
+                                    {% if plano_aprovado.is_active > 0 %}
+                                        <div class="row row-cols-1 row-cols-md-12 mb-3 text-center">
+                                            <div class="col">
+                                                <div class="card mb-4 rounded-3 shadow-sm">
+                                                    <div class="card-header py-3" style="text-align: left; background: #D0FAE5;color: #034F3B;">
+                                                        A sua conta inclui um plano que permite fazer publicações e utilizar várias outras funcionalidades disponíveis, prontas para serem exploradas.
+                                                    </div>
+                                                    <div class="card-header py-3" style="background: #5EE9B5;">
+                                                        <h4 class="my-0 fw-normal">{{ plano_aprovado.plano.tipo_plano.tipo_plano }}</h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h1 class="card-title pricing-card-title">
+                                                            € {{ plano_aprovado.plano.preco }}
+                                                            <small class="text-muted fw-light">/
+                                                                {% if plano_aprovado.plano.periodo > 29 %}
+                                                                    {{ plano_aprovado.plano.periodo }} dias
+                                                                {% else %}
+                                                                    {{ plano_aprovado.plano.periodo }} dias
+                                                                {% endif %}
+                                                            </small> 
+                                                        </h1>
+                                                        <a href="/precos/particulares/" class="w-100 btn btn-lg btn-outline-bronze btn-upgrade">
+                                                            Fazer upgrade
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% else %}
+                                        <div class="card">
+                                            <div class="card-header" style="background-color: #CEFAFE !important;color: #024A70;">
+                                                Atualmente, não possui um plano ativo (Particular ou Imobiliária). Como utilizador regular, pode visualizar e guardar listagens. Subscreva agora um plano "básico" e comece a publicar os seus imóveis como um profissional!
+                                            </div>
+                                            <div class="card-header" style="background-color: #53EAFD !important; color: #024A70;font-weight: bolder;">
+                                                Plano Básico
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title" style="color: #052F4A;">Particulares > Básico > Venda/Renda > 15 dias</h5>
+                                                <p class="card-text">Aproveite e assine agora um plano básico para experimentar por 15 dias.</p>
+                                                <a href="/precos/particulares/" class="btn btn-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/></svg>
+                                                    Assina 15 dias
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
                                 </li>
                             </ul>
