@@ -44,3 +44,4 @@ from .configuracoes import Configuracoes
 from .favoritos import Favorito
 #
 from .auth_user_profile import AuthUserProfile
+from .plano_aprovado import PlanoAprovado

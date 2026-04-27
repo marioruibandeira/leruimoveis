@@ -42,24 +42,52 @@
                                 <li class="list-group-item" style="background-color: #ccc;">Perfil</li>
                                 <li class="list-group-item">
 
-                                    Atualmente, não possui um plano ativo (Particular ou Imobiliária). Como utilizador regular, pode visualizar e guardar listagens. Subscreva agora um plano "Amador" e comece a publicar os seus imóveis como um profissional!
-                                    
-                                    <br/><br/>
-
-                                    <div class="row row-cols-1 row-cols-md-12 mb-3 text-center">
-                                        <div class="col">
-                                            <div class="card mb-4 rounded-3 shadow-sm">
-                                                <div class="card-header py-3">
-                                                    <h4 class="my-0 fw-normal">Amador</h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h1 class="card-title pricing-card-title">£10<small class="text-muted fw-light">/mês</small></h1>
-                                                    
-                                                    <button type="button" class="w-100 btn btn-lg btn-outline-bronze">Assina Um Mês</button>
+                                    {% if plano_aprovado.is_active > 0 %}
+                                        <div class="row row-cols-1 row-cols-md-12 mb-3 text-center">
+                                            <div class="col">
+                                                <div class="card mb-4 rounded-3 shadow-sm">
+                                                    <div class="card-header py-3" style="text-align: left; background: #D0FAE5;color: #034F3B;">
+                                                        A sua conta inclui um plano que permite fazer publicações e utilizar várias outras funcionalidades disponíveis, prontas para serem exploradas.
+                                                    </div>
+                                                    <div class="card-header py-3" style="background: #5EE9B5;">
+                                                        <h4 class="my-0 fw-normal">{{ plano_aprovado.plano.tipo_plano.tipo_plano }}</h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h1 class="card-title pricing-card-title">
+                                                            € {{ plano_aprovado.plano.preco }}
+                                                            <small class="text-muted fw-light">/
+                                                                {% if plano_aprovado.plano.periodo > 29 %}
+                                                                    {{ plano_aprovado.plano.periodo }} dias
+                                                                {% else %}
+                                                                    {{ plano_aprovado.plano.periodo }} dias
+                                                                {% endif %}
+                                                            </small> 
+                                                        </h1>
+                                                        <a href="/precos/particulares/" class="w-100 btn btn-lg btn-outline-bronze btn-upgrade">
+                                                            Fazer upgrade
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% else %}
+                                        <div class="card">
+                                            <div class="card-header" style="background-color: #CEFAFE !important;color: #024A70;">
+                                                Atualmente, não possui um plano ativo (Particular ou Imobiliária). Como utilizador regular, pode visualizar e guardar listagens. Subscreva agora um plano "básico" e comece a publicar os seus imóveis como um profissional!
+                                            </div>
+                                            <div class="card-header" style="background-color: #53EAFD !important; color: #024A70;font-weight: bolder;">
+                                                Plano Básico
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title" style="color: #052F4A;">Particulares > Básico > Venda/Renda > 15 dias</h5>
+                                                <p class="card-text">Aproveite e assine agora um plano básico para experimentar por 15 dias.</p>
+                                                <a href="/precos/particulares/" class="btn btn-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/></svg>
+                                                    Assina 15 dias
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
                                 </li>
                             </ul>

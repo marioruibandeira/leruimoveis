@@ -11,7 +11,12 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from leruimoveis.models import AuthUserProfile
 from django.contrib.auth import logout as django_logout
+from django.contrib.auth import logout 
 from django.db import transaction
+from leruimoveis.models import PlanoAprovado
+from django.core.files.storage import FileSystemStorage
+import os
+from django.conf import settings
 
 def inscrever_se(request):
     if request.method == 'POST':
@@ -241,12 +246,62 @@ def encerrar(request):
     return render(request, 'usuarios/encerrar.html')
 
 @login_required
+@login_required
 def foto(request):
-    return render(request, 'usuarios/foto.html')
+    user = request.user
+    
+    # IMPORTANTE: Definir o perfil logo no início, fora de qualquer IF.
+    # Assim, ele existirá tanto no GET como no POST.
+    perfil, created = AuthUserProfile.objects.get_or_create(utilizador=user)
+
+    if request.method == 'POST':
+        if not request.FILES.get('cropped_image'):
+            return JsonResponse({'success': False, 'message': 'Nenhum ficheiro enviado.'}, status=400)
+
+        try:
+            nova_foto = request.FILES['cropped_image']
+            
+            # Apagar foto antiga se existir
+            if perfil.foto_utilizador:
+                caminho_antigo = os.path.join(settings.MEDIA_ROOT, str(perfil.foto_utilizador))
+                if os.path.exists(caminho_antigo):
+                    os.remove(caminho_antigo)
+
+            # Guardar nova foto
+            fs = FileSystemStorage()
+            filename = f'perfil/{user.id}_{nova_foto.name}'
+            saved_filename = fs.save(filename, nova_foto)
+            
+            # Atualizar BD
+            perfil.foto_utilizador = saved_filename
+            perfil.save()
+
+            return JsonResponse({
+                'success': True, 
+                'message': 'Foto de perfil atualizada com sucesso!'
+            })
+
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': f'Erro: {str(e)}'}, status=500)
+
+    # Aqui é o GET: a variável 'perfil' já foi definida lá em cima
+    context = {
+        'perfil': perfil
+    }
+    return render(request, 'usuarios/foto.html', context)
+    
 
 @login_required
 def subscricao(request):
-    return render(request, 'usuarios/subscricao.html')
+    user = request.user
+
+    plano_vinculado = PlanoAprovado.objects.select_related('plano__tipo_plano').filter(utilizador=user).first()
+        
+    context = {
+        'plano_aprovado': plano_vinculado,
+    }
+
+    return render(request, 'usuarios/subscricao.html', context)
 
 
 def logout_view(request):

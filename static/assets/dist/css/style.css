@@ -819,6 +819,19 @@
 
 .lbl-txt {color:#9F0712;}
 
+.btn-upgrade
+{
+    color:#034F3B !important;
+    border-color:#5EE9B5 !important;
+}
+
+.btn-upgrade:hover
+{
+    color:#fff !important;
+    background-color:#034F3B !important;
+    border-color:#5EE9B5 !important;
+}
+
 @media (max-width: 768px) 
 {
     .anuncio-mobile{ display: inline;}

@@ -41,6 +41,20 @@
                             <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
                                 <li class="list-group-item" style="background-color: #ccc;">Perfil</li>
                                 <li class="list-group-item">
+
+                                    {% if perfil.authUserProfile > 0 %}
+                                        {# O bloco só será renderizado se o campo foto_utilizador tiver um ficheiro #}
+                                        {% if perfil.foto_utilizador %}
+                                            <div class="row" style="margin-top: 10px; text-align: center;">
+                                                <div class="col-12 mb-3">
+                                                    <div class="containe" style="margin: 0px 30% 0px 30%">
+                                                        <img src="{{ perfil.foto_utilizador.url }}" alt="Foto de Perfil" style="width: 100%; border-radius: 8px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-12 mb-3">
                                             <div class="containe">
@@ -74,9 +88,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 perfil-bottom-btn">
-                            <input type="submit" id="btnNovo" value="Guardar" class="btn btn-detalhes" />
-                        </div>
+                        <div class="col-12 perfil-bottom-btn"></div>
                     </div>
                     
                 </div>
@@ -87,5 +99,5 @@
 {% endblock %}
 
 {% block scripts %} 
-    <script type="text/javascript" src="{% static 'assets/dist/js/imageCroper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/dist/js/imageCroperPerfil.js' %}"></script>
 {% endblock %}
