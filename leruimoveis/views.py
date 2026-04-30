@@ -69,6 +69,10 @@ def destaques(request):
     return render(request, 'leruimoveis/destaques.html')
 
 
+def user(request):
+    return render(request, 'leruimoveis/user.html')
+
+
 
 
     
