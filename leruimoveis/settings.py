@@ -76,6 +76,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'leruimoveis.context_processors.check_ads_visibility',
+                'leruimoveis.context_processors.check_existing_picture',
+                'leruimoveis.context_processors.foto_na_listagem',
             ],
         },
     },

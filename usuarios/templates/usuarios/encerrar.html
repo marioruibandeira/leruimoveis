@@ -1,32 +1,34 @@
 {% extends 'leruimoveis/normal_base.html' %}
-{% load static %}  
+
+{% load static %} 
+
 {% block content %}
 
 <style>
     /* Customização para Checkbox de Encerramento */
-#ckbEncerrarConta {
-    accent-color: #dc3545; /* Cor para navegadores modernos */
-    cursor: pointer;
-}
+    #ckbEncerrarConta {
+        accent-color: #dc3545; /* Cor para navegadores modernos */
+        cursor: pointer;
+    }
 
-/* Cor de fundo e borda quando selecionado (Bootstrap Override) */
-#ckbEncerrarConta:checked {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
+    /* Cor de fundo e borda quando selecionado (Bootstrap Override) */
+    #ckbEncerrarConta:checked {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
 
-/* Sombra de foco em vermelho (Feel moderno) */
-#ckbEncerrarConta:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-}
+    /* Sombra de foco em vermelho (Feel moderno) */
+    #ckbEncerrarConta:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+    }
 
-/* Estilo para a label ficar vermelha e alinhada */
-.lbl-txt-danger {
-    color: #dc3545;
-    font-weight: bold;
-    cursor: pointer;
-}
+    /* Estilo para a label ficar vermelha e alinhada */
+    .lbl-txt-danger {
+        color: #dc3545;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 
 <div class="px-0 py-0 my-0 text-center">
