@@ -118,6 +118,7 @@ def profile(request):
         telefone = request.POST.get('telefone', '').strip()
         email = request.POST.get('email', '').strip()
         endereco = request.POST.get('endereco', '').strip()
+        sobreMim = request.POST.get('sobreMim', '').strip()
 
         errors = {}
 
@@ -165,6 +166,7 @@ def profile(request):
                 'telefone': telefone,
                 'email': email,
                 'endereco': endereco,
+                'sobreMim': sobreMim,
             }
         )
 

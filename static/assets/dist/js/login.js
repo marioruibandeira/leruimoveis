@@ -49,7 +49,9 @@ $(document).ready(function()
                     if (origem === 'fav' && nextPath) {
                         // Se veio dos favoritos, prioriza o caminho do imóvel
                         destinoFinal = nextPath;
-                    } else if (nextPath) {
+                    }else if(origem === 'perf' && nextPath){ 
+                        destinoFinal = nextPath;
+                    }else if (nextPath) {
                         // Se houver outro 'next' (ex: pagamentos), vai para lá
                         destinoFinal = nextPath;
                     }

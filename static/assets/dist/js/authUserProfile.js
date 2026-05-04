@@ -28,6 +28,18 @@ function checkEndereco(id) {
     return v.length >= 4 && v.length <= 255;
 }
 
+function checkSobreMim(id) {
+    const campo = document.getElementById(id);
+    if (!campo) return false;
+    const v = campo.value.trim();
+
+    // Se estiver vazio, é válido (porque é opcional no banco de dados)
+    if (v.length === 0) return true;
+
+    // Se escreveu algo, tem que ter entre 4 e 450
+    return v.length >= 4 && v.length <= 450;
+}
+
 // --- 2. Gestão do Botão ---
 function gerirBotao() {
     const btn = document.getElementById("guardarPerfil");
@@ -38,8 +50,9 @@ function gerirBotao() {
     const isTelOk = checkTelefone("telefone");
     const isEmailOk = checkEmail("email");
     const isEnderecoOk = checkEndereco("endereco");
+    const isSobreMimOk = checkSobreMim("sobre");
 
-    if (isNomeOk && isSobreOk && isTelOk && isEmailOk && isEnderecoOk) {
+    if (isNomeOk && isSobreOk && isTelOk && isEmailOk && isEnderecoOk && isSobreMimOk) {
         btn.disabled = false;
         btn.style.opacity = "1";
         btn.style.cursor = "pointer";
@@ -57,20 +70,21 @@ function configurarValidacao(id, tipo) {
 
     campo.addEventListener("input", function() {
         let valido = false;
+        if (tipo === 'sobre') valido = checkSobreMim(id);
+        // ... outros ifs ...
 
-        // Determina qual validação aplicar
-        if (tipo === 'texto') valido = checkTexto(id);
-        else if (tipo === 'tel') valido = checkTelefone(id);
-        else if (tipo === 'email') valido = checkEmail(id);
-        else if (tipo === 'endereco') valido = checkEndereco(id);
+        // Feedback Visual
+        if (tipo === 'sobre' && this.value.trim().length === 0) {
+            // Se estiver vazio, fica neutro (azul/cinza), mas NÃO impede o botão
+            this.style.borderColor = "#0d6efd"; 
+            this.style.boxShadow = "none";
+        } else {
+            this.style.borderColor = valido ? "#198754" : "#dc3545";
+            this.style.boxShadow = valido 
+                ? "0 0 0 0.25rem rgba(25, 135, 84, 0.25)" 
+                : "0 0 0 0.25rem rgba(220, 53, 69, 0.25)";
+        }
 
-        // Aplica o feedback visual (Bordas e Shadow)
-        this.style.borderColor = valido ? "#198754" : "#dc3545";
-        this.style.boxShadow = valido 
-            ? "0 0 0 0.25rem rgba(25, 135, 84, 0.25)" 
-            : "0 0 0 0.25rem rgba(220, 53, 69, 0.25)";
-
-        // Atualiza o estado do botão Guardar
         gerirBotao();
     });
 }
@@ -81,7 +95,7 @@ configurarValidacao("ultimoNome", "texto");
 configurarValidacao("telefone", "tel");
 configurarValidacao("email", "email");
 configurarValidacao("endereco", "endereco");
-
+configurarValidacao("sobre", "sobre");
 
 function GuardarPerfil()
 {
@@ -90,6 +104,7 @@ function GuardarPerfil()
     let telefone = document.getElementById("telefone").value.trim();
     let email = document.getElementById("email").value.trim();
     let endereco = document.getElementById("endereco").value.trim();
+    let sobreMim = document.getElementById("sobre").value.trim();
     let csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     
     var formData = {
@@ -98,6 +113,7 @@ function GuardarPerfil()
         'telefone': telefone,
         'email': email,
         'endereco': endereco,
+        'sobreMim': sobreMim,
         'csrfmiddlewaretoken': csrfToken
     };
 
@@ -119,10 +135,6 @@ function GuardarPerfil()
             modalElem.addEventListener('hidden.bs.modal', function () {
                 window.location.reload();
             });
-            /*if (response.success) {
-                alert(response.message);
-                window.location.reload(); 
-            }*/
         },
         error: function(xhr) 
         {

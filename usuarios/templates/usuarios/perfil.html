@@ -69,6 +69,10 @@
                                             <label for="endereco" class="form-label input-titulos">Endereço</label>
                                             <textarea id="endereco" name="endereco" class="form-control" style="height: 90px">{{ perfil.endereco|default:'' }}</textarea>
                                         </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="sobre" class="form-label input-titulos">Sobre mim</label>
+                                            <textarea id="sobre" name="sobreMim" class="form-control" style="height: 90px" placeholder="Conte-nos um pouco sobre si...">{{ perfil.sobreMim|default:'' }}</textarea>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>

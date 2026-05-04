@@ -9,6 +9,7 @@ class AuthUserProfile(models.Model):
     telefone = models.CharField(max_length=20)
     email = models.EmailField(max_length=100, unique=True)
     endereco = models.CharField(max_length=255)
+    sobreMim = models.TextField(max_length=500, null=True, blank=True)
     foto_utilizador = models.ImageField(upload_to='utilizadores/', null=True, blank=True)
 
     class Meta:
