@@ -36,12 +36,17 @@ from .tipo_cliente import TipoCliente
 from .tipo_servico import TipoServico
 from .tipo_plano import TipoPlano
 from .plano import Plano
+from .plano_aprovado import PlanoAprovado
 from .tipo_negocio import TipoNegocio
 from .detalhes_imovel import DetalhesImovel
 #
-from .configuracoes import Configuracoes
-#
 from .favoritos import Favorito
+from .favoritos_perfil import FavoritosPerfil
 #
 from .auth_user_profile import AuthUserProfile
-from .plano_aprovado import PlanoAprovado
+from .historico_login import HistoricoLogin
+from .configuracoes import Configuracoes
+#
+from .motivo_denuncia import MotivoDenuncia
+from .denuncia_efetuada import DenunciaEfetuada
+from .denuncia_efetuada_motivo import DenunciaEfetuadaMotivo

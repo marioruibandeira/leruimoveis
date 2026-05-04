@@ -1,8 +1,13 @@
-# leruimoveis/views.py
+import json
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from leruimoveis.models import Conteudo, Listagem, Servico, Favorito  
+from leruimoveis.models import Conteudo, Listagem, Servico, Favorito, AuthUserProfile  
 from leruimoveis.models.fotos_adicionais import FotosAdicionais
 from django.contrib.auth.decorators import login_required
+from leruimoveis.models.auth_user_profile import AuthUserProfile 
+from leruimoveis.models.favoritos_perfil import FavoritosPerfil 
+from django.contrib.auth.models import User
+from .models import DenunciaEfetuada, MotivoDenuncia
 
 def index(request):
     properties = Listagem.objects.all().order_by('-id')[:9]
@@ -69,8 +74,66 @@ def destaques(request):
     return render(request, 'leruimoveis/destaques.html')
 
 
-def user(request):
-    return render(request, 'leruimoveis/user.html')
+def user(request, id):
+    # 1. Busca o perfil alvo (o agente que está a ser visitado)
+    perfil_alvo = get_object_or_404(
+        AuthUserProfile.objects.select_related('utilizador'), 
+        utilizador_id=id
+    )
+
+    # 2. Inicializamos como False por padrão
+    e_favorito = False
+
+    # 3. Se o utilizador que está a ver a página estiver logado, verificamos a BD
+    if request.user.is_authenticated:
+        # Procuramos na tabela de favoritos se existe a relação entre:
+        # O utilizador logado (quem_favorece) e o perfil alvo (favorecido)
+        e_favorito = FavoritosPerfil.objects.filter(
+            ce_utilizador=request.user, 
+            ce_agente=perfil_alvo.utilizador # Usamos o campo FK para o User
+        ).exists()
+
+    # 4. Enviamos a variável 'e_favorito' para o template
+    return render(request, 'leruimoveis/user.html', {
+        'perfil_visitado': perfil_alvo,
+        'autor_id': id,
+        'e_favorito': e_favorito  # Esta variável será usada no class do botão
+    })
+
+@login_required
+def denunciar_perfil(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            motivos = data.get('motivos', [])
+            outros = data.get('outros', None)
+            autor_id = data.get('autor_id')
+            denunciado_id = data.get('denunciado_id')
+
+            autor = User.objects.get(id=autor_id)
+            denunciado = User.objects.get(id=denunciado_id)
+
+            denuncia = DenunciaEfetuada.objects.create(
+                autor_denuncia=autor,
+                perfil_denunciado=denunciado,
+                outros_detalhes=outros
+            )
+
+            # Guardar motivos (ManyToMany)
+            motivos_validos = ['1', '2', '3', '4']
+            for m in motivos:
+                if m in motivos_validos:
+                    motivo = MotivoDenuncia.objects.get(id_motivo=int(m))
+                    denuncia.ce_motivos.add(motivo)
+
+            denuncia.save()
+
+            return JsonResponse({'sucesso': True, 'redirect': f'/user/{denunciado_id}/'})
+
+        except Exception as e:
+            return JsonResponse({'sucesso': False, 'erro': str(e)}, status=400)
+
+    return JsonResponse({'sucesso': False, 'erro': 'Método não permitido'}, status=405)
 
 
 

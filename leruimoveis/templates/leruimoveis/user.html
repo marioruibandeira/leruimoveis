@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<!-- Inputs escondidos com os IDs reais processados pelo Django -->
+<input type="hidden" id="idUtilizadorLogado" value="{{ request.user.id }}">
+
 <div class="px-0 py-0 my-0 text-center">
     <div class="section bg-light" id="nossos-servicos">
             <div class="container">
@@ -11,23 +14,50 @@
                     <div class="col-lg-3 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px; padding-bottom: 30px;">
                         <div class="text-center">                           
 
-                            {% if mostra_foto_perfil %}
+                            {% if perfil_visitado.foto_utilizador %}
                                 <a class="" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar" style="cursor: pointer;">
-                                    <img src="{{ perfil.foto_utilizador.url }}" class="rounded" alt="..." style="width: 150px; height: 150px; border-radius: 50% !important; object-fit: cover; border: 2px solid #FFFFFF; box-shadow: 0px 2px 4px rgba(0,0,0,0.1);">
+                                    <img src="{{ perfil_visitado.foto_utilizador.url }}" class="rounded" alt="..." style="width: 150px; height: 150px; border-radius: 50% !important; object-fit: cover; border: 2px solid #FFFFFF; box-shadow: 0px 2px 4px rgba(0,0,0,0.1);">
                                 </a>
                             {% else %}
                                 <a class="" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar" style="cursor: pointer;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="44px" viewBox="0 -960 960 960" width="44px" fill="#FFFFFF"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="150px" viewBox="0 0 24 24" width="150px" fill="none" stroke="#232323" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Círculo Exterior (Contorno mais fino) -->
+                                        <circle cx="12" cy="12" r="10"/>
+                                        
+                                        <!-- Cabeça do Utilizador -->
+                                        <circle cx="12" cy="10" r="3"/>
+                                        
+                                        <!-- Ombros/Base do Utilizador -->
+                                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                                    </svg>
                                 </a>
                             {% endif %}
 
                         </div>
                     </div>  
-                    <div class="col-lg-9 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px; text-align: left; padding-top: 30px;">
-                         <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> {{ autor_username|capfirst }} </h2>
-                         <h5 class="heading" style="color: #232323 !important;"> Queluz E Belas, Lisboa </h5>
-                         <p style="line-height: 2px;">Na Lerui desde fevereiro de 2026</p>
-                         <p style="line-height: 2px;">Esteve online hoje às 14:25</p>
+                    <div class="col-lg-9 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px; text-align: left; padding-top: 10px;">
+                        <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> 
+                            {% if perfil_visitado.primeiro_nome %}
+                                {{ perfil_visitado.primeiro_nome }} {{ perfil_visitado.sobre_nome }}
+                            {% else %}
+                                {{ perfil_visitado.utilizador.username }}
+                            {% endif %}                            
+                        </h2>
+                        <h5 class="heading" style="color: #232323 !important;"> 
+                            {% if perfil_visitado.primeiro_nome %}
+                                {{ perfil_visitado.endereco }}
+                            {% else %}
+                                Endereço não está disponível
+                            {% endif %}                             
+                        </h5>
+                        <p style="line-height: 2px;">Na Lerui desde {{ perfil_visitado.utilizador.date_joined }}</p>
+                        <p style="line-height: 2px;">Esteve online hoje às 14:25</p>
+                         
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><g><path d="M22,9.24l-7.19-0.62L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27L18.18,21l-1.63-7.03L22,9.24z M12,15.4V6.1 l1.71,4.04l4.38,0.38l-3.32,2.88l1,4.28L12,15.4z"/></g></g></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><path d="M0 0h24v24H0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>
                     </div>                    
                 </div>
             </div>
@@ -35,41 +65,197 @@
 </div>
 
 <div class="container marketing px-4 py-5 mt-6">
-  <div class="row">
-    <div class="col-lg-6">
-      <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Todos os anúncios</h2>
+    <div class="row">
+        <div class="col-lg-12 pt-4 ps-4">
+            <h2 class="font-weight-bold text-primary heading" style="color: #232323 !important;"> Sobre</h2>
+        </div>
     </div>
-    <div class="col-lg-6 text-lg-end">
-      <p> <a href="{% url 'properties' %}?ps=0" class="btn btn-normal text-white py-3 px-4">Ver Todas</a> </p>
+  
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-2">
+                <div class="card-header">
+                    {% if perfil_visitado.sobreMim %}
+                        {{ perfil_visitado.sobreMim }}
+                    {% else %}
+                        Este utilizador ainda não adicionou informações sobre si.
+                    {% endif %}
+                </div>
+            </div>
+            <div class="text-end pt-2">
+                <button type="button" 
+                        id="btnFavoritoPrincipal"
+                        class="btn {% if e_favorito %}btn-warning{% else %}btn-success{% endif %} btn-sm d-inline-flex align-items-center justify-content-center" 
+                        onclick="AdicionarFavorito()">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF" class="me-1">
+                        <g>
+                            <rect fill="none" height="24" width="24" x="0"/>
+                            <!-- O ID vai para o polígono da estrela -->
+                            <polygon id="pathEstrela" points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/>
+                        </g>
+                    </svg>                    
+                    <span>Favoritos</span>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" onclick="denunciar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        height="16px" viewBox="0 0 24 24" width="16px" fill="#FFFFFF" class="me-1"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    Denunciar
+                </button>
+            </div>
+        </div><!-- /.col-lg-4 id="pathCoracao"-->
+
+        <div class="col-lg-12 pt-5" id="denuncia" style="display: none;">
+            <div class="p-2">
+                <label class="form-check-label" for="flexCheckDefault"> <b>Apresenta o seu descontentamento</b> </label>
+            </div>
+            <div class="card" style="width: 100%;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <input class="form-check-input check-motivo" type="checkbox" value="" id="pEnganosa">
+                        <label class="form-check-label" for="pEnganosa"> Publicação enganosa </label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input check-motivo" type="checkbox" value="" id="nCumpre">
+                        <label class="form-check-label" for="nCumpre"> Recebe os pagamentos, mas não cumpre os acordos estabelecidos </label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input check-motivo" type="checkbox" value="" id="pVariasPessoas">
+                        <label class="form-check-label" for="pVariasPessoas"> Recebe pagamentos de várias pessoas </label>
+                    </li>
+                    <li class="list-group-item">
+                        <input class="form-check-input check-motivo" type="checkbox" value="" id="burlador">
+                        <label class="form-check-label" for="burlador"> Burlador </label>
+                    </li>
+                    <li class="list-group-item">
+                        <!-- Checkbox "Outros" -->
+                        <input class="form-check-input check-motivo" type="checkbox" id="checkboxTxtArea">
+                        <label class="form-check-label" for="checkboxTxtArea"> Outros </label>
+                        <div style="display: none;" id="txtaOutros">
+                            <!-- Removi a classe 'check-motivo' daqui -->
+                            <textarea id="outros" placeholder="Mínimo 5 caracteres..." style="width: 100%; border: #ccc 1px solid; border-radius: 5px;"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-end pt-2">
+                <button type="button" id="btnEnviar" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="justify-content: center;" disabled onclick="GuardarDenuncia()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FFFFFF" class="me-1"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div><!-- /.row -->
+</div><!-- /.container -->
+
+<!-- Modal de Autenticação (Estilo Laranja) -->
+<div class="modal fade" id="modalLoginRequired" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <!-- Cabeçalho com o seu Laranja (ajuste o HEX se tiver um tom específico) -->
+            <div class="modal-header text-white" style="border-radius: 15px 15px 0 0; background-color: #ff8c00;">
+                <h5 class="modal-title fw-bold">Autenticação Necessária</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <p class="mb-0">Para utilizar esta funcionalidade, precisa de entrar na sua conta.</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                <!-- Botão de Login também em Laranja -->
+                <a href="{% url 'login' %}?next={{ request.path }}&orig=perf" 
+                   class="btn text-white" 
+                   style="border-radius: 8px; background-color: #ff8c00; border: none;">
+                   Fazer Login
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Feedback de Favoritos -->
+<div class="modal fade" id="modalFavoritoFeedback" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <div class="modal-body">
+        <!-- Ícone que vamos mudar via JS -->
+        <div id="favoritoIconContainer" class="mb-3">
+            <i id="favoritoIcon" class="fa-solid fa-star fa-3x"></i>
+        </div>
+        <h5 id="favoritoMensagem" class="mb-0"></h5>
+      </div>
+      <div class="mt-3">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
     </div>
   </div>
-  
-  <!-- Three columns of text below the carousel -->
-  <div class="row">
+</div>
 
-      <div class="col-lg-4">
-        <div class="card card-espaco" style="width: 16rem;">
 
-          <img src=" " class="card-img-top" alt=" " style="height: 250px; object-fit: cover;">
-          
-          <div class="card-body">
-            <div class="price mb-2">
-
-              <span>
-                120
-              </span>
-            </div>
-            <div>
-              <span class="d-block mb-2 text-black-50">Rua Radio Ribatejo 1</span>
-              <span class="city d-block mb-3">Luanda, Angola</span>
-              <a href="#" class="btn btn-detalhes py-2 px-3" style="width: 100%;">Ver Detalhes</a>
-            </div>
-
-          </div>
+<!-- Modal de Feedback de Favoritos -->
+<div class="modal fade" id="modalFavoritoFeedback" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <div class="modal-body">
+        <!-- Ícone que vamos mudar via JS -->
+        <div id="favoritoIconContainer" class="mb-3">
+            <i id="favoritoIcon" class="fa-solid fa-star fa-3x"></i>
         </div>
-      </div><!-- /.col-lg-4 -->
+        <h5 id="favoritoMensagem" class="mb-0"></h5>
+      </div>
+      <div class="mt-3">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </div><!-- /.row -->
-</div><!-- /.container -->
+<!--Modal de sucesso-->
+<div class="modal fade" id="modalDenunciaFeedback" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 15px; border: none; shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="modal-header bg-success text-white" style="border-radius: 15px 15px 0 0;">
+                <h5 class="modal-title fw-bold">Denúncia enviada</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <i class="fa-solid fa-circle-check fa-3x text-success mb-3"></i>
+                <p class="mb-0">A sua denúncia foi registada e será analisada pela nossa equipa.</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;" onclick="document.getElementById('denuncia').style.display='none'">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal de erro-->
+<div class="modal fade" id="modalDenunciaErro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 15px; border: none; shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="modal-header bg-danger text-white" style="border-radius: 15px 15px 0 0;">
+                <h5 class="modal-title fw-bold">Erro ao enviar denúncia</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
+                <p class="mb-0">Ocorreu um erro ao enviar a sua denúncia. Por favor, tente novamente.</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const utilizadorLogado = "{{ request.user.is_authenticated|yesno:'true,false' }}";
+</script>
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/user.js' %}"></script>
+{% endblock %}
 
 {% endblock %}

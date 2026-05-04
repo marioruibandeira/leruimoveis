@@ -43,6 +43,7 @@ def foto_na_listagem(request):
     autor_username = "Utilizador não encontrado"
     perfil_autor = None
     mostra_foto = False
+    usuario_auth = None  # <--- ADICIONE ESTA LINHA AQUI (Inicialização)
 
     path_bits = request.path.strip('/').split('/')
     imovel_id = None
@@ -53,27 +54,23 @@ def foto_na_listagem(request):
             break
 
     if imovel_id:
-        # Procuramos na tbl_listagem
         imovel = Listagem.objects.filter(pk=imovel_id).first()
-
         if imovel:
             usuario_auth = imovel.utilizador 
-            
             if usuario_auth:
                 autor_username = usuario_auth.username
-
                 perfil = AuthUserProfile.objects.filter(utilizador_id=usuario_auth.id).first()
-                
                 if perfil:
                     perfil_autor = perfil
-                    # Verificamos se existe foto no perfil
                     if perfil.foto_utilizador:
                         caminho_foto = str(perfil.foto_utilizador).strip()
                         if caminho_foto not in ["", "None", "NoneType"]:
                             mostra_foto = True
 
+    # Agora, se imovel_id for None, usuario_auth será None e não causará erro
     return {
         'autor_username': autor_username,
+        'autor_id': usuario_auth.id if usuario_auth else None,
         'perfil_autor': perfil_autor,
         'mostra_foto_perfil_autor': mostra_foto
     }
