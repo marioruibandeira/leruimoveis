@@ -78,7 +78,7 @@
     margin-bottom: 15px;
 }
 
-button {
+.btn-croper {
     padding: 12px 18px;
     background: #007bff;
     color: white;
@@ -90,9 +90,9 @@ button {
     min-width: 120px;
 }
 
-button:hover { background: #0056b3; }
+btn-croper:hover { background: #0056b3; }
 
-button:disabled {
+btn-croper:disabled {
     background: #ccc;
     cursor: not-allowed;
 }
@@ -130,7 +130,7 @@ button:disabled {
 
 @media (max-width: 480px) {
     .cropper { height: 70vw; }
-    button { padding: 14px; font-size: 1.1rem; }
+    btn-croper { padding: 14px; font-size: 1.1rem; }
     .resize-handle { width: 18px; height: 18px; }
     .resize-handle.tl { top: -9px; left: -9px; }
     .resize-handle.tr { top: -9px; right: -9px; }

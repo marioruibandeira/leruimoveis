@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from leruimoveis.models import Listagem
+from leruimoveis.models import Listagem, AuthUserProfile
 from leruimoveis.models import Favorito, FavoritosPerfil
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
@@ -8,8 +8,15 @@ from django.contrib.auth.models import User
 
 def favorito(request):
     all_favorito = Favorito.objects.filter(utilizador=request.user).select_related('listagem').order_by('-listagem_id')[:15]
-                                   
-    return render(request, 'favorito/favorito.html', {"all_favorito": all_favorito})
+    
+    all_favorito_perfil = FavoritosPerfil.objects.filter(
+        ce_utilizador=request.user
+    ).select_related('ce_agente').order_by('-created_at')[:15]
+
+    return render(request, 'favorito/favorito.html', {
+        "all_favorito": all_favorito,
+        "all_favorito_perfil": all_favorito_perfil
+    })
 
 
 def adicionar_favorito(request):
@@ -71,6 +78,27 @@ def adicionarAgenteFavorito(request):
                 'status': 'adicionado', 
                 'message': 'Favorito adicionado com sucesso!'
             })
+
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=400)
+
+    return JsonResponse({'success': False, 'message': 'Método inválido.'}, status=405)
+
+def eliminarAgenteFavorito(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            id_favorecido = data.get('favorecido')
+
+            agente = User.objects.get(id=id_favorecido)
+
+            favorito = FavoritosPerfil.objects.get(
+                ce_utilizador=request.user,
+                ce_agente=agente
+            )
+            favorito.delete()
+
+            return JsonResponse({'success': True, 'status': 'removido'})
 
         except Exception as e:
             return JsonResponse({'success': False, 'message': str(e)}, status=400)

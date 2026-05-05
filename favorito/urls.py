@@ -5,4 +5,5 @@ urlpatterns = [
     path('adicionar_favorito/', views.adicionar_favorito, name='adicionar_favorito'),
     path('favorito/', views.favorito, name='favorito'),
     path('adicionarAgenteFavorito/', views.adicionarAgenteFavorito, name='adicionar_agente_favorito'),
+    path('eliminar_agente_favorito/', views.eliminarAgenteFavorito, name='eliminar_Agente_Favorito'),
 ]
