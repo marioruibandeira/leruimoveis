@@ -74,8 +74,8 @@
                   </div>
                   <div class="card-body">
                     <div class="caixa-preco" id="caixaPreco1">
-                      <h1 class="card-title pricing-card-title">
-                        €<span id="valor-plano-1">0</span>
+                      <h1 class="card-title pricing-card-title preco-size">
+                        <span id="valor-plano-1">0</span>
                         <small id="periodo-plano-1" class="text-muted fw-light caixa-p-font">/mês</small>
                       </h1>
                     </div>
@@ -100,10 +100,10 @@
                   <div class="card-header py-3 text-white bg-part-blue-light border-part-blue-light">
                     <h4 class="my-0 fw-normal">Ideal</h4>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body card-body-bg-part">
                     <div class="caixa-preco" id="caixaPreco2">
-                      <h1 class="card-title pricing-card-title">
-                        €<span id="valor-plano-2">0</span>
+                      <h1 class="card-title pricing-card-title preco-size">
+                        <span id="valor-plano-2">0</span>
                         <small id="periodo-plano-2" class="text-muted fw-light caixa-p-font">/mês</small>
                       </h1>
                     </div>
@@ -118,8 +118,6 @@
                     </div>
                   </div>
                 </div>
-
-
                 
               </div>
               <div class="col" style="padding-top: 64px;">
@@ -130,8 +128,8 @@
                     </div>
                     <div class="card-body">
                         <div class="caixa-preco" id="caixaPreco3">
-                          <h1 class="card-title pricing-card-title">
-                            €<span id="valor-plano-3">0</span>
+                          <h1 class="card-title pricing-card-title preco-size">
+                            <span id="valor-plano-3">0</span>
                             <small id="periodo-plano-3" class="text-muted fw-light caixa-p-font">/mês</small>
                           </h1>
                         </div>
@@ -210,11 +208,9 @@
         </main>
 
     </div>
-
-    {% block scripts %} 
-      <script type="text/javascript" src="{% static 'assets/dist/js/particulares.js' %}"></script>
-	  {% endblock %}
-
     
+{% endblock %}
 
+{% block scripts %} 
+  <script type="text/javascript" src="{% static 'assets/dist/js/particulares.js' %}"></script>
 {% endblock %}

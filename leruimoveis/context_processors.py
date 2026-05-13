@@ -4,23 +4,18 @@ from leruimoveis.models.listagem import Listagem
 from django.contrib.auth.models import User
 
 def check_ads_visibility(request):
-    # Por defeito, mostramos a publicidade (caso não haja registo ou seja 0/null)
     mostrar_publicidade = True
     
     if request.user.is_authenticated:
-        # Procura o registo na tbl_configuracoes para o ID do utilizador logado
         config = Configuracoes.objects.filter(ce_utilizador=request.user).first()
         
-        # Se o registo existir e o campo publicidade for exatamente 1, escondemos
         if config and config.publicidade == 1:
             mostrar_publicidade = False
-
-    #print(f"DEBUG: O valor de mostrar_publicidade é {mostrar_publicidade}") # Ver no terminal
        
     return {'mostrar_publicidade': mostrar_publicidade}
 
-def check_existing_picture(request):
 
+def check_existing_picture(request):
     mostra_foto_perfil = False
     perfil_encontrado = None
 
@@ -43,7 +38,7 @@ def foto_na_listagem(request):
     autor_username = "Utilizador não encontrado"
     perfil_autor = None
     mostra_foto = False
-    usuario_auth = None  # <--- ADICIONE ESTA LINHA AQUI (Inicialização)
+    usuario_auth = None  
 
     path_bits = request.path.strip('/').split('/')
     imovel_id = None
@@ -67,10 +62,11 @@ def foto_na_listagem(request):
                         if caminho_foto not in ["", "None", "NoneType"]:
                             mostra_foto = True
 
-    # Agora, se imovel_id for None, usuario_auth será None e não causará erro
     return {
         'autor_username': autor_username,
         'autor_id': usuario_auth.id if usuario_auth else None,
         'perfil_autor': perfil_autor,
         'mostra_foto_perfil_autor': mostra_foto
     }
+
+

@@ -832,6 +832,10 @@
     border-color:#5EE9B5 !important;
 }
 
+.preco-size{font-size: 30px !important;}
+.card-body-bg-pro{ background-color:#EEF2FF !important; }
+.card-body-bg-part{ background-color:#ECFEFF !important; }
+
 @media (max-width: 768px) 
 {
     .anuncio-mobile{ display: inline;}

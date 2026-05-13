@@ -71,8 +71,8 @@
           </div>
           <div class="card-body">
             <div class="caixa-preco" id="caixaPreco1">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-7"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-7"></span>
                 <small id="periodo-plano-7" class="text-muted fw-light caixa-p-font">/mês</small>
               </h1>
             </div>
@@ -99,8 +99,8 @@
           </div>
           <div class="card-body bg-part-green-light">
             <div class="caixa-preco" id="caixaPreco2">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-8"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-8"></span>
                 <small id="periodo-plano-8" class="text-muted fw-light caixa-p-font"></small>
               </h1>
             </div>
@@ -127,8 +127,8 @@
           </div>
           <div class="card-body">
             <div class="caixa-preco" id="caixaPreco3">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-9"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-9"></span>
                 <small id="periodo-plano-9" class="text-muted fw-light caixa-p-font">/mês</small>
               </h1>
             </div>
@@ -219,10 +219,10 @@
     <span style="font-size: smaller; color: red;">O número de anúncios dentro do empreendimento não influencia o valor. Os preços apresentados são sem IVA e referem‑se a um período de 30 dias.</span>
   </main>
   
-  {% block scripts %} 
-    <script type="text/javascript" src="{% static 'assets/dist/js/empreendimentos.js' %}"></script>
-  {% endblock %}
-
 </div>
 
+{% endblock %}
+
+{% block scripts %} 
+  <script type="text/javascript" src="{% static 'assets/dist/js/empreendimentos.js' %}"></script>
 {% endblock %}
