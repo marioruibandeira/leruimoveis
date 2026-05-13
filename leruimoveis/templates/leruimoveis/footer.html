@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="logo-espaco">
-            <a href="https://www.lea.co.ao/lerui/"> <img src="{% static 'assets/imagem/logo2.png' %}" alt="Lerui Imoveis" media-simple="true"> </a>
+            <a href="{% url 'home' %}"> <img src="{% static 'assets/imagem/logo2.png' %}" alt="Lerui Imoveis" media-simple="true"> </a>
           </div>
         </div>
 
@@ -25,7 +25,7 @@
           <h5 style="color: #ff6600;">Sobre a Lerui Imóveis</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}">Quem somos</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}">Contacto Geral</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'about' %}#contactos">Contacto Geral</a></li>
             <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="{% url 'partners' %}">Parcerias</a></li>
             <li class="mb-1"><a class="link-secondary text-decoration-none rodape-text" href="#">WhatsApp: +351 926 935 606</a></li>
           </ul>
