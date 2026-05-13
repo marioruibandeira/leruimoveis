@@ -159,3 +159,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Login rederect
 LOGIN_URL = '/usuarios/login/'
 
+LANGUAGE_CODE = 'pt'  # ou 'pt'
+USE_I18N = True
+USE_L10N = True
+

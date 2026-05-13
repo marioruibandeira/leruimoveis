@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class Listagem(models.Model):
     titulo = models.CharField(max_length=100)
     fotos = models.ImageField(upload_to='listimages/', null=True, blank=True)
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
+    preco = models.DecimalField(max_digits=16, decimal_places=2)
     endereco = models.TextField()
     descricao = models.TextField()
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
@@ -43,4 +43,8 @@ class Listagem(models.Model):
             except Listagem.DoesNotExist:
                 pass
         super().save(*args, **kwargs)
-        
+
+
+
+
+
