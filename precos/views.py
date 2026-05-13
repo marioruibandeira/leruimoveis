@@ -1,22 +1,48 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from leruimoveis.models import Plano
+from ipware import get_client_ip
+from django.contrib.gis.geoip2 import GeoIP2
+
+CAMBIO_EUR_PARA_AOA = 1076.92
+
+def get_pais(request):
+    ip, is_routable = get_client_ip(request)
+    if ip and is_routable:
+        try:
+            g = GeoIP2()
+            return g.country_name(ip)
+        except:
+            pass
+    return None
+
+def converter_preco(planos, pais):
+    for plano in planos:
+        if pais == 'Angola':            
+            plano['moeda'] = '€'
+        else:            
+            plano['preco'] = round(float(plano['preco']) * CAMBIO_EUR_PARA_AOA, 2)
+            plano['moeda'] = 'Kz'
+
+    return planos
 
 def particulares(request):
     negocio_id = request.GET.get('negocio_id')
     periodo_texto = request.GET.get('periodo')
 
     if negocio_id and periodo_texto:
-        # Extraímos os dias (ex: "15 dias" -> "15")
         dias = "".join(filter(str.isdigit, periodo_texto))
 
-        planos = Plano.objects.filter(
+        planos = list(Plano.objects.filter(
             fk_tipo_cliente_id=1,
             tipo_negocio_id=negocio_id,
             periodo=dias
-        ).values('preco', 'tipo_plano_id', 'plano_id')
+        ).values('preco', 'tipo_plano_id', 'plano_id'))
 
-        return JsonResponse(list(planos), safe=False)
+        pais = get_pais(request)
+        planos = converter_preco(planos, pais)
+
+        return JsonResponse(planos, safe=False)
 
     return render(request, 'precos/particulares.html')
 
@@ -52,6 +78,9 @@ def profissionais(request):
                 fk_tipo_cliente_id=c_id,
                 numero_listagens=l_id
             ).values('preco', 'tipo_plano_id', 'plano_id', 'fk_tipo_cliente_id', 'periodo')
+
+            pais = get_pais(request)
+            planos_dois = converter_preco(planos_dois, pais)
 
             if is_ajax or request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse(list(planos_dois), safe=False)
@@ -91,6 +120,9 @@ def empreendimentos(request):
                 total_empreendimentos = ne_id
             ).values('preco', 'tipo_plano_id', 'plano_id', 'fk_tipo_cliente_id', 'periodo')
 
+            pais = get_pais(request)
+            planos_tres = converter_preco(planos_tres, pais)
+            
             if is_ajax or request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse(list(planos_tres), safe=False)
 

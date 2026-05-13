@@ -24,7 +24,8 @@ document.getElementById('cbxNumeroAnuncios').addEventListener('change', function
 
                 if (elementoPreco) 
                 {
-                    const precoFormatado = planos.preco.toString().replace('.', ',');                  
+                    //const precoFormatado = planos.preco.toString().replace('.', ',');
+                    const precoFormatado = planos.moeda + ' ' + formatarPreco(planos.preco);                  
                     elementoPreco.innerText = precoFormatado;
                     displayPeriodo.innerText = "/" + planos.periodo + " dias";
                     

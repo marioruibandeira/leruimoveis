@@ -95,8 +95,8 @@
           </div>
           <div class="card-body">
             <div class="caixa-preco" id="caixaPreco1">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-4"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-4"></span>
                 <small id="periodo-plano-4" class="text-muted fw-light caixa-p-font"></small>
               </h1>
             </div>
@@ -124,10 +124,10 @@
           <div class="card-header py-3 text-white bg-part-purple-light border-part-purple-light">
             <h4 class="my-0 fw-normal">Intermediário</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body card-body-bg-pro">
             <div class="caixa-preco" id="caixaPreco2">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-5"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-5"></span>
                 <small id="periodo-plano-5" class="text-muted fw-light caixa-p-font"></small>
               </h1>
             </div>
@@ -155,8 +155,8 @@
           </div>
           <div class="card-body">
             <div class="caixa-preco" id="caixaPreco3">
-              <h1 class="card-title pricing-card-title">
-                €<span id="valor-plano-6"></span>
+              <h1 class="card-title pricing-card-title preco-size">
+                <span id="valor-plano-6"></span>
                 <small id="periodo-plano-6" class="text-muted fw-light caixa-p-font"></small>
               </h1>
             </div>
@@ -259,8 +259,8 @@
   <span style="font-size: smaller; color: red;">* Inserção, listagem ou postagem significa publicar um anúncio ou prolongá-lo a cada 30 dias. Os preços apresentados são preços sem IVA para 1 período de faturação (30 dias).</span>
 </div>
 
-    {% block scripts %} 
-      <script type="text/javascript" src="{% static 'assets/dist/js/profissionais.js' %}"></script>
-	  {% endblock %}
+{% endblock %}
 
+{% block scripts %} 
+  <script type="text/javascript" src="{% static 'assets/dist/js/profissionais.js' %}"></script>
 {% endblock %}
