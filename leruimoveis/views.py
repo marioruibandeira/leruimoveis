@@ -73,7 +73,7 @@ def propertydetails(request, property_id):
 def destaques(request):
     return render(request, 'leruimoveis/destaques.html')
 
-
+"""
 def user(request, id):
     # 1. Busca o perfil alvo (o agente que está a ser visitado)
     perfil_alvo = get_object_or_404(
@@ -98,6 +98,33 @@ def user(request, id):
         'perfil_visitado': perfil_alvo,
         'autor_id': id,
         'e_favorito': e_favorito  # Esta variável será usada no class do botão
+    })"""
+
+def user(request, id):
+    from django.contrib.auth.models import User
+    
+    # 1. Busca o utilizador alvo — 404 se o User não existir
+    alvo_user = get_object_or_404(User, id=id)
+
+    # 2. Tenta buscar o perfil, mas não falha se não existir
+    try:
+        perfil_alvo = AuthUserProfile.objects.select_related('utilizador').get(utilizador=alvo_user)
+    except AuthUserProfile.DoesNotExist:
+        perfil_alvo = None
+
+    # 3. Verifica favorito
+    e_favorito = False
+    if request.user.is_authenticated:
+        e_favorito = FavoritosPerfil.objects.filter(
+            ce_utilizador=request.user,
+            ce_agente=alvo_user
+        ).exists()
+
+    return render(request, 'leruimoveis/user.html', {
+        'perfil_visitado': perfil_alvo,
+        'alvo_user': alvo_user,        # <-- adiciona isto
+        'autor_id': id,
+        'e_favorito': e_favorito
     })
 
 @login_required

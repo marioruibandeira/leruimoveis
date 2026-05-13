@@ -40,17 +40,15 @@
                             {% if perfil_visitado.primeiro_nome %}
                                 {{ perfil_visitado.primeiro_nome }} {{ perfil_visitado.sobre_nome }}
                             {% else %}
-                                {{ perfil_visitado.utilizador.username }}
+                                {{ alvo_user.username |capfirst}}
                             {% endif %}                            
                         </h2>
                         <h5 class="heading" style="color: #232323 !important;"> 
                             {% if perfil_visitado.primeiro_nome %}
                                 {{ perfil_visitado.endereco }}
-                            {% else %}
-                                Endereço não está disponível
                             {% endif %}                             
                         </h5>
-                        <p style="line-height: 2px;">Na Lerui desde {{ perfil_visitado.utilizador.date_joined }}</p>
+                        <p style="line-height: 2px;">Na Lerui desde {{ alvo_user.date_joined|date:"l d/m/Y" }}</p>
                         <p style="line-height: 2px;">Esteve online hoje às 14:25</p>
                          
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#D0872E"><g><rect fill="none" height="24" width="24" x="0"/><polygon points="14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"/></g></svg>
