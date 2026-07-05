@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'pagamento',
     'django.contrib.humanize',
     'favorito',
+    'agencias',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'leruimoveis.context_processors.check_ads_visibility',
                 'leruimoveis.context_processors.check_existing_picture',
                 'leruimoveis.context_processors.foto_na_listagem',
+                'django.template.context_processors.request',
             ],
         },
     },

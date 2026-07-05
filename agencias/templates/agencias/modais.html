@@ -1,0 +1,98 @@
+{% if not sede %}
+        <div class="modal fade show" id="modalSemSede" tabindex="-1" aria-hidden="true" style="display:block; background:rgba(0,0,0,0.5);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    
+                    <div class="modal-header bg-warning text-dark" style="border-radius: 15px 15px 0 0;">
+                        <h5 class="modal-title fw-bold">Atenção</h5>
+                        <button type="button" class="btn-close" onclick="history.back()" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p class="mb-0">
+                            Para configurar o perfil da agência deves criar primeiro uma <strong>Sede</strong>.<br>
+                            Clica em <strong>Continuar</strong> para criar a tua agência.
+                        </p>
+                    </div>
+
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()" style="border-radius: 8px;">
+                            Cancelar
+                        </button>
+                        <a href="{% url 'perfil-imobiliario' %}" class="btn btn-primary" style="border-radius: 8px;">
+                            Continuar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="modal fade" id="modalSucesso" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none;">
+                <div class="modal-header bg-success text-white" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold">Sucesso!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#198754" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                    </div>
+                    <p id="msgSucessoTexto" class="fs-5"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-success w-100" data-bs-dismiss="modal" style="border-radius: 8px;">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalErro" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none;">
+                <div class="modal-header bg-danger text-white" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold">Erro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#dc3545" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                        </svg>
+                    </div>
+                    <p id="msgErroTexto" class="fs-5"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" style="border-radius: 8px;">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalConfirmarApagar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none;">
+                <div class="modal-header bg-danger text-white" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold">Confirmar</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#dc3545" viewBox="0 -960 960 960">
+                            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                        </svg>
+                    </div>
+                    <p id="msgConfirmarTexto" class="fs-5">Tens a certeza que queres apagar?</p>
+                </div>
+                <div class="modal-footer border-0 d-flex gap-2">
+                    <button type="button" class="btn btn-secondary flex-fill" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                    <button type="button" class="btn btn-danger flex-fill" id="btnConfirmarApagar" style="border-radius: 8px;">Apagar</button>
+                </div>
+            </div>
+        </div>
+    </div>

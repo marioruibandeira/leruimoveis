@@ -231,6 +231,21 @@ cropBtn.addEventListener('click', () => {
 // ───────────────────────────────────────────────
 //             GUARDAR VIA AJAX
 // ───────────────────────────────────────────────
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 saveBtn.addEventListener('click', async () => {
   if (!hasCropped) return;
 
@@ -243,8 +258,11 @@ saveBtn.addEventListener('click', async () => {
     const formData = new FormData();
     formData.append('cropped_image', blob, 'recorte.jpg');
 
-    const response = await fetch('salvar-imagem.php', {
+    const response = await fetch(window.location.pathname, {
       method: 'POST',
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      },
       body: formData
     });
 
@@ -252,10 +270,30 @@ saveBtn.addEventListener('click', async () => {
 
     if (result.success) {
       message.className = 'success';
-      message.textContent = result.message || 'Imagem guardada com sucesso!';
+      message.textContent = result.message || 'Logotipo guardado com sucesso!';
+
+      var imgLogotipo = document.getElementById('imgLogotipo');
+      if (imgLogotipo) {
+          imgLogotipo.src = preview.src;
+      } else {
+          var div = document.createElement('div');
+          div.className = 'row';
+          div.style.marginTop = '10px';
+          div.innerHTML = `
+              <div class="col-12 mb-3" style="text-align: center;">
+                  <div class="containe" style="position: relative; display: inline-block;">
+                      <img id="imgLogotipo" src="${preview.src}" title="Logotipo atual" style="max-width: 250px; max-height: 250px;">
+                      <button type="button" onclick="EliminarLogotipo()"
+                          style="position: absolute; top: 25px; right: 25px; background: #dc3545; border: none; border-radius: 4px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                      </button>
+                  </div>
+              </div>`;
+          document.querySelector('.containe').parentElement.insertBefore(div, document.querySelector('.containe').parentElement.firstChild);
+      }
     } else {
       message.className = 'error';
-      message.textContent = result.message || 'Erro ao guardar a imagem.';
+      message.textContent = result.message || 'Erro ao guardar o logotipo.';
     }
   } catch (err) {
     message.className = 'error';
@@ -264,3 +302,23 @@ saveBtn.addEventListener('click', async () => {
     saveBtn.disabled = false;
   }
 });
+
+function EliminarLogotipo() {
+    fetch(window.location.pathname, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'action=eliminar'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            document.getElementById('imgLogotipo').parentElement.parentElement.parentElement.remove();
+        } else {
+            alert(result.message);
+        }
+    })
+    .catch(() => alert('Erro de ligação.'));
+}
