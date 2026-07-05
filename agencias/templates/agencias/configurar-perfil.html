@@ -1,0 +1,135 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        {% include 'agencias/agencia-side-menu.html' %}
+                    </div>  
+                    
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        
+                        <!--tabela-detalhes-->
+                        <div style="border:#ccc solid 1px; margin-bottom: 0px;">
+                            <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                <li class="list-group-item form-bg">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <label for="pesquisa" class="form-label input-titulos">Pesquisar</label>
+                                            <input type="text" id="pesquisa" class="form-control" placeholder="Pesquisar por username ou nome...">
+                                            <div id="resultadosPesquisa" class="list-group mt-1"></div>
+                                            <input type="hidden" id="utilizadorId" value="">
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="facebook" class="form-label input-titulos">Filial / Sede</label>
+                                            <div class="input-group">
+                                                <select class="form-select" id="agencia">
+                                                    <option value="">Selecione a agência</option>
+                                                    {% for ag in agencias %}
+                                                        <option value="{{ ag.agencia_id }}">
+                                                            {% if not ag.matriz_id %}Sede{% else %}Filial{% endif %} — {{ ag.agencia }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-12 perfil-bottom-btn d-flex gap-2 justify-content-center">
+                            <button type="button" id="btnAdicionar" onclick="AdicionarUtilizador()" disabled class="btn btn-detalhes ...">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80ZM247-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q440-607 440-640t-23.5-56.5Q393-720 360-720t-56.5 23.5Q280-673 280-640t23.5 56.5Q327-560 360-560t56.5-23.5ZM360-640Zm0 400Z"/></svg>
+                                <span id="btnGuardarTexto">Adicionar Utilizador</span>
+                            </button>
+                        </div>
+
+                        <div class="tabela-dtlhes">                        
+                            <table id="tabelaUtilizadores" class="table table-striped table-hover align-middle" style="border-radius: 5px !important;">
+                                <thead class="table-dark" style="border-radius: 5px !important;">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" style="text-align: left;">Utilizador</th>
+                                        <th style="text-align: left;" scope="col">Nomes</th>
+                                        <th style="text-align: left;" scope="col">Agência</th>
+                                        <th scope="col" class="text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for au in agencia_utilizadores %}
+                                        <tr id="au-row-{{ au.agencia_utilizador_id }}">
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td style="text-align: left;">{{ au.ce_utilizador.username }}</td>
+                                            <td style="text-align: left;">
+                                                {% with perfil=au.ce_utilizador.authuserprofile_set.first %}
+                                                    {% if perfil %}{{ perfil.primeiro_nome }} {{ perfil.sobre_nome }}{% else %}-{% endif %}
+                                                {% endwith %}
+                                            </td>
+                                            <td style="text-align: left;">{{ au.ce_filia_sede.agencia }}</td>
+                                            <td class=" " style="width: 150px; text-align: right; padding-right:20px;">
+                                                <!-- Delete -->
+                                                <a href="#" title="Apagar" class="link-decoration" onclick="ApagarUtilizador({{ au.agencia_utilizador_id }})">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#ff4200"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="5" class="text-center text-muted">Nenhum utilizador encontrado</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cards-dtlhes" id="containerUtilizadoresCards">
+                            {% for au in agencia_utilizadores %}
+                                <div class="card" style="width: 100%; margin-top: 15px; margin-bottom:15px;">
+                                    <div class="card-header text-start" style="background-color: #b4ebc4;">
+                                        {{ au.ce_filia_sede.agencia }}
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item text-start">
+                                            <span class="fw-bold me-1">Utilizador : </span> {{ au.ce_utilizador.username }}
+                                        </li>
+                                        <li class="list-group-item text-start">
+                                            <span class="fw-bold me-1">Nome : </span>
+                                            {% with perfil=au.ce_utilizador.authuserprofile_set.first %}
+                                                {% if perfil %}{{ perfil.primeiro_nome }} {{ perfil.sobre_nome }}{% else %}-{% endif %}
+                                            {% endwith %}
+                                        </li>
+                                    </ul>
+                                    <div class="card-footer text-start" style="padding: 4px;">
+                                        <!-- Delete -->
+                                        <a href="#" class="btn btn-danger" title="Apagar"
+                                        style="width: 100% !important; height: 28px; padding: 0px !important; margin-right: 0px !important;"
+                                        onclick="ApagarUtilizador({{ au.agencia_utilizador_id }})">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <div class="alert alert-warning" style="margin-top: 15px;">Nenhum utilizador encontrado.</div>
+                            {% endfor %}
+                        </div>
+                        <br/>
+
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% include 'agencias/modais.html' %}
+
+{% endblock %}
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/configurarPerfil.js' %}"></script>
+{% endblock %}

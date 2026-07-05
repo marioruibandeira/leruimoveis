@@ -50,3 +50,6 @@ from .configuracoes import Configuracoes
 from .motivo_denuncia import MotivoDenuncia
 from .denuncia_efetuada import DenunciaEfetuada
 from .denuncia_efetuada_motivo import DenunciaEfetuadaMotivo
+#
+from .agencia import Agencia
+from .agencia_utilizador import AgenciaUtilizador

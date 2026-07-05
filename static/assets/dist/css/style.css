@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/static/assets/fonts/flaticon/font/Comfortaa-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.logo-lerui {
+    font-family: 'Comfortaa';
+    font-weight: bolder;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    font-size: 1rem; /* ajusta como quiseres */
+    letter-spacing: 2px; /* opcional, fica bonito com esta fonte */
+}
+
 .anuncio-mobile{ display: none ;}
 .anuncio-desktop{display: inline;}
 
@@ -836,6 +851,18 @@
 .card-body-bg-pro{ background-color:#EEF2FF !important; }
 .card-body-bg-part{ background-color:#ECFEFF !important; }
 
+/*Agencias*/
+.cards-dtlhes{display: none !important;}
+.btn-oculto { display: none !important; }
+
+/*Transversal*/
+.t-a-l{text-align: left !important;}
+.t-a-c{text-align: center !important;}
+.t-a-r{text-align: right !important;}
+
+.link-decoration{text-decoration: none;}
+/*Fim de tags transversal*/
+
 @media (max-width: 768px) 
 {
     .anuncio-mobile{ display: inline;}
@@ -923,4 +950,8 @@
     .perfil-bottom-btn {padding: 15px 0px 10px 0px;}
 
     .espaco-preco{padding-top: 0px;}
+
+    /*agencia*/
+    .tabela-dtlhes{ display: none !important; }
+    .cards-dtlhes{display: block !important;}
 }

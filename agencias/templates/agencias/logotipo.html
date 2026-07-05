@@ -1,0 +1,83 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        {% include 'agencias/agencia-side-menu.html' %}
+                    </div>  
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        <div style="border:#ccc solid 1px;">
+                            <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                <li class="list-group-item" style="background-color: #ccc;">Logotipo</li>
+                                <li class="list-group-item form-bg">
+
+                                    {% if sede.logotipo %}
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-12 mb-3" style="text-align: center;">
+                                                <div class="containe" style="position: relative; display: inline-block;">
+                                                    <img id="imgLogotipo" src="{{ sede.logotipo.url }}" title="Logotipo atual" style="max-width: 250px; max-height: 250px;">
+                                                    <button type="button" onclick="EliminarLogotipo()"
+                                                        style="position: absolute; top: 25px; right: 25px; background: #dc3545; border: none; border-radius: 4px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-12 mb-3">
+                                            <div class="containe">
+                                                <h2 style="text-align:center; margin-bottom:15px;">Corta a tua imagem</h2>
+                                                <div class="upload-area" id="uploadArea">
+                                                    <p>Toca ou arrasta uma imagem aqui</p>
+                                                    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+                                                </div>
+                                                <div class="cropper" id="cropper">
+                                                    <img id="image" />
+                                                    <div id="cropBox" class="crop-box" style="display:none;">
+                                                    <div class="resize-handle tl"></div>
+                                                    <div class="resize-handle tr"></div>
+                                                    <div class="resize-handle bl"></div>
+                                                    <div class="resize-handle br"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="controls">
+                                                    <button id="cropBtn" class="btn btn-primary">Cortar (250×250)</button>
+                                                    <button id="resetBtn" class="btn btn-secondary">Reiniciar</button>
+                                                </div>
+
+                                                <img id="cropped-preview" alt="Pré-visualização 250×250" />
+                                                <button class="btn btn-success" id="saveBtn" style="border-color: #c65306 !important; background-color: #ff6600 !important;">Guardar Recorte</button>
+                                                
+                                                <div id="message"></div>
+
+                                                <canvas id="canvas" style="display:none;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <br/>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'agencias/modais.html' %}
+
+{% endblock %}
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/logoCroper.js' %}"></script>
+{% endblock %}
