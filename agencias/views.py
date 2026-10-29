@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from leruimoveis.models import PlanoAprovado, Agencia, AuthUserProfile, AgenciaUtilizador 
+from leruimoveis.models import Assinatura, Agencia, AuthUserProfile, AgenciaUtilizador 
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -11,7 +11,7 @@ def perfil_imobiliario(request):
     
     user = request.user
 
-    plano_ativo = PlanoAprovado.objects.filter(
+    plano_ativo = Assinatura.objects.filter(
         utilizador=user,
         is_active=True,
         data_fim__gte=timezone.now(),

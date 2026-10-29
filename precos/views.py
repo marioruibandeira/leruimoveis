@@ -18,11 +18,11 @@ def get_pais(request):
 
 def converter_preco(planos, pais):
     for plano in planos:
-        if pais == 'Angola':            
-            plano['moeda'] = '€'
-        else:            
+        if pais == 'Angola':
             plano['preco'] = round(float(plano['preco']) * CAMBIO_EUR_PARA_AOA, 2)
             plano['moeda'] = 'Kz'
+        else:
+            plano['moeda'] = '€'
 
     return planos
 

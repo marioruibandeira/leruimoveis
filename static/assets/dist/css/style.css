@@ -356,17 +356,17 @@
 .fundo-colorido
 {
     background-color: rgba(255, 102, 0, 0.15); 
-      display: inline-block; 
-      padding: 5px 10px; 
-      border-radius: 8px;
+    display: inline-block; 
+    padding: 5px 10px; 
+    border-radius: 8px;
 }
 
 .fundo-preco-colorido
 {
     background-color: rgba(250, 130, 56, 0.45); 
-      display: inline-block; 
-      padding: 0px 10px 6px 10px; 
-      border-radius: 8px;
+    display: inline-block; 
+    padding: 0px 10px 6px 10px; 
+    border-radius: 8px;
 }
 
 .caixa-preco
@@ -862,6 +862,52 @@
 
 .link-decoration{text-decoration: none;}
 /*Fim de tags transversal*/
+
+
+/*Destaques*/
+.tbl-estilo 
+{
+    border-top: #ccc px solid !important;
+    margin-bottom: 0px !important; 
+    border-radius:5px !important;
+}
+.heder-card 
+{
+    text-align: left !important; 
+    font-weight: bold !important;
+}
+.tbl-list{
+    border: #000 solid 1px !important;
+    border-radius: 5px !important;
+}
+.btn-outline-laranja {
+    border: 1px solid #ff6b00;
+    color: #ff6b00;
+    background: transparent;
+}
+.btn-outline-laranja:hover {
+    background: #ff6b00;
+    color: #fff;
+}
+.btn-main-laranja {
+    border: 1px solid #ff6b00;
+    color: #ff6b00;
+    background: #ff6b00;
+    color:#fff;
+}
+.btn-main-laranja:hover {
+    background: #ea7c2d;
+    color: #fff;
+}
+.switch-laranja:checked {
+    background-color: #ff6b00 !important;
+    border-color: #ff6b00 !important;
+}
+.btn-outline-man {
+    border: 1px solid #ff6b00;
+    color: #ff6b00;
+}
+/*Fim do destaques*/
 
 @media (max-width: 768px) 
 {

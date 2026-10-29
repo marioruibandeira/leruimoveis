@@ -36,7 +36,7 @@ from .tipo_cliente import TipoCliente
 from .tipo_servico import TipoServico
 from .tipo_plano import TipoPlano
 from .plano import Plano
-from .plano_aprovado import PlanoAprovado
+from .assinatura import Assinatura
 from .tipo_negocio import TipoNegocio
 from .detalhes_imovel import DetalhesImovel
 #
@@ -53,3 +53,8 @@ from .denuncia_efetuada_motivo import DenunciaEfetuadaMotivo
 #
 from .agencia import Agencia
 from .agencia_utilizador import AgenciaUtilizador
+#
+from .destaque_listagem import Destaque_Listagem
+from .plano_destaque_preco import PlanoDestaquePreco
+from .plano_destaque import PlanoDestaque
+from .moeda import Moeda
