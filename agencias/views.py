@@ -399,3 +399,11 @@ def logotipo(request):
     return render(request, 'agencias/logotipo.html', {
         'sede': sede,
     })
+
+
+def perfil_comercial(request):
+    return render(request, 'agencias/perfil-comercial.html')
+
+
+def creditos_destaque(request):
+    return render(request, 'agencias/creditos-destaque.html')

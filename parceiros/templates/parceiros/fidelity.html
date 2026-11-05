@@ -5,127 +5,107 @@
 {% block content %}
 
 <div class="b-example-divider ads-section contorno px-4 py-5 mt-6">
-      <div class="container">
+  <div class="container">
 
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-          <h1 class="display-4 fw-normal">Planos</h1>
-          <p class="fs-5 text-muted">Os nossos planos de parceria têm como objetivo dar maior exposição à marca e aos serviços das imobiliárias parceiras, alcançando uma vasta gama de clientes e utilizadores em todo o país e além-fronteiras. 
-            Oferecemos um conjunto abrangente de benefícios, ajustados ao plano escolhido pela sua imobiliária. 
-            Começa agora e potencia a tua visibilidade.</p>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Planos</h1>
+      <p class="fs-5 text-muted">
+        Os nossos planos de parceria têm como objetivo dar maior exposição à marca e aos serviços das imobiliárias parceiras, alcançando uma vasta gama de clientes e utilizadores em todo o país e além-fronteiras. Oferecemos um conjunto abrangente de benefícios, ajustados ao plano escolhido pela sua imobiliária. Começa agora e potencia a tua visibilidade.
+      </p>
+
+      <div class="d-flex justify-content-center mt-4">
+        <div class="regiao-toggle">
+          <input type="checkbox" role="switch" id="regiaoToggle" class="regiao-toggle__input" aria-label="Mostrar preços de Angola">
+          <label for="regiaoToggle" class="regiao-toggle__track">
+            <span class="regiao-toggle__thumb"></span>
+            <span class="regiao-toggle__opcao regiao-toggle__opcao--pt">Portugal (€)</span>
+            <span class="regiao-toggle__opcao regiao-toggle__opcao--ao">Angola (Kz)</span>
+          </label>
         </div>
-
-          <main>
-            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-              <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                  <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Essencial</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1 class="card-title pricing-card-title">£25<small class="text-muted fw-light">/mês</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                      <li>10 users included</li>
-                      <li>2 GB of storage</li>
-                      <li>Email support</li>
-                      <li>Help center access</li>
-                    </ul>
-                    <a href="{% url 'pagamento' %}"class="w-100 btn btn-lg btn-outline-bronze">Assina Um Mês</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                  <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Avançado</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1 class="card-title pricing-card-title">£45<small class="text-muted fw-light">/mês</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                      <li>20 users included</li>
-                      <li>10 GB of storage</li>
-                      <li>Priority email support</li>
-                      <li>Help center access</li>
-                    </ul>
-                    <a href="{% url 'pagamento' %}" class="w-100 btn btn-lg bg-ouro border-ouro">Começa Agora</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-ouro">
-                  <div class="card-header py-3 text-white bg-ouro border-ouro">
-                    <h4 class="my-0 fw-normal">Premium</h4>
-                  </div>
-                  <div class="card-body">
-                    <h1 class="card-title pricing-card-title">£80<small class="text-muted fw-light">/mês</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                      <li>30 users included</li>
-                      <li>15 GB of storage</li>
-                      <li>Phone and email support</li>
-                      <li>Help center access</li>
-                    </ul>
-                    <a href="{% url 'pagamento' %}" class="w-100 btn btn-lg bg-ouro border-ouro">Entra Em Contacto</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="display-6 text-center mb-4">Compare planos</h2>
-
-            <div class="table-responsive">
-              <table class="table text-center">
-                <thead>
-                  <tr>
-                    <th style="width: 34%;border-bottom: #000 solid 1px;"></th>
-                    <th style="width: 22%;border-bottom: #000 solid 1px;">Bronze</th>
-                    <th style="width: 22%;border-bottom: #000 solid 1px;">Prata</th>
-                    <th style="width: 22%;border-bottom: #000 solid 1px;">Ouro</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row" class="text-start linhas">Visibilidade Máxima</th>
-                    <td class="linhas"></td>
-                    <td class="linhas"></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="text-start linhas">Visibilidade Limitada</th>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                </tbody>
-
-                <tbody>
-                  <tr>
-                    <th scope="row" class="text-start linhas">Perfil Comercial</th>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="text-start linhas">Listagem de Imóveis</th>
-                    <td class="linhas"></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="text-start linhas">Unlimited members</th>
-                    <td class="linhas"></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                    <td class="linhas"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="text-start">Extra security</th>
-                    <td></td>
-                    <td></td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#ff6600"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </main>
       </div>
+    </div>
+    
+    <main>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for plano in planos %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm{% if forloop.last %} border-ouro{% endif %}">
+            <div class="card-header py-3{% if forloop.last %} text-white bg-ouro border-ouro{% endif %}">
+              <h4 class="my-0 fw-normal">{{ plano.tipo.tipo_parceiro }}</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span class="preco{% if angola_checked %} d-none{% endif %}" data-moeda="EUR">{% if plano.preco_eur %}{{ plano.preco_eur.ce_moeda.simbolo }}{{ plano.preco_eur.preco|floatformat:"-2" }}{% else %}—{% endif %}</span>
+                <span class="preco{% if not angola_checked %} d-none{% endif %}" data-moeda="AOA">{% if plano.preco_aoa %}{{ plano.preco_aoa.preco|floatformat:"-2" }} {{ plano.preco_aoa.ce_moeda.simbolo }}{% else %}—{% endif %}</span>
+                <small class="text-muted fw-light">/mês</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                {% for b in plano.beneficios %}
+                <li>{{ b.nome }}{% if b.valor %}: {{ b.valor }}{% endif %}</li>
+                {% endfor %}
+              </ul>
+              <a href="{% url 'pagamento' %}?plano={{ plano.tipo.tip_parceiro_id }}&moeda={% if angola_checked %}AOA{% else %}EUR{% endif %}" data-base="{% url 'pagamento' %}?plano={{ plano.tipo.tip_parceiro_id }}" class="btn-plano w-100 btn btn-lg {% if forloop.first %}btn-outline-bronze{% else %}bg-ouro border-ouro{% endif %}">{% if forloop.first %}Assina Um Mês{% elif forloop.last %}Entra Em Contacto{% else %}Começa Agora{% endif %}</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    
+      <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+        <symbol id="icone-visto" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </symbol>
+      </svg>
+
+      <h2 class="display-6 text-center mb-4">Compare planos</h2>
+
+      <div class="table-responsive">
+        <table class="table text-center align-middle">
+          <thead>
+            <tr>
+              <th style="width: 34%; border-bottom: #000 solid 1px;"></th>
+              {% for plano in planos %}
+              <th style="border-bottom: #000 solid 1px;">{{ plano.tipo.tipo_parceiro }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for linha in linhas %}
+            <tr>
+              <th scope="row" class="text-start{% if not forloop.last %} linhas{% endif %}">{{ linha.beneficio.beneficio }}</th>
+              {% for celula in linha.celulas %}
+              <td{% if not forloop.parentloop.last %} class="linhas"{% endif %}>
+                {% if celula %}{% if celula.valor %}{{ celula.valor }}{% else %}<svg width="40" height="40" fill="#ff6600" role="img" aria-label="Incluído"><use href="#icone-visto"></use></svg>{% endif %}{% endif %}
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+          const toggle = document.getElementById('regiaoToggle');
+          const precos = document.querySelectorAll('.preco');
+          const botoes = document.querySelectorAll('.btn-plano');
+
+          function atualizarPrecos() {
+            const moeda = toggle.checked ? 'AOA' : 'EUR';
+            precos.forEach(function (el) {
+              el.classList.toggle('d-none', el.dataset.moeda !== moeda);
+            });
+            botoes.forEach(function (a) {
+              a.href = a.dataset.base + '&moeda=' + moeda;
+            });
+          }
+
+          toggle.addEventListener('change', atualizarPrecos);
+          atualizarPrecos();
+        });
+      </script>
+
     </div>
 
 

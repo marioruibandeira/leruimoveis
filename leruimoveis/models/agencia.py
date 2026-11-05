@@ -5,6 +5,7 @@ from django.core.validators import MinLengthValidator
 class Agencia(models.Model):
     agencia_id = models.AutoField(primary_key=True)
     agencia = models.CharField(max_length=50)
+    nif = models.CharField(max_length=20)
     telefone = models.CharField(max_length=20)
     telefone_alternativo = models.CharField(max_length=20, blank=True, null=True)
     whatsapp = models.CharField(max_length=20, blank=True, null=True)

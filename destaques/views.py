@@ -21,8 +21,10 @@ from leruimoveis.models.cidade import Cidade
 from leruimoveis.models.tipo_negocio import TipoNegocio
 from leruimoveis.models.tipo_cliente import TipoCliente
 from django.urls import reverse
+from administracao.decorators import staff_required
 
 
+@staff_required
 @login_required
 def destaques_pagos(request):
     hoje = timezone.now().date()
@@ -36,6 +38,7 @@ def destaques_pagos(request):
         'hoje': hoje,
     })
 
+@staff_required
 @login_required
 def pesquisar_utilizador(request):
     termo = request.GET.get('q', '').strip()
@@ -52,6 +55,8 @@ def pesquisar_utilizador(request):
 
     return JsonResponse({'resultados': resultados})
 
+
+@staff_required
 @login_required
 def listagens_por_utilizador(request, utilizador_id):
     hoje = timezone.now().date()
@@ -81,7 +86,7 @@ def listagens_por_utilizador(request, utilizador_id):
     return JsonResponse({'listagens': resultados})
 
 
-@login_required
+@staff_required
 @login_required
 def tipo_cliente_e_precos_destaque(request, utilizador_id):
     from precos.views import get_pais  # import local, evita ciclo
@@ -124,6 +129,8 @@ def tipo_cliente_e_precos_destaque(request, utilizador_id):
         'precos': resultado
     })
 
+
+@staff_required
 @login_required
 def novo_destaque(request):
 
@@ -133,6 +140,7 @@ def novo_destaque(request):
     return render(request, 'destaques/destaques.html', {'angola_checked': angola_checked})
 
 
+@staff_required
 @login_required
 def guardar_destaque(request):
     if request.method != 'POST':
@@ -161,6 +169,7 @@ def guardar_destaque(request):
 #
 #
 #
+@staff_required
 @login_required
 @require_POST
 def apagar_destaque(request, destaque_id):
@@ -172,6 +181,7 @@ def apagar_destaque(request, destaque_id):
         return JsonResponse({'sucesso': False, 'erro': 'Destaque não encontrado'}, status=404)
 
 
+@staff_required
 @login_required
 def destaque_detalhes(request, destaque_id):
     destaque = get_object_or_404(
@@ -200,6 +210,7 @@ def destaque_detalhes(request, destaque_id):
     })
 
 
+@staff_required
 @login_required
 def destaques_pagos(request):
     hoje = timezone.now().date()
@@ -226,6 +237,8 @@ def destaques_pagos(request):
 
 
 # destaques/views.py
+@staff_required
+@login_required
 def listar_destaques(request):
     hoje = timezone.now().date()
 
@@ -275,6 +288,7 @@ def listar_destaques(request):
 
 # destaques/views.py
 @login_required
+@staff_required
 def precos_destaque(request):
     pais = get_pais(request)
     moeda_default = 'AOA' if pais == 'Angola' else 'EUR'
@@ -286,6 +300,9 @@ def precos_destaque(request):
         'angola_checked': moeda_default == 'AOA',
     })
 
+
+@staff_required
+@login_required
 def precos_destaque_ajax(request):
     tipo_cliente_id = request.GET.get('tipo_cliente_id')
     moeda_codigo = request.GET.get('moeda', 'EUR')
@@ -302,6 +319,9 @@ def precos_destaque_ajax(request):
 
     return JsonResponse({'precos': resultados, 'moeda': moeda_codigo})
 
+
+@staff_required
+@login_required
 def escolher_destaque(request):
     if request.method != 'POST':
         return JsonResponse({'erro': 'Método não permitido'}, status=405)
@@ -321,6 +341,7 @@ def escolher_destaque(request):
     return JsonResponse({'redirect_url': redirect_url})
 
 
+@staff_required
 @login_required
 def destaques_precos(request):
     precos = PlanoDestaquePreco.objects.select_related(
@@ -331,6 +352,8 @@ def destaques_precos(request):
         'precos': precos,
     })
 
+
+@staff_required
 @login_required
 def preco_destaque_detalhes(request, preco_id):
     preco = get_object_or_404(
@@ -346,9 +369,8 @@ def preco_destaque_detalhes(request, preco_id):
         'preco': str(preco.preco),
     })
 
-# destaques/views.py
-import json
 
+@staff_required
 @login_required
 def atualizar_preco_destaque(request, preco_id):
     if request.method != 'POST':

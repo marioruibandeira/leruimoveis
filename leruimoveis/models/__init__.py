@@ -58,3 +58,10 @@ from .destaque_listagem import Destaque_Listagem
 from .plano_destaque_preco import PlanoDestaquePreco
 from .plano_destaque import PlanoDestaque
 from .moeda import Moeda
+
+from .parceiro_beneficios import ParceiroBeneficios
+from .parceiro_preco import ParceiroPreco
+from .parceria_pedido import ParceriaPedido
+from .beneficio import Beneficio
+from .pedido import Pedido
+from .destaque_credito import DestaqueCredito

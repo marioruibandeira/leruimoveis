@@ -1,0 +1,222 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        {% include 'agencias/agencia-side-menu.html' %}
+                    </div>  
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        
+                        <link rel="stylesheet" href="{% static 'assets/dist/css/perfil-comercial-painel.css' %}">
+
+                        <svg width="0" height="0" style="position: absolute;" aria-hidden="true" focusable="false">
+                            <symbol id="pp-i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+                            <symbol id="pp-i-click" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z"/></symbol>
+                            <symbol id="pp-i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+                            <symbol id="pp-i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+                            <symbol id="pp-i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+                            <symbol id="pp-i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></symbol>
+                            <symbol id="pp-i-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></symbol>
+                            <symbol id="pp-i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+                        </svg>
+
+                        <div class="pp">
+
+                            <!-- Cabeçalho: o pacote e a validade só interessam ao dono. Esconder aos funcionários, se for preciso. -->
+                            <section class="pp-bloco">
+                                <div class="pp-cabeca">
+                                    <div class="pp-logo" role="img" aria-label="Logótipo da Casa do Gótico">
+                                        CG
+                                        <!-- Para usar o logótipo real: <img src="logotipo.png" alt="Logótipo da Casa do Gótico"> -->
+                                    </div>
+                                    <div class="pp-cabeca__texto">
+                                        <h2 class="pp-nome">Casa do Gótico</h2>
+                                        <span class="pp-plano">Parceria Avançado</span>
+                                        <p class="pp-validade">Ativa até 04/12/2026</p>
+                                    </div>
+                                    <a class="pp-botao pp-botao--leve" href="#">Ver página pública</a>
+                                </div>
+                            </section>
+
+                            <section class="pp-bloco" aria-labelledby="pp-titulo-completo">
+                                <div class="pp-completo">
+                                    <h3 class="pp-bloco__titulo" id="pp-titulo-completo">Perfil comercial completo</h3>
+                                    <span>50%</span>
+                                </div>
+                                <div class="pp-progresso" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-labelledby="pp-titulo-completo">
+                                    <div class="pp-progresso__barra" style="width: 50%;"></div>
+                                </div>
+                                <ul class="pp-tarefas">
+                                    <li class="pp-tarefa--feita"><svg class="pp-ico"><use href="#pp-i-check"/></svg><span>Logótipo</span></li>
+                                    <li class="pp-tarefa--feita"><svg class="pp-ico"><use href="#pp-i-check"/></svg><span>Sobre a agência</span></li>
+                                    <li class="pp-tarefa--falta"><svg class="pp-ico"><use href="#pp-i-circle"/></svg><a class="pp-link" href="#">Adicionar redes sociais</a></li>
+                                    <li class="pp-tarefa--falta"><svg class="pp-ico"><use href="#pp-i-circle"/></svg><a class="pp-link" href="#">Preencher informações adicionais</a></li>
+                                </ul>
+                            </section>
+
+                            <section class="pp-bloco" aria-labelledby="pp-titulo-desempenho">
+                                <div class="pp-bloco__cabeca">
+                                    <h3 class="pp-bloco__titulo" id="pp-titulo-desempenho">Desempenho</h3>
+                                    <nav class="pp-periodos" aria-label="Período">
+                                        <a href="?periodo=7">7 dias</a>
+                                        <a href="?periodo=30" aria-current="true">30 dias</a>
+                                        <a href="?periodo=90">90 dias</a>
+                                    </nav>
+                                </div>
+                                <div class="pp-stats">
+                                    <div class="pp-stat">
+                                        <div class="pp-stat__nome"><svg class="pp-ico"><use href="#pp-i-eye"/></svg>Visualizações</div>
+                                        <div class="pp-stat__valor">1.248</div>
+                                        <div class="pp-stat__var pp-stat__var--sobe">+12% face ao anterior</div>
+                                    </div>
+                                    <div class="pp-stat">
+                                        <div class="pp-stat__nome"><svg class="pp-ico"><use href="#pp-i-click"/></svg>Cliques em imóveis</div>
+                                        <div class="pp-stat__valor">342</div>
+                                        <div class="pp-stat__var pp-stat__var--sobe">+8% face ao anterior</div>
+                                    </div>
+                                    <div class="pp-stat">
+                                        <div class="pp-stat__nome"><svg class="pp-ico"><use href="#pp-i-chat"/></svg>Contactos recebidos</div>
+                                        <div class="pp-stat__valor">47</div>
+                                        <div class="pp-stat__var pp-stat__var--desce">-3% face ao anterior</div>
+                                    </div>
+                                    <!-- Estatística fora do pacote: mostrar assim, bloqueada, em vez de a esconder. -->
+                                    <div class="pp-stat pp-stat--bloqueado">
+                                        <div class="pp-stat__nome"><svg class="pp-ico"><use href="#pp-i-trend"/></svg>Taxa de conversão</div>
+                                        <div class="pp-stat__valor"><svg class="pp-ico"><use href="#pp-i-lock"/></svg>Premium</div>
+                                        <a class="pp-link" href="#">Ver pacotes</a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="pp-bloco" aria-labelledby="pp-titulo-contactos">
+                                <div class="pp-bloco__cabeca">
+                                    <h3 class="pp-bloco__titulo" id="pp-titulo-contactos">Contactos recentes</h3>
+                                    <a class="pp-link" href="#">Ver todos</a>
+                                </div>
+                                <ul>
+                                    <li class="pp-contacto">
+                                        <div class="pp-avatar" aria-hidden="true">JM</div>
+                                        <div>
+                                            <div class="pp-contacto__nome">João Matos</div>
+                                            <div class="pp-contacto__sobre">Moradia com jardim, Santarém</div>
+                                        </div>
+                                        <div class="pp-contacto__lado">
+                                            <span class="pp-estado pp-estado--novo">Novo</span>
+                                            <span class="pp-contacto__data">Há 2 horas</span>
+                                        </div>
+                                    </li>
+                                    <li class="pp-contacto">
+                                        <div class="pp-avatar" aria-hidden="true">AS</div>
+                                        <div>
+                                            <div class="pp-contacto__nome">Ana Silva</div>
+                                            <div class="pp-contacto__sobre">Apartamento no centro, Santarém</div>
+                                        </div>
+                                        <div class="pp-contacto__lado">
+                                            <span class="pp-estado pp-estado--respondido">Respondido</span>
+                                            <span class="pp-contacto__data">Ontem</span>
+                                        </div>
+                                    </li>
+                                    <li class="pp-contacto">
+                                        <div class="pp-avatar" aria-hidden="true">RC</div>
+                                        <div>
+                                            <div class="pp-contacto__nome">Rui Costa</div>
+                                            <div class="pp-contacto__sobre">Terreno para construção, Cartaxo</div>
+                                        </div>
+                                        <div class="pp-contacto__lado">
+                                            <span class="pp-estado pp-estado--respondido">Respondido</span>
+                                            <span class="pp-contacto__data">03/11/2026</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="pp-bloco" aria-labelledby="pp-titulo-imoveis">
+                                <div class="pp-bloco__cabeca">
+                                    <h3 class="pp-bloco__titulo" id="pp-titulo-imoveis">Imóveis com mais interesse</h3>
+                                </div>
+                                <ul>
+                                    <li class="pp-imovel">
+                                        <span class="pp-imovel__titulo">Moradia com jardim</span>
+                                        <span class="pp-imovel__numeros"><span>412 visualizações</span><span>9 contactos</span></span>
+                                        <span class="pp-barra" aria-hidden="true"><span style="--v: 100%;"></span></span>
+                                    </li>
+                                    <li class="pp-imovel">
+                                        <span class="pp-imovel__titulo">Apartamento no centro</span>
+                                        <span class="pp-imovel__numeros"><span>287 visualizações</span><span>7 contactos</span></span>
+                                        <span class="pp-barra" aria-hidden="true"><span style="--v: 70%;"></span></span>
+                                    </li>
+                                    <li class="pp-imovel">
+                                        <span class="pp-imovel__titulo">Terreno para construção</span>
+                                        <span class="pp-imovel__numeros"><span>134 visualizações</span><span>3 contactos</span></span>
+                                        <span class="pp-barra" aria-hidden="true"><span style="--v: 33%;"></span></span>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="pp-bloco" aria-labelledby="pp-titulo-avaliacoes">
+                                <div class="pp-bloco__cabeca">
+                                    <h3 class="pp-bloco__titulo" id="pp-titulo-avaliacoes">Avaliações recebidas</h3>
+                                </div>
+                                <div class="pp-nota">
+                                    <div class="pp-nota__valor">4,7 <small>/ 5</small></div>
+                                    <div>
+                                        <div class="pp-stars" role="img" aria-label="4,7 em 5 estrelas">
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star pp-star--off"><use href="#pp-i-star"/></svg>
+                                        </div>
+                                        <div class="pp-nota__total">24 avaliações</div>
+                                    </div>
+                                </div>
+                                <article class="pp-avaliacao">
+                                    <div class="pp-avaliacao__quem">
+                                        <span class="pp-avaliacao__nome">Melita Abrantes</span>
+                                        <span class="pp-stars" role="img" aria-label="5 em 5 estrelas">
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                            <svg class="pp-ico pp-star"><use href="#pp-i-star"/></svg>
+                                        </span>
+                                    </div>
+                                    <p class="pp-avaliacao__texto">Atendimento rápido e muito claro em todo o processo.</p>
+                                    <a class="pp-link" href="#">Responder</a>
+                                </article>
+                            </section>
+
+                            <section class="pp-bloco pp-bloco--ultimo" aria-labelledby="pp-titulo-creditos">
+                                <div class="pp-creditos">
+                                    <div class="pp-creditos__numero">2</div>
+                                    <div class="pp-creditos__texto">
+                                        <h3 class="pp-bloco__titulo" id="pp-titulo-creditos">Créditos de destaque disponíveis</h3>
+                                        <p class="pp-creditos__nota">O mais próximo expira a 30/11/2026.</p>
+                                    </div>
+                                    <a class="pp-botao" href="#">Usar crédito</a>
+                                </div>
+                            </section>
+
+                        </div>
+                        
+                        <br/>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/perfilComercial.js' %}"></script>
+{% endblock %}

@@ -41,7 +41,7 @@ def properties(request):
         query = query.filter(pais_id=ps)
 
     lista_propriedades = query.order_by('-id')[:12]  
-
+    
     contexto = {
         "properties": lista_propriedades,
         "ps": ps  # Enviamos de volta para o HTML saber qual botão destacar
