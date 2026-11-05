@@ -24,6 +24,7 @@ class Listagem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     utilizador = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.IntegerField(default=1) #"1 -Ativo, 2-Vendido, 3-Suspenso
 
     class Meta:
         db_table = "tbl_listagem"

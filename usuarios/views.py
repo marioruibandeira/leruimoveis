@@ -13,7 +13,7 @@ from leruimoveis.models import AuthUserProfile
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import logout 
 from django.db import transaction
-from leruimoveis.models import PlanoAprovado
+from leruimoveis.models import Assinatura
 from django.core.files.storage import FileSystemStorage
 import os
 from django.conf import settings
@@ -265,7 +265,7 @@ def foto(request):
 def subscricao(request):
     user = request.user
 
-    plano_vinculado = PlanoAprovado.objects.select_related('plano__tipo_plano').filter(utilizador=user).first()
+    plano_vinculado = Assinatura.objects.select_related('plano__tipo_plano').filter(utilizador=user).first()
         
     context = {
         'plano_aprovado': plano_vinculado,

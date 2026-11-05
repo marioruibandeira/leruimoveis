@@ -86,6 +86,9 @@
                                                 <span class="fw-bold me-1">Agência : </span> {{ ag.agencia }}
                                             </li>
                                             <li class="list-group-item text-start">
+                                                <span class="fw-bold me-1">NIF : </span> NIF EM FALTA
+                                            </li>
+                                            <li class="list-group-item text-start">
                                                 <span class="fw-bold me-1">Telefone : </span> {{ ag.telefone }}
                                             </li>
                                             <li class="list-group-item text-start">
@@ -162,6 +165,10 @@
                                                     <input type="text" id="agencia" name="agencia" class="form-control" value="" required>
                                                 </div>
                                                 <div class="col-12 mb-3">
+                                                    <label for="nif" class="form-label input-titulos">NIF</label>
+                                                    <input type="text" id="nif" name="nif" class="form-control" value="" required>
+                                                </div>
+                                                <div class="col-12 mb-3">
                                                     <label for="telefone" class="form-label input-titulos">Telefone</label>
                                                     <input type="text" id="telefone" name="telefone" class="form-control" value="" required>
                                                 </div>
@@ -236,7 +243,6 @@
             </div>
         </div>
     </div>
-
 {% endif %}
 
 <div class="modal fade" id="modalConfirmarApagar" tabindex="-1" aria-hidden="true">

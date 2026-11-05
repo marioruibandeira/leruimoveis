@@ -1,4 +1,5 @@
 import json
+import random
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from leruimoveis.models import Conteudo, Listagem, Servico, Favorito, AuthUserProfile  
@@ -8,10 +9,28 @@ from leruimoveis.models.auth_user_profile import AuthUserProfile
 from leruimoveis.models.favoritos_perfil import FavoritosPerfil 
 from django.contrib.auth.models import User
 from .models import DenunciaEfetuada, MotivoDenuncia
+from leruimoveis.models.destaque_listagem import Destaque_Listagem
+from django.utils import timezone
 
 def index(request):
     properties = Listagem.objects.all().order_by('-id')[:9]
-    return render(request, 'leruimoveis/index.html', {"properties": properties})
+
+    hoje = timezone.now().date()
+
+    destaques_ativos_qs = Destaque_Listagem.objects.filter(
+        is_active=True,
+        data_inicio__lte=hoje,
+        data_fim__gte=hoje
+    ).select_related('listagem')
+
+    total_destaques_ativos = destaques_ativos_qs.count()
+    listagens_destaque = [d.listagem for d in destaques_ativos_qs.order_by('?')[:4]]
+
+    return render(request, 'leruimoveis/index.html', {
+        "properties": properties,
+        'listagens_destaque': listagens_destaque,
+        'total_destaques_ativos': total_destaques_ativos,
+    })
     
 def properties(request):
     ps = request.GET.get('ps', '0')
@@ -22,7 +41,7 @@ def properties(request):
         query = query.filter(pais_id=ps)
 
     lista_propriedades = query.order_by('-id')[:12]  
-
+    
     contexto = {
         "properties": lista_propriedades,
         "ps": ps  # Enviamos de volta para o HTML saber qual botão destacar
@@ -32,7 +51,8 @@ def properties(request):
     
 def home(request):
     properties = Listagem.objects.all().order_by('-id')[:9]
-    return render(request, 'leruimoveis/index.html', {"properties": properties})
+
+    return render(request, 'leruimoveis/index.html', { "properties": properties })
 
 def about(request):
     return render(request, 'leruimoveis/about.html')
@@ -70,8 +90,54 @@ def propertydetails(request, property_id):
         'e_favorito': e_favorito
     })
 
+# views principal (onde já está a view 'destaques' referida no urls.py)
+from django.core.paginator import Paginator
+from django.utils import timezone
+from leruimoveis.models.destaque_listagem import Destaque_Listagem
+
 def destaques(request):
-    return render(request, 'leruimoveis/destaques.html')
+    hoje = timezone.now().date()
+
+    destaques_qs = Destaque_Listagem.objects.filter(
+        is_active=True,
+        data_fim__gte=hoje
+    ).select_related('listagem', 'listagem__cidade', 'listagem__tipo_negocio')
+
+    tipo_negocio_id = request.GET.get('tipo_negocio')
+    cidade_id = request.GET.get('cidade')
+    preco_min = request.GET.get('preco_min')
+    preco_max = request.GET.get('preco_max')
+
+    if tipo_negocio_id:
+        destaques_qs = destaques_qs.filter(listagem__tipo_negocio_id=tipo_negocio_id)
+    if cidade_id:
+        destaques_qs = destaques_qs.filter(listagem__cidade_id=cidade_id)
+    if preco_min:
+        destaques_qs = destaques_qs.filter(listagem__preco__gte=preco_min)
+    if preco_max:
+        destaques_qs = destaques_qs.filter(listagem__preco__lte=preco_max)
+
+    destaques_qs = destaques_qs.order_by('-data_inicio')
+
+    paginator = Paginator(destaques_qs, 12)
+    pagina_numero = request.GET.get('page', 1)
+    destaques_pagina = paginator.get_page(pagina_numero)
+
+    # Anota dias restantes em cada item (calculado em Python, simples e legível)
+    for d in destaques_pagina:
+        d.dias_restantes = (d.data_fim - hoje).days
+
+    return render(request, 'leruimoveis/destaques.html', {
+        'destaques': destaques_pagina,
+        'cidades': Cidade.objects.all(),  # ajusta ao import correto
+        'tipos_negocio': TipoNegocio.objects.all(),  # ajusta ao import correto
+        'filtros': {
+            'tipo_negocio': tipo_negocio_id or '',
+            'cidade': cidade_id or '',
+            'preco_min': preco_min or '',
+            'preco_max': preco_max or '',
+        }
+    })
 
 """
 def user(request, id):
@@ -161,6 +227,9 @@ def denunciar_perfil(request):
             return JsonResponse({'sucesso': False, 'erro': str(e)}, status=400)
 
     return JsonResponse({'sucesso': False, 'erro': 'Método não permitido'}, status=405)
+
+
+
 
 
 

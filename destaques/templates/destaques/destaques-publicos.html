@@ -1,0 +1,101 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+    <h3 class="mb-4">Imóveis em Destaque</h3>
+
+    <!-- Filtros -->
+    <form method="get" class="row g-2 mb-4 align-items-end">
+        <div class="col-auto">
+            <label class="form-label">Cidade</label>
+            <select name="cidade" class="form-select">
+                <option value="">Todas</option>
+                {% for c in cidades %}
+                    <option value="{{ c.id }}" {% if filtros.cidade == c.id|stringformat:"s" %}selected{% endif %}>{{ c.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Preço mín.</label>
+            <input type="number" name="preco_min" class="form-control" value="{{ filtros.preco_min }}">
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Preço máx.</label>
+            <input type="number" name="preco_max" class="form-control" value="{{ filtros.preco_max }}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a href="{% url 'admin_destaques:listar_destaques' %}" class="btn btn-secondary">Limpar</a>
+        </div>
+    </form>
+
+    <!-- Grid de cards -->
+    <div class="row {% if destaques|length < 4 %}justify-content-center{% endif %}">
+        {% for d in destaques %}
+        <div class="col-lg-3 mb-3">
+            <div class="card" style="width: 100%; text-align: left;">
+                <div style="position: relative;">
+                    <img src="{{ d.listagem.fotos.url }}" class="card-img-top" alt="{{ d.listagem.titulo }}" style="height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+                            <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/>
+                            <circle cx="12" cy="10" r="2.5"/>
+                        </svg>
+                    </span>
+                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(240,173,78,0.95); color: #232323; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px;">
+                        {{ d.dias_restantes }}d restantes
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-1">{{ d.listagem.preco }} €</h5>
+                    </div>
+                    <p class="text-muted mb-1" style="font-size: 13px;">{{ d.listagem.cidade.nome }}</p>
+                    <a href="{% url 'detalhespropriadade' property_id=d.listagem.id %}">
+                        <p class="card-text text-muted mb-0">{{ d.listagem.titulo|truncatechars:26 }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted text-center">Nenhum imóvel em destaque encontrado.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Paginação -->
+    {% if destaques.has_other_pages %}
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if destaques.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ destaques.previous_page_number }}">Anterior</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+            {% endif %}
+            {% for numero in destaques.paginator.page_range %}
+                <li class="page-item {% if numero == destaques.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ numero }}">{{ numero }}</a>
+                </li>
+            {% endfor %}
+            {% if destaques.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ destaques.next_page_number }}">Seguinte</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Seguinte</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<div class="col-12 text-center py-5" style="background-color:#eee7c4 !important; border-top: #ffc107 4px solid !important;">
+    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#f0ad4e" style="margin-bottom: 16px;">
+        <path d="m354-247 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-80l65-281L80-550l288-25 112-265 112 265 288 25-218 189 65 281-247-149L233-80Z"/>
+    </svg>
+    <h5 class="mb-2">Ainda não há imóveis em destaque</h5>
+    <p class="text-muted mb-4">Sê o primeiro a dar mais visibilidade ao teu imóvel!</p>
+    <a href="{% url 'admin_destaques:precos_destaque' %}" class="btn btn-warning fw-bold px-4 py-2" style="border-radius: 8px;">
+        Destaca o teu imóvel e chega a mais pessoas
+    </a>
+</div>
+
+{% endblock %}

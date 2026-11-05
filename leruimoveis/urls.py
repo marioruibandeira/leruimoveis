@@ -28,6 +28,8 @@ urlpatterns = [
     path('precos/', include('precos.urls')),
     path('favorito/', include('favorito.urls')),
     path('agencias/', include('agencias.urls')),
+    path('admin-panel/destaques/', include('destaques.urls', namespace='admin_destaques')),
+    path('administracao/', include('administracao.urls')),
 ]
 
 if settings.DEBUG:

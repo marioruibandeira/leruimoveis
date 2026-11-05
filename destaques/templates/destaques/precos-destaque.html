@@ -1,0 +1,51 @@
+{% extends 'leruimoveis/normal_base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h3 class="mb-2">Destaca o teu imóvel</h3>
+        <p class="text-muted">Escolhe a duração ideal para dar mais visibilidade ao teu anúncio.</p>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+        <label class="form-check-label mb-0" for="paisSelecionado">Portugal</label>
+        <div class="form-check form-switch mb-0">
+            <input class="form-check-input switch-laranja" type="checkbox" id="paisSelecionado" {% if angola_checked %}checked{% endif %}>
+        </div>
+        <label class="form-check-label mb-0" for="paisSelecionado">Angola</label>
+    </div>
+
+    <ul class="nav nav-tabs justify-content-center mb-4" id="tabsCliente">
+        {% for tc in tipos_cliente %}
+            <li class="nav-item">
+                <button class="nav-link tab-tipo-cliente {% if forloop.first %}active{% endif %}" data-id="{{ tc.tipo_cliente_id }}" type="button">
+                    {% if tc.tipo_cliente == "Particulares" %}
+                        <span style="color: #1C69A8;">{{ tc.tipo_cliente }}</span>
+                    {% elif tc.tipo_cliente == "Profissionais" %}
+                        <span style="color: #615FFF;">{{ tc.tipo_cliente }}</span>
+                    {% elif tc.tipo_cliente == "Empreendimentos" %}
+                        <span style="color: #1F7A55;">{{ tc.tipo_cliente }}</span>
+                    {% else %}
+                        <span style="color: #000;">{{ tc.tipo_cliente }}</span>
+                    {% endif %}
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="row justify-content-center g-3" id="cards-precos-destaque">
+        <p class="text-center text-muted">A carregar...</p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const URL_PRECOS_DESTAQUE_AJAX = "{% url 'admin_destaques:precos_destaque_ajax' %}";
+        const URL_ESCOLHER_DESTAQUE = "{% url 'admin_destaques:escolher_destaque' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'assets/dist/js/precoDestaques.js' %}"></script>
+{% endblock %}
+

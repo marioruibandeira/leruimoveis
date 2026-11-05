@@ -1,0 +1,175 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        {% include 'side-menu.html' %}
+                    </div>  
+                    
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        
+                        <!--tabela-detalhes-->
+                        <div class="" id="caixaDetalhes">
+                            <div class="col-12 mb-0">
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <div class="container justify-content-center text-center">PAGAR DESTAQUES</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form method="post">
+                            {% csrf_token %}
+                            <div style="border:#ccc;">
+                                <ul class="list-group list-group-flush" style="text-align: left; width: 100%;">
+                                    <li class="list-group-item" style="background-color: #ccc;"><span id="tituloFormulario">Pagar</span></li>
+                                    <li class="list-group-item form-bg">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <label class="form-check-label mb-0" for="portugal">Portugal</label>
+                                                    <div class="form-check form-switch mb-0">
+                                                        <input class="form-check-input" type="checkbox" id="paisSelecionado" {% if angola_checked %}checked{% endif %}>
+                                                    </div>
+                                                    <label class="form-check-label mb-0" for="angola">Angola</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="sede" class="form-label input-titulos">Utilizador</label>
+                                                <input type="text"
+                                                        id="ce_utilizador_nome"
+                                                        class="form-control"
+                                                        autocomplete="off"
+                                                        placeholder="Pesquisar utilizador..."
+                                                        required>
+
+                                                <!-- guarda o ID real do utilizador selecionado -->
+                                                <input type="hidden" id="ce_utilizador" name="ce_utilizador">
+
+                                                <!-- Container onde vão aparecer as sugestões -->
+                                                <ul id="lista-sugestoes-utilizador"
+                                                        class="list-group position-absolute w-100"
+                                                        style="z-index: 1000; display: none;">
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 mb-3" id="tblListagem" style="display: none;">
+                                                <div class="tbl-list">
+                                                    <table class="table tbl-estilo">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Listagem</th>
+                                                                <th scope="col">Data</th>
+                                                                <th scope="col">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbody-listagens"> </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            
+                                            <div id="divInp" style="display: none;">
+                                                <div class="col-12 mb-3">
+                                                    <label for="tipoClienteTexto" class="form-label input-titulos">Tipo de Cliente</label>
+                                                    <input type="text" id="tipoClienteTexto" name="tipoClienteTexto" class="form-control" value="" readonly>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <label for="numeroDias" class="form-label input-titulos">Preço</label>
+                                                    <select class="form-select" aria-label="Default select example" id="numeroDias">
+                                                        <option value="0">Selecione o preço</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 mb-3" style="display: none;" id="divNumeroDiasTexto">
+                                                    <label for="numeroDiasTexto" class="form-label input-titulos">Número de dias</label>
+                                                    <input type="text" id="numeroDiasTexto" class="form-control" value="" readonly>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <label for="dataInicio" class="form-label input-titulos">Data Inicio</label>
+                                                    <input type="text" id="dataInicio" name="dataInicio" class="form-control" value="" required>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <label for="dataFim" class="form-label input-titulos">Data Fim</label>
+                                                    <input type="text" id="dataFim" name="dataFim" class="form-control" value="" readonly required>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="confirmar">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Confirmo o pagamento
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 perfil-bottom-btn" style="text-align: center; margin-top: 10px;">
+                                <button id="btnGuardar" onclick="Guardar(event)" disabled class="btn btn-detalhes d-flex align-items-center justify-content-center gap-1 mx-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF"><path d="M816-672v456q0 29.7-21.15 50.85Q773.7-144 744-144H216q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h456l144 144Zm-72 30L642-744H216v528h528v-426ZM556.5-283.5Q588-315 588-360t-31.5-76.5Q525-468 480-468t-76.5 31.5Q372-405 372-360t31.5 76.5Q435-252 480-252t76.5-31.5ZM264-552h336v-144H264v144Zm-48-77v413-528 115Z"/></svg>
+                                    Guardar
+                                </button>
+                            </div>    
+                        </form>
+                            
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal fade" id="modalSucesso" tabindex="-1" aria-hidden="true" style="display:none; background:rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                <div class="modal-header bg-success text-white" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold">Sucesso</h5>
+                    <button type="button" class="btn-close btn-close-white" onclick="fecharModal('modalSucesso')" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0" id="modalSucessoTexto"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary" onclick="location.reload()" style="border-radius: 8px;">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Erro -->
+    <div class="modal fade" id="modalErro" tabindex="-1" aria-hidden="true" style="display:none; background:rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                <div class="modal-header bg-warning text-dark" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold">Atenção</h5>
+                    <button type="button" class="btn-close" onclick="fecharModal('modalErro')" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0" id="modalErroTexto"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal('modalErro')" style="border-radius: 8px;">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %} 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/pt.js"></script>
+    <script>
+        const URL_PESQUISAR_UTILIZADOR = "{% url 'admin_destaques:pesquisar_utilizador' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'assets/dist/js/gerirDestaques.js' %}"></script>
+{% endblock %}

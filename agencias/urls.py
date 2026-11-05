@@ -9,4 +9,6 @@ urlpatterns = [
     path('redes-sociais/', views.redes_sociais, name='redes-sociais'),
     path('configurar-perfil/', views.configurar_perfil, name='configurar-perfil'),
     path('logotipo/', views.logotipo, name='logotipo'),
+    path('perfil-comercial/', views.perfil_comercial, name='perfil-comercial'),
+    path('creditos-destaque/', views.creditos_destaque, name='creditos-destaque'),
 ]

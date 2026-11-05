@@ -1,0 +1,72 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}  
+
+{% block content %}
+
+    <div class="px-0 py-0 my-0 text-center">
+        <div class="section bg-light" id="nossos-servicos">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="margin: 30px 0px 30px 0px;">
+                        {% include 'agencias/agencia-side-menu.html' %}
+                    </div>  
+                    <div class="col-lg-8 mb-5 mb-lg-0" style="margin: 30px 0px 60px 0px;">
+                        
+                        <h2 class="fw-normal mb-1 text-start">Créditos de destaque</h2>
+
+                        <p class="text-muted text-start mb-4">Cada crédito dá direito a um destaque numa das suas listagens.</p>
+
+                        {% if creditos %}
+                            <p class="text-start mb-3">
+                                <span class="fw-semibold">{{ disponiveis }}</span> {% if disponiveis == 1 %}crédito disponível{% else %}créditos disponíveis{% endif %}
+                            </p>
+
+                            <div class="row g-3">
+                                {% for c in creditos %}
+                                    <div class="col-md-6">
+                                        <div class="card h-100 rounded-3 shadow-sm text-start{% if not c.usado_em and not c.valido_ate or not c.usado_em and c.valido_ate >= hoje %} border-ouro{% endif %}">
+                                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                                <span class="fw-semibold">{{ c.fk_plano_destaque.dias }} dias de destaque</span>
+                                                {% if c.usado_em %}<span class="badge bg-secondary">Usado</span>{% elif c.valido_ate and c.valido_ate < hoje %}<span class="badge bg-danger">Expirado</span>{% else %}<span class="badge bg-success">Disponível</span>{% endif %}
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="text-muted small">Origem</div>
+                                                <div class="fw-semibold mb-3">{% if c.fk_parceiro %}Parceria {{ c.fk_parceiro.fk_tipo_parceiro.tipo_parceiro }}{% elif c.motivo %}{{ c.motivo }}{% else %}—{% endif %}</div>
+
+                                                <div class="text-muted small">Validade</div>
+                                                <div class="fw-semibold mb-3">{% if c.valido_ate %}Até {{ c.valido_ate|date:"d/m/Y" }}{% else %}Sem validade{% endif %}</div>
+
+                                                {% if c.usado_em %}
+                                                <div class="text-muted small">Usado em</div>
+                                                <div class="fw-semibold">{{ c.usado_em|date:"d/m/Y" }}{% if c.fk_destaque %} · {{ c.fk_destaque.listagem.titulo }}{% endif %}</div>
+                                                {% endif %}
+                                            </div>
+                                            {% if not c.usado_em and not c.valido_ate or not c.usado_em and c.valido_ate >= hoje %}
+                                                <div class="card-footer bg-transparent border-0 pb-3">
+                                                    <button type="button" class="btn bg-ouro border-ouro w-100 btn-usar-credito" data-credito="{{ c.pk }}">Usar crédito</button>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            <div class="alert alert-light border text-start">Ainda não tem créditos de destaque.</div>
+                        {% endif %}
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %} 
+    <script type="text/javascript" src="{% static 'assets/dist/js/creditoDestaque.js' %}"></script>
+{% endblock %}

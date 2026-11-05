@@ -1,0 +1,90 @@
+{% extends 'leruimoveis/normal_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="b-example-divider ads-section contorno px-4 py-5 mt-6">
+  <div class="container">
+
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Pagamento</h1>
+      <p class="fs-5 text-muted">
+        Escolha a forma de pagamento para concluir o seu pedido.
+      </p>
+
+      <div class="row justify-content-center g-4">
+
+        <div class="col-lg-5">
+          <div class="card rounded-3 shadow-sm border-ouro">
+            <div class="card-header py-3 text-white bg-ouro border-ouro">
+              <h4 class="my-0 fw-normal">Resumo do pedido</h4>
+            </div>
+            <div class="card-body text-start">
+              <p class="mb-1 text-muted small">O que está a pagar</p>
+              <p class="fw-semibold">{{ pedido.descricao }}</p>
+
+              <p class="mb-1 text-muted small">Referência</p>
+              <p class="fw-semibold">{{ pedido.referencia }}</p>
+
+              <p class="mb-1 text-muted small">Total</p>
+              <h2 class="mb-0">
+                {% if pedido.moeda.codigo == 'AOA' %}{{ pedido.valor|floatformat:"-2" }} {{ pedido.moeda.simbolo }}{% else %}{{ pedido.moeda.simbolo }}{{ pedido.valor|floatformat:"-2" }}{% endif %}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="card rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Forma de pagamento</h4>
+            </div>
+            <div class="card-body text-start">
+
+              {% if pedido.estado == 'pago' %}
+              <div class="alert alert-success mb-0">Pagamento confirmado. Obrigado!</div>
+
+              {% elif pedido.estado == 'expirado' %}
+              <div class="alert alert-warning mb-0">Este pedido expirou. Volte atrás e faça um novo pedido.</div>
+
+              {% else %}
+              <div class="list-group">
+
+                <button type="button" class="list-group-item list-group-item-action py-3" id="pagarStripe" data-metodo="stripe">
+                  <span class="d-block fw-semibold" style="color: #635bff; font-weight: bolder;">Cartão</span>
+                  <span class="d-block small text-muted">Pagamento imediato através do Stripe</span>
+                </button>
+
+                <button type="button" class="list-group-item list-group-item-action py-3" id="pagarPaypal" data-metodo="paypal">
+                  <span class="d-block fw-semibold" style="color: #0070ba; font-weight: bolder;">PayPal</span>
+                  <span class="d-block small text-muted">Pague com a sua conta PayPal</span>
+                </button>
+
+                <a class="list-group-item list-group-item-action py-3" id="pagarWhatsapp" data-metodo="whatsapp" target="_blank" rel="noopener"
+                   href="https://wa.me/{{ whatsapp_numero }}?text={% filter urlencode %}Olá! Quero confirmar o pagamento do pedido {{ pedido.referencia }}.{% endfilter %}">
+                  <span class="d-block fw-semibold" style="color: #25d366; font-weight: bolder;">WhatsApp</span>
+                  <span class="d-block small text-muted">Envie-nos o comprovativo e confirmamos o pagamento</span>
+                </a>
+
+              </div>
+              <p class="small text-muted mt-3 mb-0" style="color: #ff4200 !important;">
+                Indique sempre a referência <strong style="color: black;">{{ pedido.referencia }}</strong> se nos contactar.
+              </p>
+              {% endif %}
+
+              <div class="mt-4">
+                <button type="button" class="btn btn-lg btn-outline-secondary w-100" onclick="history.back()">Voltar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

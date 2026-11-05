@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'favorito',
     'agencias',
+    'destaques',
+    'administracao',
 ]
 
 MIDDLEWARE = [
@@ -168,4 +170,7 @@ USE_L10N = True
 
 # Configuração dos paises por país
 GEOIP_PATH = BASE_DIR / 'geoip'
+
+# Numero do whatsapp para os pagamentos
+WHATSAPP_NUMERO = "351926935606"
 

@@ -17,6 +17,7 @@ class Plano(models.Model):
     preco = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     numero_foto = models.PositiveIntegerField(default=3)
     detalhes_imovel = models.ForeignKey(DetalhesImovel, on_delete=models.CASCADE, default=1)
+    numero_dia_destaque = models.PositiveIntegerField(default=0)
 
     class Meta:
         db_table = "tbl_plano"

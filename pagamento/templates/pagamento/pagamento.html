@@ -1,45 +1,138 @@
 {% extends 'leruimoveis/normal_base.html' %}
 
-{% load static %}  
+{% load static %}
 
 {% block content %}
 
 <div class="b-example-divider ads-section contorno px-4 py-5 mt-6">
-      <div class="container">
+  <div class="container">
 
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-          <h1 class="display-4 fw-normal">Pagamento</h1>
-          <p class="fs-5 text-muted">
-            Paça o seu pagamento atraves de uma tranferencia ou MB Way e faz a confirmação via WhatsApp. 
-          </p>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Pagamento</h1>
+      <p class="fs-5 text-muted">
+        <p class="fs-5 text-muted">
+          Comece por indicar os dados básicos da sua agência. Depois de guardar, mostramos-lhe como efetuar o pagamento.
+        </p>
+      </p>
 
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-ouro">
-                  <div class="card-header py-3 text-white bg-ouro border-ouro">
-                    <h4 class="my-0 fw-normal" id="nomePlano">Ouro</h4>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+          <form method="post" id="formPedido">
+            {% csrf_token %}
+
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">A sua agência</h4>
+              </div>
+              <div class="card-body">
+
+                <div class="btn-group w-100 mb-3" role="group" aria-label="Tipo de agência">
+                  <input type="radio" class="btn-check" name="tipo_agencia" id="tipoExistente" value="existente" autocomplete="off" checked>
+                  <label class="btn btn-outline-secondary" for="tipoExistente">Já tenho agência</label>
+
+                  <input type="radio" class="btn-check" name="tipo_agencia" id="tipoNova" value="nova" autocomplete="off">
+                  <label class="btn btn-outline-secondary" for="tipoNova">Agência nova</label>
+                </div>
+
+                <div id="painelExistente" class="text-start">
+                  <div class="position-relative">
+                    <label for="pesquisaAgencia" class="form-label">Pesquisar agência</label>
+                    <input type="text" id="pesquisaAgencia" class="form-control" placeholder="Escreva o nome da agência" autocomplete="off">
+                    <div id="resultadosAgencia" class="list-group position-absolute w-100 shadow-sm d-none" style="z-index: 1050;"></div>
                   </div>
-                  <div class="card-body">
-                    <h1 class="card-title pricing-card-title">
-                      <span id="pagaPreco">0</span>
-                      <small id="periodo" class="text-muted fw-light caixa-p-font">/mês</small>
-                    </h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                      <li>MB Way: 945 856 58</li>
-                      <li>Santander</li>
-                      <li>PT005 4568 213546 85214</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg bg-ouro border-ouro">Confirmar via WhatsApp</button>
+                  <input type="hidden" name="agencia_id" id="agenciaId">
+
+                  <div id="agenciaSelecionada" class="d-none mt-2">
+                    <div class="alert alert-success py-2 mb-0 d-flex justify-content-between align-items-center">
+                      <span id="agenciaSelecionadaNome"></span>
+                      <button type="button" class="btn-close" id="limparAgencia" aria-label="Remover agência"></button>
+                    </div>
                   </div>
                 </div>
+
+                <div id="painelNova" class="text-start d-none">
+                  <div class="mb-3">
+                    <label for="agenciaNome" class="form-label">Nome da agência</label>
+                    <input type="text" class="form-control" id="agenciaNome" name="agencia_nome" maxlength="150" disabled>
+                  </div>
+                  <div class="mb-3">
+                    <label for="agenciaContacto" class="form-label">Contacto</label>
+                    <input type="text" class="form-control" id="agenciaContacto" name="agencia_contacto" maxlength="100" disabled>
+                  </div>
+                  <div class="mb-0">
+                    <label for="agenciaNif" class="form-label">NIF</label>
+                    <input type="text" class="form-control" id="agenciaNif" name="agencia_nif" maxlength="20" disabled>
+                  </div>
+                </div>
+
+                <br/>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-lg btn-outline-secondary flex-fill" onclick="history.back()">Voltar</button>
+                  <button type="submit" class="btn btn-lg bg-ouro border-ouro flex-fill">Guardar</button>
+                </div>
+
               </div>
+            </div>
+
+            {% if erro %}<div class="alert alert-danger">{{ erro }}</div>{% endif %}
+            {% if pedido %}
+              <div class="alert alert-success">Pedido n.º {{ pedido.pk }} registado para {{ pedido.agencia_nome }}.</div>
+            {% endif %}
+
+            {% if parceria %}
+              <div class="card mb-4 rounded-3 shadow-sm border-ouro">
+                <div class="card-header py-3 text-white bg-ouro border-ouro">
+                  <h4 class="my-0 fw-normal">{{ parceria.tipo.tipo_parceiro }}</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">
+                    {% if parceria.preco %}{% if parceria.preco.ce_moeda.codigo == 'AOA' %}{{ parceria.preco.preco|floatformat:"-2" }} {{ parceria.preco.ce_moeda.simbolo }}{% else %}{{ parceria.preco.ce_moeda.simbolo }}{{ parceria.preco.preco|floatformat:"-2" }}{% endif %}{% else %}—{% endif %}
+                    <small class="text-muted fw-light caixa-p-font">/mês</small>
+                  </h1>
+                  <ul class="list-unstyled mt-3 mb-0">
+                    {% for l in parceria.beneficios %}
+                    <li>{{ l.ce_beneficio.beneficio }}{% if l.valor %}: {{ l.valor }}{% endif %}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% else %}
+              <div class="card mb-4 rounded-3 shadow-sm border-ouro">
+                <div class="card-header py-3 text-white bg-ouro border-ouro">
+                  <h4 class="my-0 fw-normal" id="nomePlano">Ouro</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">
+                    <span id="pagaPreco">0</span>
+                    <small id="periodo" class="text-muted fw-light caixa-p-font">/mês</small>
+                  </h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>MB Way: 945 856 58</li>
+                    <li>Santander</li>
+                    <li>PT005 4568 213546 85214</li>
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+
+              
+
+          </form>
+
         </div>
-        
       </div>
     </div>
 
-    {% block scripts %} 
-      <script type="text/javascript" src="{% static 'assets/dist/js/pagamento.js' %}"></script>
-	  {% endblock %}
+  </div>
+</div>
 
+{% block scripts %}
+<script type="text/javascript">
+  const URL_PESQUISA_AGENCIAS = "{% url 'pesquisar_agencias' %}";
+</script>
+<script type="text/javascript" src="{% static 'assets/dist/js/pagamento.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/dist/js/pagamento_pedido.js' %}?v={% now 'U' %}"></script>
+{% endblock %}
 
 {% endblock %}
