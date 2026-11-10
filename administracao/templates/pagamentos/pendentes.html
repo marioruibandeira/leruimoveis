@@ -199,7 +199,7 @@
                             <label class="form-check-label small" for="mcAutomatico">Automático</label>
                         </div>
                     </div>
-                    <input type="text" id="mcDocumento" class="form-control" maxlength="50" placeholder="Opcional, pode preencher mais tarde">
+                    <input type="text" id="mcDocumento" class="form-control" maxlength="50" placeholder="Opcional, pode preencher mais tarde" required>
                     <div class="form-text">A emissão automática fica disponível quando o software de faturação estiver integrado.</div>
                 </div>
 
@@ -212,6 +212,34 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="modalSucessoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+
+                <div class="modal-header bg-success text-white" style="border-radius: 15px 15px 0 0;">
+                    <h5 class="modal-title fw-bold" id="modalSucessoTitulo">
+                        Sucesso!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p class="mb-0" id="modalSucessoTexto">
+                        Pagamento confirmado com sucesso!
+                    </p>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="window.location.reload()" style="border-radius: 8px;">
+                        OK
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

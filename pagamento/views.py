@@ -11,6 +11,8 @@ from django.db import transaction
 from django.utils import timezone
 from leruimoveis.models import ParceiroBeneficios, ParceiroPreco, ParceriaPedido, Pedido, TipoParceiro
 
+from pagamento.regras import motivo_bloqueio_parceria
+
 
 @login_required
 def pagamento(request):
@@ -38,26 +40,41 @@ def pagamento(request):
  
     if tipo_id:
         tipo = get_object_or_404(TipoParceiro, pk=tipo_id)
- 
+
+        motivo = motivo_bloqueio_parceria(request.user)
+        if request.user.is_staff:
+            contexto['bloqueado'] = True
+            contexto['erro'] = 'As contas de funcionários não podem contratar parcerias. Use uma conta de cliente.'
+        elif motivo:
+            contexto['bloqueado'] = True
+            contexto['erro'] = motivo
+
         moeda_codigo = request.GET.get('moeda')
+
         if moeda_codigo not in ('EUR', 'AOA'):
             moeda_codigo = 'AOA' if get_pais(request) == 'Angola' else 'EUR'
  
         preco = ParceiroPreco.objects.filter(ce_tipo_parceiro=tipo, ce_moeda__codigo=moeda_codigo).select_related('ce_moeda').first()
- 
-        if request.method == 'POST':
+
+        agencia = Agencia.objects.filter(ce_utilizador=request.user).first()
+        contexto['agencia'] = agencia
+
+        if request.method == 'POST' and not contexto.get('bloqueado'):
             nome = request.POST.get('agencia_nome', '').strip()
             contacto = request.POST.get('agencia_contacto', '').strip()
             nif = re.sub(r'\W', '', request.POST.get('agencia_nif', '')).upper()
  
-            if not (nome and contacto and nif):
+            if not agencia and not (nome and contacto and nif):
                 contexto['erro'] = 'Preencha o nome, o contacto e o NIF da agência.'
             elif not preco:
                 contexto['erro'] = 'Este pacote não tem preço nesta moeda.'
             else:
                 with transaction.atomic():
                     pedido = Pedido.objects.create(utilizador=request.user, tipo=Pedido.Tipo.PARCERIA, descricao=f'Parceria {tipo.tipo_parceiro}', valor=preco.preco, moeda=preco.ce_moeda)
-                    ParceriaPedido.objects.create(pedido=pedido, tipo_parceiro=tipo, agencia_nome=nome, agencia_contacto=contacto, agencia_nif=nif)
+                    if agencia:
+                        ParceriaPedido.objects.create(pedido=pedido, tipo_parceiro=tipo, agencia=agencia)
+                    else:
+                        ParceriaPedido.objects.create(pedido=pedido, tipo_parceiro=tipo, agencia_nome=nome, agencia_contacto=contacto, agencia_nif=nif)
                 return redirect('fazer_pagamento', referencia=pedido.referencia)
  
         beneficios = ParceiroBeneficios.objects.filter(

@@ -117,8 +117,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     return resposta.json().then(function (json) { return { ok: resposta.ok, json: json }; });
                 })
                 .then(function (resultado) {
-                    if (resultado.ok && resultado.json.sucesso) {
-                        window.location.reload();
+                    if (resultado.ok && resultado.json.sucesso) 
+                    {
+                        const modalConfirmacao = bootstrap.Modal.getInstance(
+                            document.getElementById('modalConfirmar')
+                        );
+
+                        modalConfirmacao.hide();
+
+                        document.getElementById('modalSucessoTexto').textContent =
+                            'Pagamento confirmado com sucesso!';
+
+                        const modalSucesso = new bootstrap.Modal(
+                            document.getElementById('modalSucesso')
+                        );
+
+                        modalSucesso.show();
                         return;
                     }
                     erro.textContent = resultado.json.erro || 'Não foi possível confirmar o pagamento.';
