@@ -13,7 +13,7 @@ from django.views.decorators.http import require_POST
 @staff_required
 def pendentes(request):
     termo = request.GET.get('q', '').strip()
-    pedidos = Pedido.objects.filter(estado=Pedido.Estado.PENDENTE).select_related('utilizador', 'moeda', 'parceria').order_by('criado_em')
+    pedidos = Pedido.objects.filter(estado=Pedido.Estado.PENDENTE).select_related('utilizador', 'moeda', 'parceria').order_by('-criado_em')
 
     if termo:
         pedidos = pedidos.filter(Q(referencia__icontains=termo) | Q(utilizador__username__icontains=termo) | Q(parceria__agencia_nome__icontains=termo) | Q(parceria__agencia_nif__icontains=termo))

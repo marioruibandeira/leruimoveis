@@ -763,8 +763,10 @@
 .telefones{display:none;}
 .modal-apagar{margin-top: 0px; width:100%;height: 20px; padding: 0px; font-size: 10px;}
 
-/**/
-/**/
+/* pagamentos*/
+.erro-func{background:#dadada;border:0px;box-shadow: none !important;}
+/*fim dos pagamentos*/
+
 .perfil-menu{
     text-decoration: none;
 }

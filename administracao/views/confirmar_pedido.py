@@ -6,6 +6,9 @@ from django.views.decorators.http import require_POST
 from leruimoveis.models import Pedido
 from administracao.decorators import staff_required
 
+from pagamento.regras import motivo_bloqueio_parceria
+from pagamento.servicos import criar_assinatura_parceria
+
 
 @staff_required
 @require_POST
@@ -21,6 +24,19 @@ def confirmar_pedido(request, pedido_id):
 
         if pedido.estado != Pedido.Estado.PENDENTE:
             return JsonResponse({'sucesso': False, 'erro': 'Este pedido já foi processado.'}, status=409)
+
+        if pedido.tipo == Pedido.Tipo.PARCERIA:
+            if pedido.utilizador and pedido.utilizador.is_staff:
+                return JsonResponse({'sucesso': False, 'erro': 'Não é possível confirmar: contas de funcionários não podem contratar parcerias.'}, status=409)
+
+            motivo = motivo_bloqueio_parceria(pedido.utilizador)
+            if motivo:
+                return JsonResponse({'sucesso': False, 'erro': f'Não é possível confirmar: {motivo}'}, status=409)
+
+            try:
+                criar_assinatura_parceria(pedido)
+            except ValueError as erro:
+                return JsonResponse({'sucesso': False, 'erro': str(erro)}, status=409)
 
         pedido.estado = Pedido.Estado.PAGO
         pedido.metodo = metodo
